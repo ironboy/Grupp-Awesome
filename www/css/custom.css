@@ -29,3 +29,11 @@ body {
 .centered-pills a {
   float:left;
 }
+
+.navbarBtn {
+  padding: 15px;
+}
+
+#logo {
+  padding: 5px;
+}
