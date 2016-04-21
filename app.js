@@ -23,7 +23,7 @@ app.use(m.express.static(m.path.join(__dirname, 'www')));
 
 var options = {
   // The MongoDB database to connect to
-  dbName: "angularTest",
+  dbName: "awesome",
 };
 
 // start mongresto
