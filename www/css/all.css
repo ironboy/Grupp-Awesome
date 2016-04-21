@@ -7300,6 +7300,17 @@ button.close {
     display: none !important;
   }
 }
+@font-face {
+  font-family: Baron;
+  src: url("Baron neue bold.otf");
+}
+#logo {
+  margin-top: -1%;
+  /*font-variant-alternates: stylistic(.ss03);*/
+}
+#navbarBtn {
+  margin-top: 2%;
+}
 .formError {
   font-weight: bold;
   color: red;
