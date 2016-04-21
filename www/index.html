@@ -18,25 +18,26 @@
 
     <!-- our JS -->
     <script src="app.js"></script>
+    <script src="controllers/home.js"></script>
+    <script src="controllers/about.js"></script>
+    <script src="controllers/forsale.js"></script>
+    <script src="controllers/buy.js"></script>
+    <script src="controllers/contact.js"></script>
 
     <!-- all CSS -->
     <link rel="stylesheet" href="css/all.css">
-  </head>
-  <body>
-    <!-- just testing that the app works -->
-    <form novalidate name="testForm">
-      <div class="form-group">
-        <label>Input text</label>
-        <input
-        type="text"
-        name="testInput"
-        class="form-control"
-        placeholder="Something..."
-        ng-model="test"
-        >
-      </div>
-    </form>
-    <h2>The input contains:</h2>
-    <p>{{test}}</p>
-  </body>
+</head>
+    <body>
+        <h1>
+            fasta objekt(header, meny, footer) placeras ovan/under divtaggen nedan
+        </h1>
+
+        <div>
+            <ng-view>
+
+            </ng-view>
+        </div>
+
+
+    </body>
 </html>
