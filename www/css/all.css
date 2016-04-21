@@ -7306,7 +7306,8 @@ button.close {
 }
 #logo {
   margin-top: -1%;
-  /*font-variant-alternates: stylistic(.ss03);*/
+  font-feature-settings: SET 03;
+  font-variant-alternates: stylistic(SET 3);
 }
 #navbarBtn {
   margin-top: 2%;
