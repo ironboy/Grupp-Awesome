@@ -16,3 +16,16 @@ body {
   padding-top: 10px;
   color: #fff;
 }
+
+.centered-pills {
+  text-align:center;
+}
+.centered-pills ul.nav-pills {
+  display:inline-block;
+}
+.centered-pills li {
+  display:inline;
+}
+.centered-pills a {
+  float:left;
+}
