@@ -1,3 +1,7 @@
+# Grupp - Awesome  
+* Simply awesome
+
+
 # JS Crashcourse: Todo list
 
 ## Dependencies
