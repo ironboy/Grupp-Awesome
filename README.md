@@ -1,6 +1,6 @@
 # Grupp - Awesome  
 * Simply awesome
-
+* revolutionary programming
 
 # JS Crashcourse: Todo list
 
