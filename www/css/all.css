@@ -7302,7 +7302,7 @@ button.close {
 }
 @font-face {
   font-family: Baron;
-  src: url("Baron neue bold.otf");
+  src: url("../fonts/Baron neue bold.otf");
 }
 #logo {
   margin-top: -1%;
@@ -7310,6 +7310,12 @@ button.close {
 }
 #navbarBtn {
   margin-top: 2%;
+}
+h1 {
+  font-family: Baron;
+  -moz-font-feature-settings: "ss03" on;
+  -webkit-font-feature-settings: "ss03" on;
+  font-feature-settings: "ss03" on;
 }
 .formError {
   font-weight: bold;
