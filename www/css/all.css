@@ -7308,9 +7308,6 @@ button.close {
   margin-top: -1%;
   /*font-variant-alternates: stylistic(.ss03);*/
 }
-#navbarBtn {
-  margin-top: 2%;
-}
 h1 {
   font-family: Baron;
   -moz-font-feature-settings: "ss03" on;
