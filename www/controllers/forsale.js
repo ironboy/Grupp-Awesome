@@ -1,7 +1,10 @@
 app.controller("forsale", ["$scope", "property", function($scope, property) {
-	property.get(function(data){
+	property.create(function(data){
 
-		
+		url: "/api/property",
+		data: {
+			
+		}	
 		
 	})
 }]);
