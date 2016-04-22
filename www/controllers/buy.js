@@ -1,4 +1,7 @@
-app.controller("buy", ["$scope", function($scope) {
+app.controller("buy", ["$scope", "property", function($scope, property) {
+	property.get(function(data){
 
-		console.log("buy")
+		console.log(data)
+		
+	})
 }]);

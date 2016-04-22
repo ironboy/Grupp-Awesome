@@ -377,8 +377,8 @@ var mongresto = module.exports = (function _mongresto(){ return {
   ngMethods: function(){
     // Define ngResource methods
     return {
-      index: { method: 'GET', isArray: true },
-      show: { method: 'GET', isArray: false },
+      get: { method: 'GET', isArray: true },
+      getById: { method: 'GET', isArray: false },
       create: { method: 'POST', isArray: true},
       update: { method: 'PUT' },
       remove: { method: 'DELETE' }
