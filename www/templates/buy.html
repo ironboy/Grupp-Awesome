@@ -1,27 +1,31 @@
-<div ng-if="values.length > 0">
-	<div ng-repeat="value in values">
-	<p class="remove">	
-		adress: {{value.adress}}
-		zipcode: {{value.zipcode}}
-		Pris: {{value.price}}
-		Antal rum: {{value.rooms}}
-		Bo area kvd: {{value.livingarea}}
-		Fastighets typ: {{value.propertyType}}
-		Förklaring: {{value.description}}
-		Tomtarea kvd: {{value.yardarea}}
-		Antal våningar: {{value.floors}}
+<div class="panel panel-default">
+    <div class="panel-body">
+    	<div ng-if="values.length > 0">
+			<div ng-repeat="value in values">
+				<p class="listing">	
+					adress: {{value.adress}}<br>
+					zipcode: {{value.zipcode}}<br>
+					Pris: {{value.price}}<br>
+					Antal rum: {{value.rooms}}<br>
+					Bo area kvd: {{value.livingarea}}<br>
+					Fastighets typ: {{value.propertyType}}<br>
+					Förklaring: {{value.description}}<br>
+					Tomtarea kvd: {{value.yardarea}}<br>
+					Antal våningar: {{value.floors}}<br>
 
-	</p>
-	
-	<h2>
-		{{value.noFind}}
-	</h2>
-	</div>
+				</p>
+				
+				<h2>
+					{{value.noFind}}
+				</h2>
+			</div>
+		<div ng-if="values.length == 0">
+			<h2>Could not find any property.</h2>
+		</div>
+    </div>
 </div>
 
-<div ng-if="values.length == 0">
-	<h2>Could not find any property.</h2>
-</div>
+
 <div class="dropdown">
 <button class="btn btn-default dropdown-toggle" type="button" id="menu1" data-toggle="dropdown">Tutorials
     <span class="caret"></span></button>
