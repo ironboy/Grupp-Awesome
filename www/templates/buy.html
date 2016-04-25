@@ -1,11 +1,27 @@
-<div ng-repeat="value in values">
-	<p>
-		{{value.adress}}
-		{{value.price}}
+<div ng-if="values.length > 0">
+	<div ng-repeat="value in values">
+	<p class="remove">	
+		adress: {{value.adress}}
+		zipcode: {{value.zipcode}}
+		Pris: {{value.price}}
+		Antal rum: {{value.rooms}}
+		Bo area: {{value.livingarea}}
+		Fastighets typ: {{value.propertyType}}
+		Förklaring: {{value.description}}
+		Tomtarea: {{value.yardare}}
+		Antal våningar: {{value.floors}}
+
 	</p>
 	
-	<p>
+	<h2>
 		{{value.noFind}}
-	</p>
+	</h2>
+	</div>
 </div>
+
+<div ng-if="values.length == 0">
+	<h2>Could not find any property.</h2>
+</div>
+
+
 <input type="button" class="btnFilter">
