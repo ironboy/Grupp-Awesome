@@ -1,5 +1,10 @@
 app.controller("buy", ["$scope", "property", function($scope, property) {
 	
+		$scope.values = property.get(function(data){
+
+			console.log(data);				
+				
+		});
 
 	
 	$(document).ready(function() {
