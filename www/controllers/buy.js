@@ -13,7 +13,7 @@ app.controller("buy", ["$scope", "property", function($scope, property) {
 				if (!data[0]) { 
 
 					// if any property with filter do not exsists
-					
+
 					// use {{x.noFind}} for falsy filter
 					$scope.values.push({ noFind : "Could not find any property." });
 					
@@ -29,14 +29,10 @@ app.controller("buy", ["$scope", "property", function($scope, property) {
 
 		$('.btnFilter').on('click', function() {
 
-			if (!$(".justAnInput")[0].value) {
-				$(".justAnInput")[0].value = 0;
-			}
-
 			property.get( 
 
 				// fetch data from db with filter
-				{ $and: [ { price: { $gt : $(".justAnInput")[0].value }}, 
+				{ $and: [ { price: { $gt : 5 }}, 
 				{ price: { $lt : 1000000 }} /* , add more filter here */ ]}, 
 				function(data){
 
