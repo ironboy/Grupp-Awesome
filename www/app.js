@@ -1,4 +1,4 @@
-console.log("Hello world!");
+
 
 // declare our angular app
 // and it's dependencies
