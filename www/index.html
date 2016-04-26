@@ -1,10 +1,15 @@
 <!DOCTYPE html>
+
 <html ng-app="myApp">
-  <head>
+<head>
+
     <title>A Team Awesome Project</title>
+
     <meta charset="utf-8">
+
     <!-- base href for Angular (HTML5 mode) -->
     <base href="/">
+
     <!-- meta tag for bootstrap (mobile devices) -->
     <meta name="viewport" content="width=device-width,initial-scale=1">
 
@@ -35,6 +40,7 @@
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
 </head>
+<<<<<<< HEAD
     <body>	
       <header>
     					<!-- MEDIUM SCREEN NAV-BAR -->
@@ -67,23 +73,46 @@
 							<h1>DYHR &amp; RUMSON</h1>	
 				</div>
       </header>
+=======
+    <body>
+        <nav class="navbar navbar-default navbar-fixed-top">
+            <div class="container">
+                <div class="centered-pills">
+                  <ul class="nav nav-pills">
 
-        <main>
+                    <li role="navigation" class="navbarBtn"><a ng-href="/buy" class="navPill">KÖPA</a></li>
+
+                    <li role="navigation" class="navbarBtn"><a ng-href="/forsale" class="navPill">SÄLJA</a></li>
+
+                    <li role="navbar-header" class="navbar-header"><a ng-href="/" id="logo"><h1>DYHR &amp; RUMSON</h1></a></li>
+
+                    <li role="navigation" class="navbarBtn"><a href="#" class="navPill">OM OSS</a></li>
+
+                    <li role="navigation" class="navbarBtn"><a href="#" class="navPill">KONTAKT</a></li>
+
+                  </ul>
+                </div>
+            </div>
+        </nav>
+>>>>>>> 4c2c0c2a59d4501ff11f642a22245ac2f84e678d
+
             <ng-view></ng-view>
-        </main>
 
-       <footer class="footer">
+        <footer class="footer">
             <div class="container">
                 <div class="row">
-                    <div class="col-lg-16 col-lg-offset-4 text-center">
-                        <img src="img/awesome.png" class="img-responsive center-block">
-                        <p>A Team Awesome Project</p>
-                    </div>
-                    <div class="col-lg-8 col-lg-offset-4 text-center">
-                       <a href="tel:#"><i class="fa fa-phone fa-3x wow bounceIn"></i></a>
-                    </div>
-                    <div class="col-lg-8 text-center">
-                        <a href="mailto:#"><i class="fa fa-envelope-o fa-3x wow bounceIn"></i></a>
+                    <div class=".col-xs-12 text-center">
+
+                        <ul class="list-inline">
+
+                        <li><a href="tel:#"><i class="fa fa-phone fa-3x wow bounceIn"></i></a></li>
+
+                        <li><img src="img/awesome.png" class="img-responsive center-block"></li>
+
+                        <li id="last"><a href="mailto:#"><i class="fa fa-envelope-o fa-3x wow bounceIn"></i></a></li>
+
+                      </ul>
+
                     </div>
                 </div>
             </div>

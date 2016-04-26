@@ -18,10 +18,6 @@ app.controller("buy", ["$scope", "property", function($scope, property) {
 				if (!data[0]) { 
 
 					// if any property with filter do not exsists
-
-					// use {{x.noFind}} for falsy filter
-					$scope.values.push({ noFind : "Could not find any property." });
-					
 				}
 			} 
 			else {
@@ -31,8 +27,9 @@ app.controller("buy", ["$scope", "property", function($scope, property) {
 			}
 		}
 
+		$scope.dropdownItems = ["item1", "item2", "item3"];
 
-		$('.btnFilter').on('click', function() {
+		$('#btnFilter').on('click', function() {
 
 			property.get( 
 
@@ -44,9 +41,12 @@ app.controller("buy", ["$scope", "property", function($scope, property) {
 					console.log(data);
 
 					loadProperties(data);
+
+
 			});
 		});
 
 		loadProperties();
+
 	});
 }]);
