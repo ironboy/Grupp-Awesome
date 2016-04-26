@@ -46,8 +46,8 @@
 </head>
 
     <body>
-        <nav class="navbar navbar-default navbar-fixed-top" ng-controller="NavbarController">
-            <div class="container">
+        <!-- <nav class="navbar navbar-default navbar-fixed-top" ng-controller="NavbarController"> -->
+<!--             <div class="container">
                 <div class="navbar-header">
 
                 <button type="button" class="navbar-toggle" ng-click="isCollapsed = !isCollapsed">
@@ -67,14 +67,37 @@
                     <li role="navigation" class="navbarBtn"><a ng-href="/forsale" class="navPill">SÄLJA</a></li>
                     <li role="navbar-header" class="navbar-header"><a ng-href="/" id="logo"><h1>DYHR &amp; RUMSON</h1></a></li>
                     <li role="navigation" class="navbarBtn"><a href="#" class="navPill">OM OSS</a></li>
-                    <li role="navigation" class="navbarBtn"><a href="#" class="navPill">KONTAKT</a></li>
-                  </ul>
+                    <li role="n -->
+                    <!-- MEDIUM SCREEN NAV-BAR -->
+			<nav class="navbar navbar-default navbar-fixed-top hidden-xs">
+				<div class="container">
+					<div class="centered-pills">
+						<ul class="nav nav-pills">
+							<li role="navigation" class="navbarBtn"><a ng-href="/buy" class="navPill">KÖPA</a></li>
+							<li role="navigation" class="navbarBtn"><a ng-href="/forsale"  class="navPill">SÄLJA</a></li>
+							<li role="navbar-header" class="navbar-header"><a ng-href="/" id="logo"><h1>DYHR &amp; RUMSON</h1></a></li>
+							<li role="navigation" class="navbarBtn"><a href="#"  class="navPill">OM OSS</a></li>
+							<li role="navigation" class="navbarBtn"><a href="#"  class="navPill">KONTAKT</a></li>
+						</ul>
+					</div>
+				</div>
+			</nav>
+															
+							<!--  MOBILE SCREEN NAV-BAR -->
+			<nav class="dropdown visible-xs">
+				<button type="button" class="btn btn-default dropdown-toggle" id="dropMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+					<span class="glyphicon glyphicon-menu-hamburger"></span>
+					</button>
+					<ul class="dropdown-menu" aria-labelledby="dropMenu">
+						<li><a href="#">KÖP</a></li>
+						<li><a href="#">SÄLJ</a></li>
+						<li><a href="#">OM OSS</a></li>
+						<!-- <li role="separator" class="divider"></li> -->
+						<li><a href="#">KONTAKT</a></li>
+					</ul>
+						<h1>DYHR &amp; RUMSON</h1>	
+			</nav>
 
-                    </div>
-
-                </div>
-
-            </div>
         </nav>
 
 		<ng-view></ng-view>
