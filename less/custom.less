@@ -145,3 +145,82 @@ footer a:active {
 
 //End Footer
 
+//Olle navbar
+// alter bootstrap column #
+
+@grid-columns: 24;
+@font-face {
+  font-family: Baron;
+  src: url("../fonts/Baron neue bold.otf");
+}
+
+h1 {
+  font-family: Baron;
+  -moz-font-feature-settings: "ss03" on;
+  -webkit-font-feature-settings: "ss03" on;
+  font-feature-settings: "ss03" on;
+}
+
+#logo {
+  margin-top: -4%;
+  font-family: Baron;
+
+  /*font-variant-alternates: stylistic(.ss03);*/
+}
+
+#logo:hover {
+  background-color: transparent;
+
+}
+#logo:after {
+  color: black;
+}
+#logo:visited {
+  background-color: transparent;
+}
+#logo:focus {
+  background-color: transparent;
+}
+#logo:active {
+  background-color: transparent;
+}
+
+.navbar .navPill {
+  border-radius: 0px;
+  padding-bottom: 1.5px;
+  margin-bottom: 8.5px;
+}
+
+.navbar .navPill:hover {
+  border-bottom: 4px solid;
+  margin-bottom: 4.5px;
+  background-color: inherit;
+  /*transition: ease-in-out;*/
+}
+
+.navbar-fixed-top {
+  background-color: #ddd;
+  font-family: Baron;
+  font-size: 1.8em;
+  border: none;
+}
+.navbar a {
+  color: black;
+}
+.dropdown {
+  height: 56px;
+  margin-top: -20%;
+  text-align: center;
+}
+.dropdown h1 {
+  font-size: 2.3em;
+  display: inline-block;
+  margin: 0%;
+}
+.btn {
+  margin-bottom: 4%;
+  float: left;
+  margin-left: 1%;
+  margin-top: 1%;
+}
+//End Olle Navbar
