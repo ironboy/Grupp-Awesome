@@ -35,9 +35,10 @@
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
 </head>
-    <body>
-
-        <nav class="navbar navbar-default navbar-fixed-top">
+    <body>	
+      <header>
+    					<!-- MEDIUM SCREEN NAV-BAR -->
+        <nav class="navbar navbar-default navbar-fixed-top hidden-xs">
           <div class="container">
             <div class="centered-pills">
               <ul class="nav nav-pills">
@@ -50,10 +51,22 @@
             </div>
         	</div>
         </nav>
-
-        <header>
-
-        </header>
+  						      						
+        				<!--  MOBILE SCREEN NAV-BAR -->
+				<div class="dropdown visible-xs">
+					<button type="button" class="btn btn-default dropdown-toggle" id="dropMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+					    <span class="glyphicon glyphicon-menu-hamburger"></span>
+					  </button>
+					  <ul class="dropdown-menu" aria-labelledby="dropMenu">
+					    <li><a href="#">KÖP</a></li>
+					    <li><a href="#">SÄLJ</a></li>
+					    <li><a href="#">OM OSS</a></li>
+					    <!-- <li role="separator" class="divider"></li> -->
+					    <li><a href="#">KONTAKT</a></li>
+					  </ul>
+							<h1>DYHR &amp; RUMSON</h1>	
+				</div>
+      </header>
 
         <main>
             <ng-view></ng-view>
