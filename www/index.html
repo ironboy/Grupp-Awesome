@@ -28,7 +28,8 @@
 		<script src="controllers/forsale.js"></script>
 		<script src="controllers/buy.js"></script>
 		<script src="controllers/contact.js"></script>
-		<script src="/api/ngresources/app"> </script>
+		<script src="/api/ngresources/app"></script>
+        <script src="controllers/navbar.js"></script>
 
 		<!-- all CSS -->
 		<link rel="stylesheet" href="css/all.css">
@@ -39,26 +40,40 @@
 		<!-- Font Awesome -->
 		<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
+        <!-- Navbar -->
+        <script src="//angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.12.1.js"></script>
+
 </head>
 
     <body>
-        <nav class="navbar navbar-default navbar-fixed-top">
+        <nav class="navbar navbar-default navbar-fixed-top" ng-controller="NavbarController">
             <div class="container">
-                <div class="centered-pills">
-                  <ul class="nav nav-pills">
+                <div class="navbar-header">
 
-                    <li role="navigation" class="navbarBtn"><a ng-href="/buy" class="navPill">KÖPA</a></li>
+                <button type="button" class="navbar-toggle" ng-click="isCollapsed = !isCollapsed">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                </button>
 
-                    <li role="navigation" class="navbarBtn"><a ng-href="/forsale" class="navPill">SÄLJA</a></li>
-
-                    <li role="navbar-header" class="navbar-header"><a ng-href="/" id="logo"><h1>DYHR &amp; RUMSON</h1></a></li>
-
-                    <li role="navigation" class="navbarBtn"><a href="#" class="navPill">OM OSS</a></li>
-
-                    <li role="navigation" class="navbarBtn"><a href="#" class="navPill">KONTAKT</a></li>
-
-                  </ul>
                 </div>
+
+                <div class="centered-pills">
+
+                    <div class="navbar-collapse collapse in" collapse="isCollapsed">
+
+                  <ul class="nav nav-pills">
+                    <li role="navigation" class="navbarBtn"><a ng-href="/buy" class="navPill">KÖPA</a></li>
+                    <li role="navigation" class="navbarBtn"><a ng-href="/forsale" class="navPill">SÄLJA</a></li>
+                    <li role="navbar-header" class="navbar-header"><a ng-href="/" id="logo"><h1>DYHR &amp; RUMSON</h1></a></li>
+                    <li role="navigation" class="navbarBtn"><a href="#" class="navPill">OM OSS</a></li>
+                    <li role="navigation" class="navbarBtn"><a href="#" class="navPill">KONTAKT</a></li>
+                  </ul>
+
+                    </div>
+
+                </div>
+
             </div>
         </nav>
 
