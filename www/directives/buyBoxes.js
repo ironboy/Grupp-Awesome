@@ -20,13 +20,15 @@ app.directive('buyBoxes', [function(){
           property.get( 
 
             // fetch data from db with filter
-            { $and: [ { price: { $gt : 0 }}, 
-            { price: { $lt : 100000 }} /* , add more filter here */ ]}, 
+            { $and: [ { price: { $gt : $('.priceMin')[0].value }}, 
+            { price: { $lt : $('.priceMax')[0].value }} /* , add more filter here */ ]}, 
             function(data){
 
               console.log(data);
 
               loadProperties(data);
+
+              console.log($('.priceMin')[0].value);
 
           });
         });
