@@ -25,8 +25,7 @@ app.config(["$routeProvider", "$locationProvider", function($routeProvider, $loc
 		controller: "forsale"
 	})
 	.when("/buy",{
-		templateUrl: "templates/buy.html",
-		controller: "buy"
+		templateUrl: "templates/buy.html"
 	})
 	.when("/contact",{
 		templateUrl: "templates/contact.html",

@@ -1,4 +1,5 @@
 <div class="container">
+	<buy-boxes></buy-boxes>
 	<div class="panel panel-default">
 	    <div class="panel-body">
 	    	<div ng-if="values.length > 0">
@@ -15,10 +16,6 @@
 						Antal våningar: {{value.floors}}<br>
 
 					</p>
-					
-					<h2>
-						{{value.noFind}}
-					</h2>
 				</div>
 			</div>
 			<div ng-if="values.length == 0">
@@ -27,15 +24,4 @@
 	    </div>
 	</div>
 
-
-	<!-- <div class="dropdown">
-	<button class="btn btn-default dropdown-toggle" type="button" id="menu1" data-toggle="dropdown">Tutorials
-	    <span class="caret"></span></button>
-	    <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
-		<div ng-repeat="item in dropdownItems">
-			<li role="presentation">{{item}}</li>
-		</div>
-		</ul>
-	</div>-->
-	<button type="button" class="btn btn-info" id="btnFilter">Sök</button> 
 </div>
