@@ -7,12 +7,11 @@ html {
 body {
   font-family: 'Open Sans', sans-serif;
   background: #fff;
-  margin-bottom: 87px;
-  margin-top: 87px;
+  margin-bottom: 90px;
+  margin-top: 50px;
 }
 
 //Home
-
 .intro {
   height: 400px;
   text-align: center;
@@ -25,37 +24,36 @@ body {
     position: relative;
     margin: 0 auto;
     margin-top: 150px;
+    font-family: Baron;
 }
 
 .introText {
   padding-top: 20px;
   padding-bottom: 30px;
 }
-
 //End Home
 
 
 //Navbar
-
-.centered-pills {
-  text-align:center;
+@font-face {
+  font-family: Baron;
+  src: url("../fonts/Baron neue bold.otf");
 }
 
-.centered-pills ul.nav-pills {
-  display:inline-block;
+.navbar-fixed-top {
+  background-color: #ddd;
+  font-family: Baron;
+  font-size: 1.4em;
+  border: none;
 }
 
-.centered-pills li {
-  display:inline;
-}
-
-.centered-pills a {
-  float:left;
+.brand {
+  font-family: Baron;
 }
 
 .navbarBtn {
-  padding: 15px;
-  padding-top: 12px;
+  padding: 10px;
+  padding-top: 0px;
 }
 
 .navbarBtn a.navPill:link {
@@ -78,6 +76,27 @@ body {
   background-color: #ddd;
 }
 
+.navbar .navPill {
+  border-radius: 0px;
+  padding-bottom: 1.5px;
+  margin-bottom: 8.5px;
+}
+
+.navbar .navPill:hover {
+  border-bottom: 4px solid;
+  margin-bottom: 4.5px;
+  background-color: inherit;
+}
+
+.navbar-fixed-top .navbar-brand {
+  padding-top: 0px;
+  padding-bottom: 0px;
+}
+
+h2 {
+  margin-top: 6px;
+  margin-bottom: 0px;
+}
 //End Navbar
 
 
@@ -87,17 +106,15 @@ body {
   font-size: 120%;
   border: solid black 2px;
   width: 50%;
-
 }
 
 
 //Footer
-
 .footer {
   position: absolute;
   bottom: 0;
   width: 100%;
-  height: 87px;
+  height: 90px;
   background-color: #aaa;
   padding-top: 10px;
   padding-bottom: 10px;
@@ -123,9 +140,8 @@ footer a:active {
 
 //End Footer
 
-
+/*
 //Olle navbar
-// alter bootstrap column #
 
 @grid-columns: 24;
 @font-face {
@@ -143,8 +159,6 @@ h1 {
 #logo {
   margin-top: -4%;
   font-family: Baron;
-
-  /*font-variant-alternates: stylistic(.ss03);*/
 }
 
 #logo:hover {
@@ -174,7 +188,6 @@ h1 {
   border-bottom: 4px solid;
   margin-bottom: 4.5px;
   background-color: inherit;
-  /*transition: ease-in-out;*/
 }
 
 .navbar-fixed-top {
@@ -204,3 +217,4 @@ h1 {
 .dropdown-menu h1 {
 }
 //End Olle Navbar
+*/
