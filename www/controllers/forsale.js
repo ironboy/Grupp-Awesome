@@ -1,6 +1,8 @@
-app.controller("forsale", ["$scope", "property", function($scope, property) {
-	property.create(function(data){
-
+app.controller("forsale", ["$scope", "workers", function($scope, workers) {
 		
-	})
-}]);
+		$scope.staffDatas = workers.get(function(data){
+
+					console.log(data);				
+						
+				});
+	}]);
