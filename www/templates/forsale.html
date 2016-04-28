@@ -1,19 +1,22 @@
 <div class="container">
-	<div class="panel panel-default">
-	    <div class="panel-body">
-	    	<div ng-if="staffDatas.length > 0">
-				<div ng-repeat="staffData in staffDatas">
-					<p class="listing">	
-						Namn: {{staffData.name}}<br>
-						Om mig: {{staffData.description}}.<br>
-						Aktiv sedan: {{staffData.worktime}} år tillbaka<br>
-						Ålder: {{staffData.age}} år<br>
-						
-					<img ng-src="{{staffData.path}}">
-					</p>
-					<!-- <pre>{{staffData.path}}</pre> -->
-				</div>
+	<!-- <div class="row">
+		<div class="col-xs-24"> -->
+			<div class="panel panel-default">
+			    <div class="panel-body">
+			    	<div ng-if="staffDatas.length > 0">
+						<div ng-repeat="staffData in staffDatas">
+							<p class="listing">	
+							<img class="imgWork" ng-src="{{staffData.path}}"><br>
+								Namn: {{staffData.name}}<br>
+								Om mig: {{staffData.description}}.<br>
+								Aktiv sedan: {{staffData.worktime}} år tillbaka<br>
+								Ålder: {{staffData.age}} år<br>
+								
+							</p>
+						</div>
+					</div>
+			    </div>
 			</div>
-	    </div>
-	</div>
+<!-- 		</div>
+	</div> -->
 </div>
