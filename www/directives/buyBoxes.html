@@ -1,8 +1,28 @@
-<button class="btn btn-primary" ng-init="filterCollapsed = true" ng-click="filterCollapsed = !filterCollapsed">Filter</button>
+<button class="btn btn-primary" ng-init="filterCollapsed = false" ng-click="filterCollapsed = !filterCollapsed">Filter</button>
 <div class="collapse" ng-class="filterCollapsed ? '' : 'in'">
 	<div class="well">
-		<p>Hey all!</p>
-		<button>Hej</button>
+		<p>
+			Price:
+			Min
+			<select class="priceMin">
+				<option value="0">0</option>
+				<option value="499999">500 000</option>
+				<option value="999999">1 000 000</option>
+			</select>
+			Max
+			<select class="priceMax">
+				<option value="1000001">1 000 000</option>
+				<option value="2000001">2 000 000</option>
+				<option value="10000001">10 000 000</option>
+			</select>
+
+			<br>
+			<select>
+				<option>1</option>
+				<option>2</option>
+				<option>3</option>
+			</select>
+		</p>
 		<button type="button" class="btn btn-info" id="btnFilter">Sök</button> 
 	</div>
 </div>
