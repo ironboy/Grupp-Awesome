@@ -9,7 +9,7 @@ app.controller("buy", ["$scope", "property", function($scope, property) {
 
 		}
 
-		$scope.dropdownItems = ["item1", "item2", "item3"];
+		/*$scope.dropdownItems = ["item1", "item2", "item3"];*/
 
 		$('#btnFilter').on('click', function() {
 
