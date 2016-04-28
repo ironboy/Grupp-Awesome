@@ -46,33 +46,35 @@ body {
   border: none;
 }
 
-.brand {
+.navbar-default .navbar-brand {
   font-family: Baron;
+  color: #000;
 }
 
-.navbarBtn {
+.navbar-default .navbar-brand:hover,
+.navbar-default .navbar-brand:focus {
+  color: #fff;
+}
+
+ul li {
   padding: 10px;
   padding-top: 0px;
 }
 
-.navbarBtn a.navPill:link {
-  background-color: #ddd;
+.navbar-default .navbar-nav > li > a {
+  color: #000;
 }
 
-.navbarBtn a.navPill:hover {
-  background-color: #ddd;
+.navbar-default .navbar-nav > li > a:hover {
+  color: #fff;
 }
 
-.navbarBtn a.navPill:visited {
-  background-color: #ddd;
+.navbar-default .navbar-nav .active a {
+    color: #000;
 }
 
-.navbarBtn a.navPill:focus {
-  background-color: #ddd;
-}
-
-.navbarBtn a.navPill:active {
-  background-color: #ddd;
+.navbar-default .navbar-nav .active a:hover {
+    color: #000;
 }
 
 h2 {
@@ -82,6 +84,7 @@ h2 {
 
 .navbar-brand {
   padding: 0;
+  padding-left: 4px;
 }
 
 .navbar-toggle {
