@@ -1,30 +1,12 @@
 app.controller("buy", ["$scope", "property", function($scope, property) {
 	
-		/*$scope.values = property.get(function(data){
-
-			console.log(data);				
-				
-		});*/
-
-	
 	$(document).ready(function() {
 
 		function loadProperties(data) {
-			if (data) { 
 
-				// if data from filter exsist
-				$scope.values = data;
+			// if (data) from filter exist use it on scope or fetch from db
+			$scope.values = data || property.get(function(data){console.log(data)});
 
-				if (!data[0]) { 
-
-					// if any property with filter do not exsists
-				}
-			} 
-			else {
-
-				// fetch data from db
-				$scope.values = property.get(function(data){ console.log(data); });
-			}
 		}
 
 		/*$scope.dropdownItems = ["item1", "item2", "item3"];*/
@@ -35,13 +17,12 @@ app.controller("buy", ["$scope", "property", function($scope, property) {
 
 				// fetch data from db with filter
 				{ $and: [ { price: { $gt : 5 }}, 
-				{ price: { $lt : 1000000 }} /* , add more filter here */ ]}, 
+				{ price: { $lt : 10000 }} /* , add more filter here */ ]}, 
 				function(data){
 
 					console.log(data);
 
 					loadProperties(data);
-
 
 			});
 		});
