@@ -46,55 +46,54 @@ body {
   border: none;
 }
 
-.brand {
+.navbar-default .navbar-brand {
   font-family: Baron;
+  color: #000;
 }
 
-.navbarBtn {
+.navbar-default .navbar-brand:hover,
+.navbar-default .navbar-brand:focus {
+  color: #fff;
+}
+
+ul li {
   padding: 10px;
   padding-top: 0px;
 }
 
-.navbarBtn a.navPill:link {
-  background-color: #ddd;
+.navbar-default .navbar-nav > li > a {
+  color: #000;
 }
 
-.navbarBtn a.navPill:hover {
-  background-color: #ddd;
+.navbar-default .navbar-nav > li > a:hover {
+  color: #fff;
 }
 
-.navbarBtn a.navPill:visited {
-  background-color: #ddd;
+.navbar-default .navbar-nav .active a {
+    color: #000;
 }
 
-.navbarBtn a.navPill:focus {
-  background-color: #ddd;
-}
-
-.navbarBtn a.navPill:active {
-  background-color: #ddd;
-}
-
-.navbar .navPill {
-  border-radius: 0px;
-  padding-bottom: 1.5px;
-  margin-bottom: 8.5px;
-}
-
-.navbar .navPill:hover {
-  border-bottom: 4px solid;
-  margin-bottom: 4.5px;
-  background-color: inherit;
-}
-
-.navbar-fixed-top .navbar-brand {
-  padding-top: 0px;
-  padding-bottom: 0px;
+.navbar-default .navbar-nav .active a:hover {
+    color: #000;
 }
 
 h2 {
   margin-top: 6px;
   margin-bottom: 0px;
+}
+
+.navbar-brand {
+  padding: 0;
+  padding-left: 4px;
+}
+
+.navbar-toggle {
+margin-right: 0;
+}
+
+.navbar-fixed-top .navbar-brand {
+  padding-top: 0px;
+  padding-bottom: 0px;
 }
 //End Navbar
 
@@ -128,9 +127,12 @@ footer a:active {
 }
 //End Footer
 
-//For sale
-.forsale {
-  margin-top: 10px;
-  margin-bottom: 10px;
+//listAll
+.listAll {
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
-//End For sale
+.listAll p {
+  font-weight: bold;
+}
+//End listAll
