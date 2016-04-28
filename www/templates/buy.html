@@ -7,16 +7,12 @@
 	    <div class="panel-body">
 	    	<div ng-if="values.length > 0">
 				<div ng-repeat="value in values">
-					<p class="listing">	
+					<p>	
+					<img class="img-responsive" ng-src="{{value.path}}"><br>
 						adress: {{value.adress}}<br>
-						zipcode: {{value.zipcode}}<br>
 						Pris: {{value.price}}<br>
 						Antal rum: {{value.rooms}}<br>
-						Bo area kvd: {{value.livingarea}}<br>
-						Fastighets typ: {{value.propertyType}}<br>
-						Förklaring: {{value.description}}<br>
-						Tomtarea kvd: {{value.yardarea}}<br>
-						Antal våningar: {{value.floors}}<br>
+						Bo area kvd: {{value.livingarea}}
 					</p>
 				</div>
 			</div>
