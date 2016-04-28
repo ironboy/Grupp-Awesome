@@ -4,38 +4,33 @@ app.directive('buyBoxes', [function(){
     templateUrl: '/directives/buyBoxes.html',
     controller: ['$scope', "property", function($scope, property) {
       
-      $(document).ready(function() {
+      function loadProperties(data) {
 
-        function loadProperties(data) {
+        // if data (from filter) exist use it on scope || fetch from db
+        $scope.values = data || property.get(function(data){console.log(data)});
 
-          // if data (from filter) exist use it on scope || fetch from db
-          $scope.values = data || property.get(function(data){console.log(data)});
+      }
 
-        }
+      /*$scope.dropdownItems = ["item1", "item2", "item3"];*/
 
-        /*$scope.dropdownItems = ["item1", "item2", "item3"];*/
+     // $('#btnFilter').on('click', function() { // Filter™ v0.1.2
+      $scope.filter = function(){
+        property.get( 
 
-        $('#btnFilter').on('click', function() { // Filter™ v0.1.2
+          // fetch data from db with filter
+          { $and: [ { price: { $gt : $('.priceMin')[0].value }}, 
+          { price: { $lt : $('.priceMax')[0].value }} /* , add more filter here */ ]}, 
+          function(data){
 
-          property.get( 
+            console.log(data);
 
-            // fetch data from db with filter
-            { $and: [ { price: { $gt : $('.priceMin')[0].value }}, 
-            { price: { $lt : $('.priceMax')[0].value }} /* , add more filter here */ ]}, 
-            function(data){
+            loadProperties(data);
 
-              console.log(data);
+        });}
+      // });
 
-              loadProperties(data);
+      loadProperties();
 
-              console.log($('.priceMin')[0].value);
-
-          });
-        });
-
-        loadProperties();
-
-      });
     }]
   };
 }]);
