@@ -10,7 +10,8 @@ module.exports = function(mongoose){
     propertyType: {type: String, required: true},
     description: {type: String, required: true},
     yardarea: {type: Number, required: false},
-    floors: {type: Number, required: false}
+    floors: {type: Number, required: false},
+    path: {type: String, required: false}
     //media: [{ type: mongoose.Schema.Types.ObjectId, ref: 'media' }]
 
 
