@@ -1,7 +1,7 @@
-app.directive('buyBoxes', [function(){
+app.directive('buyFilter', [function(){
 
   return {
-    templateUrl: '/directives/buyBoxes.html',
+    templateUrl: '/directives/buyFilter.html',
     controller: ['$scope', "property", function($scope, property) {
       
       function loadProperties(data) {
@@ -11,23 +11,27 @@ app.directive('buyBoxes', [function(){
 
       }
 
-      /*$scope.dropdownItems = ["item1", "item2", "item3"];*/
+      $scope.data = {
+        priceMin: 0,
+        priceMax: 10000000
+      };
 
-     // $('#btnFilter').on('click', function() { // Filter™ v0.1.2
+      // Filter™ v0.1.2
       $scope.filter = function(){
         property.get( 
 
           // fetch data from db with filter
-          { $and: [ { price: { $gt : $('.priceMin')[0].value }}, 
-          { price: { $lt : $('.priceMax')[0].value }} /* , add more filter here */ ]}, 
+          { $and: [ { price: { $gt : $scope.data.priceMin }}, 
+          { price: { $lt : $scope.data.priceMax }} /* , add more filter here */ ]}, 
           function(data){
 
             console.log(data);
 
             loadProperties(data);
 
-        });}
-      // });
+            console.log($scope.data);
+        });
+      }
 
       loadProperties();
 
