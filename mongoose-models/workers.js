@@ -5,8 +5,8 @@ module.exports = function(mongoose){
     name: {type: String, required: true},
     description: {type: String, required: true},
     worktime: {type: Number, required: false},
-    age: {type: Number, required: false}
-
+    age: {type: Number, required: false},
+    path: {type: String, required: false}
     
     // a relation
     // doneBy: [{ type: mongoose.Schema.Types.ObjectId, ref: 'User' }]
