@@ -1,7 +1,7 @@
 module.exports = function(mongoose){
 
   // our mongoose schema
-  var salesstaffSchema = mongoose.Schema({
+  var workersSchema = mongoose.Schema({
     name: {type: String, required: true},
     description: {type: String, required: true},
     worktime: {type: Number, required: false},
@@ -13,5 +13,5 @@ module.exports = function(mongoose){
   });
 
   // Return
-  return mongoose.model("salesstaff", salesstaffSchema);
+  return mongoose.model("workers", workersSchema);
 };
