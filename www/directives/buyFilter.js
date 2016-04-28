@@ -1,7 +1,7 @@
-app.directive('buyBoxes', [function(){
+app.directive('buyFilter', [function(){
 
   return {
-    templateUrl: '/directives/buyBoxes.html',
+    templateUrl: '/directives/buyFilter.html',
     controller: ['$scope', "property", function($scope, property) {
       
       function loadProperties(data) {
