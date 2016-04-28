@@ -42,9 +42,6 @@
 		<!-- Font Awesome -->
 		<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
-    <!-- Navbar -->
-    <script src="//angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.12.1.js"></script>
-
 </head>
 <body>
 
@@ -60,7 +57,7 @@
             <a class="navbar-brand" ng-href="/" class="brand"><h2>DYHR &amp; RUMSON</h2></a>
           </div>
 
-          <div class="navbar-collapse collapse in" collapse="isCollapsed">
+          <div class="navbar-collapse collapse" ng-class="isCollapsed ? '' : 'in'">
 
               <ul class="nav navbar-nav navbar-right">
                 <li class="navbarBtn"><a ng-href="/buy" class="navPill">KÖPA</a></li>
