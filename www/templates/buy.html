@@ -1,34 +1,28 @@
-<!-- Optional: Add header directive here -->
-
-
 <div class="container">
 	<buy-filter></buy-filter>
 		<div ng-if="values.length > 0">
 			<div ng-repeat="value in values">
-				<div class="forsale">
+				<div class="listAll">
 					<div class="row">
 						<div class="col-xs-12 col-sm-4 col-sm-offset-2">
-							<div class="clearfix"></div>
+						<div class="clearfix"></div>
 							<img class="img-responsive" ng-src="{{value.path}}">
 						</div>
 						<div class="col-xs-12 col-sm-4">
-							<p>	
-						
+							<p>
 								adress: {{value.adress}}<br>
 								Pris: {{value.price}}<br>
 								Antal rum: {{value.rooms}}<br>
 								Bo area kvd: {{value.livingarea}}
 							</p>
+						</div>
+					</div>
+					<div ng-if="values.length == 0">
+					<h2>Could not find any property.</h2>
 					</div>
 				</div>
-				<div ng-if="values.length == 0">
-					<h2>Could not find any property.</h2>
-				</div>
-			</div>
-	    </div>
-	</div>
-
+	    	</div>
+		</div>
 </div>
 
-<!-- Optional: Add footer directive here -->
 
