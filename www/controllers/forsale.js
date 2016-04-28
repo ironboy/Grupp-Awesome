@@ -1,9 +1,12 @@
-app.controller("forsale", ["$scope", "salesstaff", function($scope, salesstaff) {
-	
-			$scope.staffDatas = data;
+app.controller("forsale", ["$scope", "workers", function($scope, workers) {
 
-			$scope.staffDatas = salesstaff.get(function(data) { 
-				console.log(data);
-			});
+	function loadworkers(data) {
+		$scope.staffDatas = data || workers.get(function(data) { 
+			console.log(data);
+			}
+		);
+	}
 	
+	loadworkers();
+		
 }]);
