@@ -11,5 +11,5 @@ module.exports = function(mongoose){
   });
 
   // Return
-  return mongoose.model("customer", mediaSchema);
+  return mongoose.model("customer", customerSchema);
 };
