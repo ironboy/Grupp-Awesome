@@ -50,45 +50,46 @@
 </head>
 <body>
 
-  <nav class="navbar navbar-default navbar-fixed-top" ng-controller="NavbarController">
-      <div class="container">
-          <div class="navbar-header">
+    <nav class="navbar navbar-default navbar-fixed-top" ng-controller="NavbarController">
+        <div class="container">
+            <div class="navbar-header">
 
-            <button type="button" class="navbar-toggle" ng-click="isCollapsed = !isCollapsed">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" ng-href="/" class="brand"><h2>DYHR &amp; RUMSON</h2></a>
-          </div>
+                <button type="button" class="navbar-toggle" ng-click="isCollapsed = !isCollapsed">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" ng-href="/" class="brand"><h2>DYHR &amp; RUMSON</h2></a>
 
-          <div class="navbar-collapse collapse" ng-class="isCollapsed ? '' : 'in'">
+            </div>
 
-              <ul class="nav navbar-nav navbar-right">
-                <li><a class="link" ng-href="/buy">KÖPA</a></li>
-                <li><a class="link" ng-href="/forsale">SÄLJA</a></li>
-                <li><a class="link" ng-href="#">OM OSS</a></li>
-                <li><a class="link" ng-href="#">KONTAKT</a></li>
-              </ul>
+             <div class="navbar-collapse collapse" ng-class="isCollapsed ? '' : 'in'">
 
-          </div>
-      </div>
-  </nav>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a class="link" ng-href="/buy">KÖPA</a></li>
+                    <li><a class="link" ng-href="/forsale">SÄLJA</a></li>
+                    <li><a class="link" ng-href="#">OM OSS</a></li>
+                    <li><a class="link" ng-href="#">KONTAKT</a></li>
+                </ul>
+
+            </div>
+        </div>
+    </nav>
 
 	<ng-view></ng-view>
 
-	<footer class="footer">
-		<div class="container">
-			<div class="row">
-				<div class=".col-xs-12 text-center">
-					<ul class="list-inline">
-            <li><a href="tel:#"><i class="fa fa-phone fa-3x"></i></a></li>
-            <li><img src="img/awesome.png" class="img-responsive center-block"></li>
-            <li><a href="mailto:#"><i class="fa fa-envelope-o fa-3x"></i></a></li>
-					</ul>
-				</div>
-			</div>
-		</div>
-  </footer>
+    <footer class="footer">
+    	<div class="container">
+    		<div class="row">
+    			<div class=".col-xs-12 text-center">
+    				<ul class="list-inline">
+                        <li><a href="tel:#"><i class="fa fa-phone fa-3x"></i></a></li>
+                        <li><img src="img/awesome.png" class="img-responsive center-block"></li>
+                        <li><a href="mailto:#"><i class="fa fa-envelope-o fa-3x"></i></a></li>
+    				</ul>
+    			</div>
+    		</div>
+    	</div>
+    </footer>
 </body>
 </html>
