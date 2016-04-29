@@ -1,28 +1,29 @@
 <div class="container">
 	<buy-filter></buy-filter>
-		<div ng-if="values.length > 0">
-			<div ng-repeat="value in values" modal-list>
-				<div class="listAll">
-					<div class="row">
-						<div class="col-xs-12 col-sm-4 col-sm-offset-2">
-						<div class="clearfix"></div>
-							<img class="img-responsive" ng-src="{{value.path}}" ng-click="openModal(value)">
-						</div>
-						<div class="col-xs-12 col-sm-4">
-							<p>
-								adress: {{value.adress}}<br>
-								Pris: {{value.price}}<br>
-								Antal rum: {{value.rooms}}<br>
-								Bo area kvd: {{value.livingarea}}
-							</p>
-						</div>
+	<div ng-if="values.length > 0">
+		<div ng-repeat="value in values" modal-list>
+			<div class="listAll">
+				<div class="row">
+					<div class="col-xs-12 col-sm-4 col-sm-offset-2">
+					<div class="clearfix"></div>
+						<img class="img-responsive" ng-src="{{value.path}}" ng-click="openModal(value)">
 					</div>
-					<div ng-if="values.length == 0">
-					<h2>Could not find any property.</h2>
+					<div class="col-xs-12 col-sm-4">
+						<p>
+							adress: {{value.adress}}<br>
+							Pris: {{value.price}}<br>
+							Antal rum: {{value.rooms}}<br>
+							Bo area kvd: {{value.livingarea}}
+						</p>
 					</div>
 				</div>
-	    	</div>
-		</div>
+				<div ng-if="values.length == 0">
+				<h2>Could not find any property.</h2>
+				</div>
+			</div>
+    	</div>
+	</div>
+    <uib-pagination total-items="totalItems" ng-model="currentPage" num-pages="numPages" ng-change="pageChanged()"></uib-pagination>
 </div>
 
 
