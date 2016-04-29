@@ -1,12 +1,12 @@
 <div class="container">
 	<buy-filter></buy-filter>
 		<div ng-if="values.length > 0">
-			<div ng-repeat="value in values">
+			<div ng-repeat="value in values" modal-list>
 				<div class="listAll">
 					<div class="row">
 						<div class="col-xs-12 col-sm-4 col-sm-offset-2">
 						<div class="clearfix"></div>
-							<img class="img-responsive" ng-src="{{value.path}}">
+							<img class="img-responsive" ng-src="{{value.path}}" ng-click="openModal(value)">
 						</div>
 						<div class="col-xs-12 col-sm-4">
 							<p>

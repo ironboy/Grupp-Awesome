@@ -1,0 +1,22 @@
+<div class="modal-header">
+    <h3 class="modal-title">{{fastighet.adress}}</h3>
+</div>
+    <div class="modal-body">
+        <img class="img-responsive" ng-src="{{fastighet.path}}" ng-click="openModal(fastighet)">
+            </div>
+                <p>
+                    Adress: {{fastighet.adress}}, 
+                    Postnummer: {{fastighet.zipcode}}<br>
+                    Antal rum: {{fastighet.rooms}}<br>
+                    Bo area kvd: {{fastighet.livingarea}}<br>
+                    Tomtyta kvd: {{fastighet.yardarea}}<br>
+                    Antal våningar: {{fastighet.floors}}<br>
+                    Objekts förklaring: {{fastighet.description}}<br>
+                    <b>Pris: {{fastighet.price}}</b><br>
+                </p>
+            </div>
+    </div>
+<div class="modal-footer">
+     <button class="btn btn-primary" type="button" ng-click="ok()">OK</button>
+    <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
+</div>
