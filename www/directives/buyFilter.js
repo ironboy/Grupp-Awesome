@@ -28,11 +28,15 @@ app.directive('buyFilter', [function(){
       
       function loadProperties(data) {
 
+        $scope.initValues = data;
         // if data (from filter) exist use it on scope || fetch from db
         if (data) {
-          setupPagination(data);
+          $scope.initValues = data;
+          $scope.sort($scope.initValues);
+          // setupPagination(data);
         } else {
           property.get(function(data){
+            $scope.initValues = data;
             setupPagination(data);
             console.log(data)
           });
@@ -40,6 +44,7 @@ app.directive('buyFilter', [function(){
 
       }
 
+      // Starting values for filter
       $scope.filterOptions = {
         priceMin: 0,
         priceMax: 100000000,
@@ -51,11 +56,13 @@ app.directive('buyFilter', [function(){
         property.get( 
 
           // fetch data from db with filter
-          { 
+          {
             propertyType: $scope.filterOptions.propertyType,
-            price: { $gt : $scope.filterOptions.priceMin }, 
-            price: { $lt : $scope.filterOptions.priceMax } /* , add more filter here */ 
-          }, 
+            $and: [{
+              price: { $lte : $scope.filterOptions.priceMax }
+            }],
+              price: { $gte : $scope.filterOptions.priceMin } /* , add more filter here */ 
+          },
           function(data){
 
             console.log(data);
@@ -64,6 +71,26 @@ app.directive('buyFilter', [function(){
 
             console.log($scope.filterOptions);
         });
+      }
+
+      $scope.sortOption = { code: 0 };
+      $scope.sortOptions = [{ code: 1, name: "Pris: Lägsta först" },
+                            { code: 2, name: "Pris: Högsta först" }];
+
+      $scope.sort = function(data){
+
+        if($scope.sortOption.code === 1){
+          $scope.initValues.sort(function(a, b){return a.price-b.price});
+          setupPagination($scope.initValues);
+        }
+        else if($scope.sortOption.code === 2){
+          $scope.initValues.sort(function(a, b){return a.price+b.price});
+          setupPagination($scope.initValues);
+        }
+        else{
+          setupPagination($scope.initValues);
+        }
+
       }
 
       loadProperties();
