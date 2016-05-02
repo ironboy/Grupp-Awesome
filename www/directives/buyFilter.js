@@ -30,7 +30,7 @@ app.directive('buyFilter', [function(){
 
         // if data (from filter) exist use it on scope || fetch from db
         if (data) {
-          //setupPagination(data);
+          setupPagination(data);
         } else {
           property.get(function(data){
             setupPagination(data);
@@ -40,32 +40,31 @@ app.directive('buyFilter', [function(){
 
       }
 
-      $scope.data = {
+      $scope.filterOptions = {
         priceMin: 0,
-        priceMax: 10000000
+        priceMax: 100000000,
+        propertyType: ""
       };
 
       // Filter™ v0.1.2
       $scope.filter = function(){
+
         property.get( 
 
           // fetch data from db with filter
-          { $and: [ { price: { $gt : $scope.data.priceMin }}, 
-          { price: { $lt : $scope.data.priceMax }} /* , add more filter here */ ]}, 
+          { $and: [ { price: { $gt : $scope.filterOptions.priceMin }}, 
+          { price: { $lt : $scope.filterOptions.priceMax }} /* , add more filter here */ ]}, 
           function(data){
 
             console.log(data);
 
             loadProperties(data);
 
-            console.log($scope.data);
+            console.log($scope.filterOptions);
         });
       }
 
       loadProperties();
-
-
-
 
     }]
   };
