@@ -4,15 +4,17 @@
     <div class="modal-body">
         <img class="img-responsive" ng-src="{{fastighet.path}}" ng-click="openModal(fastighet)">
             </div>
-                <p>
-                    Adress: {{fastighet.adress}}, 
+                <p class="listP">
+                    <u>Adress: {{fastighet.adress}}</u><br> 
                     Postnummer: {{fastighet.zipcode}}<br>
                     Antal rum: {{fastighet.rooms}}<br>
                     Bo area kvd: {{fastighet.livingarea}}<br>
                     Tomtyta kvd: {{fastighet.yardarea}}<br>
                     Antal våningar: {{fastighet.floors}}<br>
-                    Objekts förklaring: {{fastighet.description}}<br>
-                    <b>Pris: {{fastighet.price}}</b><br>
+                    Objekts förklaring: {{fastighet.description}}
+                    <p class="big">
+                    <b>Pris: {{fastighet.price}}:-</b>
+                    </p>
                 </p>
             </div>
     </div>
