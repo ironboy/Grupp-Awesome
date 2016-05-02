@@ -1,4 +1,4 @@
-app.controller ('myModalInstance', [ '$scope', '$uibModalInstance', 'kontakt', function($scope, $uibModalInstance, fastighet){
+app.controller ('contactModalInstance', [ '$scope', '$uibModalInstance', 'kontakt', function($scope, $uibModalInstance, kontakt){
 
 	$scope.konakt = kontakt;
 
