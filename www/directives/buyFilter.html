@@ -1,58 +1,56 @@
 <div class="container">
 	<div class="row">
-		<div class="col-xs-8 col-md-10">
-			<button class="btn btn-primary" ng-init="filterCollapsed = false" ng-click="filterCollapsed = !filterCollapsed">Filter</button>
+		<div class="col-xs-12 text-center">
+			<button id="filterNow" class="btn btn-primary" ng-init="filterCollapsed = false" ng-click="filterCollapsed = !filterCollapsed">Filter</button>
 		</div>
-		<div class="col-xs-2 col-md-2">
-			<p>Sortera
+
+	<div class="collapse box" ng-class="filterCollapsed ? '' : 'in'">
+	<div class="row">
+		<div class="col-xs-4 text-center">
+			<h4>Pris</h4>
+			Från:	&nbsp;
+			<select ng-model="filterOptions.priceMin">
+			<option value="0">0</option>
+			<option value="1000000">1 000 000</option>
+			<option value="2500000">2 500 000</option>
+			<option value="5000000">5 000 000</option>
+			<option value="7500000">7 500 000</option>
+			<option value="10000000">10 000 000</option>
+			</select><br>
+			Till:	&nbsp;&nbsp;&nbsp;&nbsp;
+			<select ng-model="filterOptions.priceMax">
+			<option value="2500000">2 500 000</option>
+			<option value="5000000">5 000 000</option>
+			<option value="7500000">7 500 000</option>
+			<option value="10000000">10 000 000</option>
+			<option value="15000000">15 000 000</option>
+			<option value="50000000">50 000 000</option>
+			</select>
+		</div>
+
+		<div class="col-xs-4 text-center">
+			<h4>Typ</h4>
+			<select ng-model="filterOptions.propertyType">
+			<option value="House">Villa</option>
+			<option value="Apartment">Lägenhet</option>
+			</select>
+		</div>
+
+		<div class="col-xs-4 text-center">
+			<h4>Sortera</h4>
 			<select ng-options="sortOption as sortOption.name for sortOption in sortOptions"
-					ng-model="sortOption"
-					ng-change="sort()">
+			ng-model="sortOption"
+			ng-change="sort()">
 			</select>
 			</p>
 		</div>
 	</div>
 
-	<div class="collapse" ng-class="filterCollapsed ? '' : 'in'">
-		<div class="row">
-			<p>
-				<div class="col-md-3">
-					<h4>Pris</h4>
-					Från:	&nbsp;
-					<select ng-model="filterOptions.priceMin">
-						<option value="0">0</option>
-						<option value="1000000">1 000 000</option>
-						<option value="2500000">2 500 000</option>
-						<option value="5000000">5 000 000</option>
-						<option value="7500000">7 500 000</option>
-						<option value="10000000">10 000 000</option>
-					</select><br>
-					Till:	&nbsp;&nbsp;&nbsp;&nbsp;
-					<select ng-model="filterOptions.priceMax">
-						<option value="2500000">2 500 000</option>
-						<option value="5000000">5 000 000</option>
-						<option value="7500000">7 500 000</option>
-						<option value="10000000">10 000 000</option>
-						<option value="15000000">15 000 000</option>
-						<option value="50000000">50 000 000</option>
-					</select>
-				</div>
+	<div class="row">
+		<div class="col-xs-12 text-center">
+			<button type="button" class="btn btn-info" id="btnFilter" ng-click="filter()">Sök</button>
+		</div>
+	</div>
 
-				<div class="col-md-2">
-					<h4>Typ</h4>
-					<select ng-model="filterOptions.propertyType">
-						<option value="House">Villa</option>
-						<option value="Apartment">Lägenhet</option>
-					</select>
-				</div>
-			</p>
-		</div>
-		
-		<div class="row">
-			<div class="col-md-5"></div>
-			<div class="col-md-1">
-				<button type="button" class="btn btn-info" id="btnFilter" ng-click="filter()">Sök</button> 
-			</div>
-		</div>
 	</div>
 </div>
