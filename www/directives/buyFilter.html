@@ -1,29 +1,44 @@
-<button class="btn btn-primary" ng-init="filterCollapsed = false" ng-click="filterCollapsed = !filterCollapsed">Filter</button>
-<div class="collapse" ng-class="filterCollapsed ? '' : 'in'">
-	<div class="well">
-		<p>
-			Price:
-			Min
-			<select ng-model="data.priceMin">
-				<option value="0">0</option>
-				<option value="499999">500 000</option>
-				<option value="999999">1 000 000</option>
-			</select>
-			Max
-			<select ng-model="data.priceMax">
-				<option value="1000001">1 000 000</option>
-				<option value="2000001">2 000 000</option>
-				<option value="10000001">10 000 000</option>
-			</select>
+<div class="container">
+	<div class="row">
+		<button class="btn btn-primary" ng-init="filterCollapsed = true" ng-click="filterCollapsed = !filterCollapsed">Filter</button>
+		<div class="collapse" ng-class="filterCollapsed ? '' : 'in'">
+			<div class="well">
+				<p>
+					<div class="col-md-3">
+						<h4>Pris:</h4>
+						Från	&nbsp;
+						<select ng-model="filterOptions.priceMin">
+							<option value="0">0</option>
+							<option value="499999">1 000 000</option>
+							<option value="999999">2 500 000</option>
+							<option value="999999">5 000 000</option>
+							<option value="999999">7 500 000</option>
+							<option value="999999">10 000 000</option>
+						</select><br>
+						Till	&nbsp;&nbsp;&nbsp;&nbsp;
+						<select ng-model="filterOptions.priceMax">
+							<option value="1000001">2 500 000</option>
+							<option value="1000001">5 000 000</option>
+							<option value="1000001">7 500 000</option>
+							<option value="1000001">10 000 000</option>
+							<option value="2000001">15 000 000</option>
+							<option value="10000001">50 000 000</option>
+						</select>
+					</div>
 
-			<br>
-			<select>
-				<option>1</option>
-				<option>2</option>
-				<option>3</option>
-			</select>
-		</p>
-		<button type="button" class="btn btn-info" id="btnFilter" ng-click="filter()">Sök</button> 
+					<div class="col-md-2">
+						<h4>Typ:</h4>
+						<select ng-model="filterOptions.propertyType">
+							<option value="Villa">Villa</option>
+							<option value="Apartment">Lägenhet</option>
+						</select>
+					</div>
+				</p>
+				<div class="col-md-1">
+					<br><br><br>
+					<button type="button" class="btn btn-info" id="btnFilter" ng-click="filter()">Sök</button> 
+				</div>
+			</div>
+		</div>
 	</div>
-
 </div>
