@@ -1,9 +1,9 @@
 app.controller("home", ["$scope", "property", function($scope, property) {
 
 	// Added functions for creating dummydata for the property collection (also added property to the controller)
-	// Uncomment if you wan't to create 24 dummy properties everytime you visit the home-page
+	// Uncomment property.create at the bottom of the page if you wan't to create 24 dummy properties everytime you visit the home-page
 
-	/*function randomData() {
+	function randomData() {
 		function randomMillion() {
 			var randomNum = Math.floor((Math.random() * 10000000) + 700000);
 			return randomNum;
@@ -37,7 +37,7 @@ app.controller("home", ["$scope", "property", function($scope, property) {
 		}
 		function randomType() {
 			var type = ["Apartment", "House"];
-			return type[randomNum(0,1);];
+			return type[randomNum(0,1)];
 		}
 		var adresses = ["Ramels väg", "Ernst", "Tessins väg", "Sergels väg", "Romlins väg", "Regementsgatan", "Nobelvägen", "Polvägen", "Limhamnsvägen"];
 		var data = {
@@ -50,7 +50,7 @@ app.controller("home", ["$scope", "property", function($scope, property) {
 			description: "Hej",
 			yardarea: randomThousand(),
 			floors: randomTen(),
-			path: "img/objects/villa" + randomNum(1,4) + ".jpg"
+			path: "img/objects/villa" + randomNum(1,11) + ".jpg"
 		}
 		console.log(data.zipcode);
 		console.log(data.livingarea);
@@ -63,5 +63,5 @@ app.controller("home", ["$scope", "property", function($scope, property) {
 		homes.push(randomData());
 
 	}
-	property.create(homes);*/
+	// property.create(homes);
 }]);
