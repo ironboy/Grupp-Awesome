@@ -43,17 +43,19 @@ app.directive('buyFilter', [function(){
       $scope.filterOptions = {
         priceMin: 0,
         priceMax: 100000000,
-        propertyType: ""
+        propertyType: /[A-Z]/
       };
 
-      // Filter™ v0.1.2
+      // Filter
       $scope.filter = function(){
-
         property.get( 
 
           // fetch data from db with filter
-          { $and: [ { price: { $gt : $scope.filterOptions.priceMin }}, 
-          { price: { $lt : $scope.filterOptions.priceMax }} /* , add more filter here */ ]}, 
+          { 
+            propertyType: $scope.filterOptions.propertyType,
+            price: { $gt : $scope.filterOptions.priceMin }, 
+            price: { $lt : $scope.filterOptions.priceMax } /* , add more filter here */ 
+          }, 
           function(data){
 
             console.log(data);
