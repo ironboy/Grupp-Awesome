@@ -2,11 +2,12 @@
     <h3 class="modal-title">Intresseanmälan</h3>
 </div>
     <div class="modal-body">
-        <img class="img-responsive" ng-click="openModal(kontakt)">
+        <img class="img-responsive" ng-click="openModal(fastigheter)">
             </div>
                 <p class="listP">
                     <u>Adress: </u><br> 
                     Postnummer: {{fastighet.zipcode}}<br>
+                    Typ: {{fastighet.propertyType}}<br>
                     Antal rum: {{fastighet.rooms}}<br>
                     Bo area kvd: {{fastighet.livingarea}}<br>
                     Tomtyta kvd: {{fastighet.yardarea}}<br>
