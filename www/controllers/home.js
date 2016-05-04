@@ -63,5 +63,5 @@ app.controller("home", ["$scope", "property", function($scope, property) {
 		homes.push(randomData());
 
 	}
-	// property.create(homes);
+	//property.create(homes);
 }]);
