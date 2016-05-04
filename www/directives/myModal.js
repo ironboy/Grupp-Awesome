@@ -18,7 +18,7 @@ app.directive('myModal', [function() {
           // use this controller (src: /modals/myModalInstance.js)
           controller: 'myContactInstance',
           // prevent dismissing by clicking on backdrop
-          backdrop: 'static',
+          backdrop: 'true',
           // make our modal large
           size: 'lg',
           resolve: {
@@ -31,14 +31,7 @@ app.directive('myModal', [function() {
         modalInstance.result.then(
           // "done" (user said OK)
           function (data) {
-            // $scope.data = {
-            //   name: name,
-            //   adress: adress,
-            //   zipCode: zipCode,
-            //   city: city,
-            //   phone: phone,
-            //   email: email
-            // };
+
               console.log(data.name, data.adress, data.zipCode, data.city, data.phone, data.email);
 
             // selected option is sent to us from the modal controller
