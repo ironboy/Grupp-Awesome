@@ -2,7 +2,7 @@ app.controller("home", ["$scope", "property", function($scope, property) {
 
 	// Added functions for creating dummydata for the property collection (also added property to the controller)
 	// Uncomment property.create at the bottom of the page if you wan't to create 24 dummy properties everytime you visit the home-page
-
+/*
 	function randomData() {
 		function randomMillion() {
 			var randomNum = Math.floor((Math.random() * 10000000) + 700000);
@@ -63,5 +63,5 @@ app.controller("home", ["$scope", "property", function($scope, property) {
 		homes.push(randomData());
 
 	}
-	// property.create(homes);
+	property.create(homes);*/
 }]);

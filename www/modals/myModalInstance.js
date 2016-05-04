@@ -1,11 +1,11 @@
 app.controller ('myModalInstance', [ '$scope', '$uibModalInstance', 'fastighet', function($scope, $uibModalInstance, fastighet){
 
-	console.log("Here i am banana", fastighet)
+	console.log(fastighet)
 
 	$scope.fastighet = fastighet;
 
 	$scope.ok = function () {
-		 $uibModalInstance.close();
+		$uibModalInstance.close();
 	};
 
 	$scope.cancel = function () {
