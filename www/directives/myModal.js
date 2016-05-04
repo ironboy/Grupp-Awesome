@@ -4,9 +4,17 @@ app.directive('myModal', [function() {
 
   return {
     templateUrl: '/directives/myModal.html',
-    controller: ['$scope', '$uibModal', function($scope, $uibModal) {
+    controller: ['$scope', '$uibModal', 'customer', function($scope, $uibModal, customer) {
 
-
+  $scope.customer = {
+    name: customer.name,
+    adress: customer.adress,
+    zipCode: customer.zipCode,
+    city: customer.city,
+    phone: customer.phone,
+    email: customer.email
+  }
+  console.log(customer);
       // opens our modal on ng-click!
       $scope.openModal = function() {
 
@@ -30,10 +38,9 @@ app.directive('myModal', [function() {
         });
         modalInstance.result.then(
           // "done" (user said OK)
-          function (data) {
+          function (customer) {
 
-              console.log(data.name, data.adress, data.zipCode, data.city, data.phone, data.email);
-
+             
             // selected option is sent to us from the modal controller
             // ($uibModalInstance.close($scope.selectedOption))
           }, function () {

@@ -1,5 +1,6 @@
 app.controller ('myModalInstance', [ '$scope', '$uibModalInstance', 'fastighet', function($scope, $uibModalInstance, fastighet){
 
+
 	console.log(fastighet)
 
 	$scope.fastighet = fastighet;

@@ -2,9 +2,6 @@
 // (separate from underlying view/directive)
 app.controller('myContactInstance', ['$scope', '$uibModalInstance', 'customer', function($scope, $uibModalInstance, customer) {
 
-
-
-
   $scope.ok = function() {
 
 
@@ -12,9 +9,9 @@ app.controller('myContactInstance', ['$scope', '$uibModalInstance', 'customer', 
     // so send the selected option back to the myModal directive
     // (modalInstance.result.then(...))
     // modalInstance.result.then($scope.name, $scope.adress, $scope.zipCode, $scope.city, $scope.phone, $scope.email);
-    $uibModalInstance.close($scope.data);
+    $uibModalInstance.close($scope.customer);
 
-    console.log($scope.data);
+    console.log($scope.customer);
 
   };
 
