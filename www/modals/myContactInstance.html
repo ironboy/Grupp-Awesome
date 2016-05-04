@@ -1,0 +1,53 @@
+<div class="modal-header">
+	<a class="close" data-dismiss="modal" ng-click="cancel()"><span class="glyphicon glyphicon-remove"></span></a>
+	<h3 class="modal-title">Kontakt</h3>
+</div>
+<div class="modal-body">
+
+	<form>
+
+		<h4><strong>Fyll i din kontaktinfo nedan så återkommer vi för en gratis värdering inom några dagar!</strong></h4><br>
+		<div class="container">
+			<div class="col-md-6">
+				<div class="form-group">
+					<label for="name">Namn</label>
+					<input name="name" ng-model="name" type="text" class="form-control" id="name" placeholder="För och efternamn:">
+				</div>
+
+				<div class="form-group">
+					<label for="adress">Gatuadress</label>
+					<input name="adress" ng-model="adress" type="text" class="form-control" id="adress" placeholder="Gatunamn här:">
+				</div>
+
+				<div class="form-group">
+					<label for="zipCode">Postnummer</label>
+					<input name="zipCode" ng-model="zipCode" type="text" class="form-control" id="zipCode" placeholder="Ex: 21759">
+				</div>
+
+				<div class="form-group">
+					<label for="city">Stad</label>
+					<input name="city" ng-model="city" type="text" class="form-control" id="city" placeholder="Ex: Malmö">
+				</div>
+
+				<div class="form-group">
+					<label for="phone">Telefon</label>
+					<input name="phone" ng-model="phone" type="number" class="form-control" id="phone" placeholder="Nummer:">
+				</div>
+
+				<div class="form-group">
+					<label for="email">E-mail</label>
+					<input name="email" ng-model="email" type="email" class="form-control" id="email" placeholder="E-mailadress:">
+				</div>
+			</div>
+		</div>
+	</form>
+</div>
+<div class="modal-footer">
+	<!-- "Ok" button is disabled if user has not selected an option! -->
+	<button
+	class="btn btn-primary"
+	type="button"
+	ng-click="ok()"
+	>OK</button>
+	<button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
+</div>
