@@ -64,5 +64,5 @@ app.controller("home", ["$scope", "property", function($scope, property) {
 	//property.create(homes);
 =======
 	property.create(homes);*/
->>>>>>> 201f7f70d212508f2e22a5d7c5e01ab0f1749892
+
 }]);
