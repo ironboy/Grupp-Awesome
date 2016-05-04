@@ -1,13 +1,13 @@
-app.controller("home", ["$scope", "homecontent", function($scope, homecontent) {
+app.controller("home", ["$scope", "property", function($scope, property) {
 
-	function loadhome(data) {
+/*	function loadhome(data) {
         $scope.homeDatas = data || homecontent.get(function(data) {
             console.log(data);
             }
         );
     }
 
-    loadhome();
+    loadhome();*/
 	// Added functions for creating dummydata for the property collection (also added property to the controller)
 	// Uncomment property.create at the bottom of the page if you wan't to create 24 dummy properties everytime you visit the home-page
 /*
