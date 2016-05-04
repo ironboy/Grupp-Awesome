@@ -52,11 +52,8 @@ app.controller("home", ["$scope", "property", function($scope, property) {
 			floors: randomTen(),
 			path: "img/objects/villa" + randomNum(1,11) + ".jpg"
 		}
-		console.log(data.zipcode);
-		console.log(data.livingarea);
 		return data;
 	}
-			console.log("home");
 
 	var homes = [];
 	for (var i = 0; i < 24; i++) {
