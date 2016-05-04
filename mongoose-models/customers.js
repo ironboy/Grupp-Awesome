@@ -7,7 +7,7 @@ module.exports = function(mongoose){
     zipCode: {type: Number, required: true},
     city: {type: String, required: true},
     phone: {type: String, required: true},
-    email: {type: String, required:true},
+    email: {type: String, required:true}
     // a relation
     // doneBy: [{ type: mongoose.Schema.Types.ObjectId, ref: 'User' }]
   });

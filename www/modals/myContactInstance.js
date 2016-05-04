@@ -1,6 +1,7 @@
 // the controller for the modal itself
 // (separate from underlying view/directive)
-app.controller('myContactInstance', ['$scope', '$uibModalInstance', 'customer', function($scope, $uibModalInstance, customer) {
+app.controller('myContactInstance', ['$scope', '$uibModalInstance', function($scope, $uibModalInstance) {
+
 
   $scope.ok = function() {
 
@@ -10,8 +11,6 @@ app.controller('myContactInstance', ['$scope', '$uibModalInstance', 'customer', 
     // (modalInstance.result.then(...))
     // modalInstance.result.then($scope.name, $scope.adress, $scope.zipCode, $scope.city, $scope.phone, $scope.email);
     $uibModalInstance.close($scope.customer);
-
-    console.log($scope.customer);
 
   };
 
