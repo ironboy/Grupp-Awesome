@@ -54,20 +54,20 @@ app.directive('buyFilter', [function(){
       // Select options for angular
       $scope.filterOptions = [
         [ // [0] priceMin
-          { price: 0 },
-          { price: 1000000 },
-          { price: 2500000 },
-          { price: 5000000 },
-          { price: 7500000 },
-          { price: 10000000 }
+          { price: 0, displayPrice: 0 },
+          { price: 1000000, displayPrice: "1.000.000" },
+          { price: 2500000, displayPrice: "2.500.000" },
+          { price: 5000000, displayPrice: "5.000.000" },
+          { price: 7500000, displayPrice: "7.500.000" },
+          { price: 10000000, displayPrice: "10.000.000" }
         ],
         [ // [1] priceMax
-          { price: 2500000 },
-          { price: 5000000 },
-          { price: 7500000 },
-          { price: 10000000 },
-          { price: 15000000 },
-          { price: 50000000 }
+          { price: 2500000, displayPrice: "2.500.000" },
+          { price: 5000000, displayPrice: "5.000.000" },
+          { price: 7500000, displayPrice: "7.500.000" },
+          { price: 10000000, displayPrice: "10.000.000" },
+          { price: 15000000, displayPrice: "15.000.000" },
+          { price: 50000000, displayPrice: "50.000.000" }
         ],
         [ // [2] type
           { type: "House", name: "Villa" },

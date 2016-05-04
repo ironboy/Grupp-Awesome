@@ -26,7 +26,6 @@
 		<script src="controllers/home.js"></script>
 		<script src="controllers/about.js"></script>
 		<script src="controllers/broker.js"></script>
-		<script src="controllers/contact.js"></script>
 		<script src="/api/ngresources/app"></script>
 	    <script src="controllers/navbar.js"></script>
 
@@ -34,6 +33,7 @@
 	    <script src="/directives/buyFilter.js"></script>
 	    <script src="/directives/modalList.js"></script>
 	    <script src="/directives/myModal.js"></script>
+	    <script src="/directives/myModalfirst.js"></script>
 
 	    <!--Modals-->
 	    <script src="/modals/myModalInstance.js"></script>
@@ -85,7 +85,7 @@
     				<ul class="list-inline">
                         <li><a href="tel:#"><i class="fa fa-phone fa-3x"></i></a></li>
                         <li><img src="img/awesome.png" class="img-responsive center-block"></li>
-                        <li><a href="mailto:#"><i class="fa fa-envelope-o fa-3x"></i></a></li>
+                        <li ng-click="openModal()"><a class="black"><i class="fa fa-envelope-o fa-3x"></i><my-modalfirst></my-modalfirst></a></li>
     				</ul>
     			</div>
     		</div>

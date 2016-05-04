@@ -6,8 +6,8 @@
 		<div class="col-xs-6 text-right">
 			<h4>Sortera</h4>
 			<select ng-options="sortOption as sortOption.name for sortOption in sortOptions"
-			ng-model="sortOption"
-			ng-change="sort()">
+				ng-model="sortOption"
+				ng-change="sort()">
 			</select>
 			</p>
 		</div>
@@ -18,25 +18,23 @@
 			<div class="col-xs-3 col-xs-offset-3 text-center">
 				<h4>Pris</h4>
 				Från:	&nbsp;
-				<select ng-options="filterOption as filterOption.price for filterOption in filterOptions[0]"
-				ng-model="filterOption.priceMin"
-				ng-change="filter()">
+				<select ng-options="filterOption as filterOption.displayPrice for filterOption in filterOptions[0]"
+					ng-model="filterOption.priceMin"
+					ng-change="filter()">
 				</select><br>
 				Till:	&nbsp;&nbsp;&nbsp;&nbsp;
-				<select ng-options="filterOption as filterOption.price for filterOption in filterOptions[1]"
-				ng-model="filterOption.priceMax"
-				ng-change="filter()">
+				<select ng-options="filterOption as filterOption.displayPrice for filterOption in filterOptions[1]"
+					ng-model="filterOption.priceMax"
+					ng-change="filter()">
 				</select>
 			</div>
 
 			<div class="col-xs-3 text-center">
 				<h4>Typ</h4>
 				<select ng-options="filterOption as filterOption.name for filterOption in filterOptions[2]"
-				ng-model="filterOption.propertyType"
-				ng-change="filter()">
+					ng-model="filterOption.propertyType"
+					ng-change="filter()">
 				</select>
-
-
 			</div>
 		</div>
 	</div>
