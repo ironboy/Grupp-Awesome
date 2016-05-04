@@ -3,9 +3,9 @@
 		<buy-filter></buy-filter>
 	</div>
 	<div ng-if="values.length > 0">
-		<div ng-repeat="value in values" modal-list class="boxes">
+		<div ng-repeat="value in values" modal-list>
 			<div class="listAll">
-				<div class="row">
+				<div class="row boxBg">
 					<div class="col-xs-12 col-sm-4 col-sm-offset-2">
 						<img class="img-responsive" ng-src="{{value.path}}" ng-click="openModal(value)">
 					</div>
