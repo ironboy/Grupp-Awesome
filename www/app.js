@@ -20,9 +20,9 @@ app.config(["$routeProvider", "$locationProvider", function($routeProvider, $loc
 		templateUrl: "templates/about.html",
 		controller: "about"
 	})
-	.when("/forsale",{
-		templateUrl: "templates/forsale.html",
-		controller: "forsale"
+	.when("/broker",{
+		templateUrl: "templates/broker.html",
+		controller: "broker"
 	})
 	.when("/buy",{
 		templateUrl: "templates/buy.html"

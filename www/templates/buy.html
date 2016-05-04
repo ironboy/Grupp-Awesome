@@ -1,9 +1,11 @@
 <div class="container">
-	<buy-filter></buy-filter>
+	<div class="row">
+		<buy-filter></buy-filter>
+	</div>
 	<div ng-if="values.length > 0">
-		<div ng-repeat="value in values" modal-list  class="boxess">
+		<div ng-repeat="value in values" modal-list>
 			<div class="listAll">
-				<div class="row">
+				<div class="row boxes">
 					<div class="col-xs-12 col-sm-4 col-sm-offset-2">
 						<img class="img-responsive" ng-src="{{value.path}}" ng-click="openModal(value)">
 					</div>
@@ -21,7 +23,7 @@
 				<h2>Could not find any property</h2>
 				</div>
 			</div>
-    	</div>
+		</div>
 	</div>
 	<div class="row">
 		<div class="col-xs-12 text-center">
