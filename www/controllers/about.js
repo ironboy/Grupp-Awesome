@@ -1,4 +1,12 @@
-app.controller("about", ["$scope", function($scope) {
+app.controller("about", ["$scope","aboutdb", function($scope, aboutdb) {
 
-		console.log("about")
+    function loadabout(data) {
+        $scope.aboutDatas = data || aboutdb.get(function(data) {
+            console.log(data);
+            }
+        );
+    }
+
+    loadabout();
+
 }]);
