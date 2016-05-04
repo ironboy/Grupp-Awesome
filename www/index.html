@@ -25,8 +25,7 @@
 		<script src="app.js"></script>
 		<script src="controllers/home.js"></script>
 		<script src="controllers/about.js"></script>
-		<script src="controllers/forsale.js"></script>
-		<script src="controllers/contact.js"></script>
+		<script src="controllers/broker.js"></script>
 		<script src="/api/ngresources/app"></script>
 	    <script src="controllers/navbar.js"></script>
 
@@ -34,6 +33,7 @@
 	    <script src="/directives/buyFilter.js"></script>
 	    <script src="/directives/modalList.js"></script>
 	    <script src="/directives/myModal.js"></script>
+	    <script src="/directives/myModalfirst.js"></script>
 
 	    <!--Modals-->
 	    <script src="/modals/myModalInstance.js"></script>
@@ -66,10 +66,10 @@
              <div class="navbar-collapse collapse" ng-class="isCollapsed ? '' : 'in'">
 
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a class="link" ng-href="/buy">KÖPA</a></li>
-                    <li><a class="link" ng-href="/forsale">MÄKLARE</a></li>
-                    <li><a class="link" ng-href="/about">OM OSS</a></li>
-                    <li class="modal" ng-click="openModal()"><a class="link"><my-modal></my-modal></a></li>
+                    <li><a ng-href="/buy">KÖPA</a></li>
+                    <li><a ng-href="/broker">MÄKLARE</a></li>
+                    <li><a ng-href="/about">OM OSS</a></li>
+                    <li class="modal" ng-click="openModal()"><a><my-modal></my-modal></a></li>
                 </ul>
 
             </div>
@@ -85,7 +85,7 @@
     				<ul class="list-inline">
                         <li><a href="tel:#"><i class="fa fa-phone fa-3x"></i></a></li>
                         <li><img src="img/awesome.png" class="img-responsive center-block"></li>
-                        <li><a href="mailto:#"><i class="fa fa-envelope-o fa-3x"></i></a></li>
+                        <li ng-click="openModal()"><a class="black"><i class="fa fa-envelope-o fa-3x"></i><my-modalfirst></my-modalfirst></a></li>
     				</ul>
     			</div>
     		</div>
