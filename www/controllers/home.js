@@ -62,10 +62,8 @@ app.controller("home", ["$scope", "property", function($scope, property) {
 	}
 
 	//property.create(homes);
-<<<<<<< HEAD
-=======
-=======
+
 	property.create(homes);*/
 
->>>>>>> 7cfb152d12163208f39250e213f02702e99644d5
+
 }]);
