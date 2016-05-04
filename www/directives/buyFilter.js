@@ -45,53 +45,80 @@ app.directive('buyFilter', [function(){
       }
 
       // Starting values for filter
-      $scope.filterOptions = {
-        priceMin: 0,
-        priceMax: 100000000,
-        propertyType: /[A-Z]/
+      $scope.filterOption = {
+        priceMin: { price: 0 },
+        priceMax: { price: 100000000 },
+        propertyType: { type: /[A-Z]/ }
       };
 
+      $scope.filterOptions = [
+        [ // priceMin
+          { price: 0 },
+          { price: 1000000 },
+          { price: 2500000 },
+          { price: 5000000 },
+          { price: 7500000 },
+          { price: 10000000 }
+        ],
+        [ // priceMax
+          { price: 2500000 },
+          { price: 5000000 },
+          { price: 7500000 },
+          { price: 10000000 },
+          { price: 15000000 },
+          { price: 50000000 }
+        ],
+        [ // type
+          { type: "House", name: "Villa" },
+          { type: "Apartment", name: "Lägenhet"}
+        ]
+      ];
+
       // Filter
-      $scope.filter = function(){
+      $scope.filter = function(){ console.log($scope.filterOption);
         property.get( 
 
           // fetch data from db with filter
           {
-            propertyType: $scope.filterOptions.propertyType,
+            propertyType: $scope.filterOption.propertyType.type,
             $and: [{
-              price: { $lte : $scope.filterOptions.priceMax }
+              price: { $lte : $scope.filterOption.priceMax.price }
             }],
-              price: { $gte : $scope.filterOptions.priceMin } /* , add more filter here */ 
+              price: { $gte : $scope.filterOption.priceMin.price } /* , add more filter here */ 
           },
           function(data){
 
             console.log(data);
 
             loadProperties(data);
-
-            console.log($scope.filterOptions);
         });
       }
 
       $scope.sortOption = { code: 0 };
-      $scope.sortOptions = [{ code: 1, name: "Pris: Lägsta först" },
-                            { code: 2, name: "Pris: Högsta först" }];
+      $scope.sortOptions = [{ code: 1, type: "price", name: "Pris: Lägsta först" },
+                            { code: 2, type: "price", name: "Pris: Högsta först" },
+                            { code: 1, type: "area", name: "Bo area: Minsta först" },
+                            { code: 2, type: "area", name: "Bo area: Största först" }];
 
-      $scope.sort = function(data){
+      $scope.sort = function(){
 
-        if($scope.sortOption.code === 1){
-          $scope.initValues.sort(function(a, b){return a.price-b.price});
-          setupPagination($scope.initValues);
-        }
-        else if($scope.sortOption.code === 2){
-          $scope.initValues.sort(function(a, b){return a.price+b.price});
-          setupPagination($scope.initValues);
+        if($scope.sortOption.code){
+          if($scope.sortOption.code === 1){
+            $scope.initValues.sort(function(a, b){return a[$scope.sortOption.type]-b[$scope.sortOption.type]});
+            setupPagination($scope.initValues);
+          }
+          else{
+            $scope.initValues.sort(function(a, b){return a[$scope.sortOption.type]+b[$scope.sortOption.type]});
+            setupPagination($scope.initValues);
+          }
         }
         else{
           setupPagination($scope.initValues);
         }
 
       }
+
+      
 
       loadProperties();
 
