@@ -48,11 +48,12 @@ app.directive('buyFilter', [function(){
       $scope.filterOption = {
         priceMin: { price: 0 },
         priceMax: { price: 100000000 },
-        propertyType: { type: /[A-Z]/ }
+        propertyType: { type: /.*/ }
       };
 
+      // Select options for angular
       $scope.filterOptions = [
-        [ // priceMin
+        [ // [0] priceMin
           { price: 0 },
           { price: 1000000 },
           { price: 2500000 },
@@ -60,7 +61,7 @@ app.directive('buyFilter', [function(){
           { price: 7500000 },
           { price: 10000000 }
         ],
-        [ // priceMax
+        [ // [1] priceMax
           { price: 2500000 },
           { price: 5000000 },
           { price: 7500000 },
@@ -68,23 +69,23 @@ app.directive('buyFilter', [function(){
           { price: 15000000 },
           { price: 50000000 }
         ],
-        [ // type
+        [ // [2] type
           { type: "House", name: "Villa" },
           { type: "Apartment", name: "Lägenhet"}
         ]
       ];
 
       // Filter
-      $scope.filter = function(){ console.log($scope.filterOption);
+      $scope.filter = function(){
+
         property.get( 
 
           // fetch data from db with filter
           {
-            propertyType: $scope.filterOption.propertyType.type,
             $and: [{
-              price: { $lte : $scope.filterOption.priceMax.price }
-            }],
-              price: { $gte : $scope.filterOption.priceMin.price } /* , add more filter here */ 
+              propertyType: $scope.filterOption.propertyType.type,
+              price: { $lte : $scope.filterOption.priceMax.price, $gte : $scope.filterOption.priceMin.price } /* , add more filter here */ 
+            }]
           },
           function(data){
 
@@ -102,13 +103,15 @@ app.directive('buyFilter', [function(){
 
       $scope.sort = function(){
 
+        var type = $scope.sortOption.type;
+
         if($scope.sortOption.code){
           if($scope.sortOption.code === 1){
-            $scope.initValues.sort(function(a, b){return a[$scope.sortOption.type]-b[$scope.sortOption.type]});
+            $scope.initValues.sort(function(a, b){return a[type]-b[type]});
             setupPagination($scope.initValues);
           }
           else{
-            $scope.initValues.sort(function(a, b){return a[$scope.sortOption.type]+b[$scope.sortOption.type]});
+            $scope.initValues.sort(function(a, b){return a[type]+b[type]});
             setupPagination($scope.initValues);
           }
         }
@@ -117,8 +120,6 @@ app.directive('buyFilter', [function(){
         }
 
       }
-
-      
 
       loadProperties();
 

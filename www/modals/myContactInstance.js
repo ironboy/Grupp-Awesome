@@ -2,17 +2,11 @@
 // (separate from underlying view/directive)
 app.controller('myContactInstance', ['$scope', '$uibModalInstance', 'customer', function($scope, $uibModalInstance, customer) {
 
-  
+
+
 
   $scope.ok = function() {
-    $scope.data = {
-              name: $scope.name,
-              adress: $scope.adress,
-              zipCode: $scope.zipCode,
-              city: $scope.city,
-              phone: $scope.phone,
-              email: $scope.email
-              };
+
 
     // user approves om seleted option
     // so send the selected option back to the myModal directive
@@ -21,11 +15,7 @@ app.controller('myContactInstance', ['$scope', '$uibModalInstance', 'customer', 
     $uibModalInstance.close($scope.data);
 
     console.log($scope.data);
-    // console.log($scope.adress);
-    // console.log($scope.name);
-    // console.log($scope.adress);
-    // console.log($scope.zipCode);
-    // customer.create(data);
+
   };
 
   $scope.cancel = function() {
