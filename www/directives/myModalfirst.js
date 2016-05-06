@@ -4,7 +4,8 @@ app.directive('myModalfirst', [function() {
 
   return {
     templateUrl: '/directives/myModalfirst.html',
-    controller: ['$scope', '$uibModal', function($scope, $uibModal) {
+    controller: ['$scope', '$uibModal', 'customer', function($scope, $uibModal, customer) {
+      console.log("OK HERE",customer)
 
 
       // opens our modal on ng-click!
@@ -18,7 +19,7 @@ app.directive('myModalfirst', [function() {
           // use this controller (src: /modals/myModalInstance.js)
           controller: 'myContactInstance',
           // prevent dismissing by clicking on backdrop
-          backdrop: 'static',
+          backdrop: 'true',
           // make our modal large
           size: 'lg',
           resolve: {
@@ -30,16 +31,9 @@ app.directive('myModalfirst', [function() {
         });
         modalInstance.result.then(
           // "done" (user said OK)
-          function (data) {
-            // $scope.data = {
-            //   name: name,
-            //   adress: adress,
-            //   zipCode: zipCode,
-            //   city: city,
-            //   phone: phone,
-            //   email: email
-            // };
-              console.log(data.name, data.adress, data.zipCode, data.city, data.phone, data.email);
+          function (customerFormData) {
+            
+            customer.create(customerFormData);
 
             // selected option is sent to us from the modal controller
             // ($uibModalInstance.close($scope.selectedOption))
