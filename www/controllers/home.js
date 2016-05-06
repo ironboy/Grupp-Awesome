@@ -2,38 +2,23 @@ app.controller("home", ["$scope", "property", function($scope, property) {
 
 	// Added functions for creating dummydata for the property collection (also added property to the controller)
 	// Uncomment property.create at the bottom of the page if you wan't to create 24 dummy properties everytime you visit the home-page
-/*
-	function randomData() {
-		function randomMillion() {
-			var randomNum = Math.floor((Math.random() * 10000000) + 700000);
-			return randomNum;
-		}
-		function randomLrg() {
 
-			var randomLarge = Math.floor((Math.random() * 10000) + 10000);
-			return randomLarge;
-		}
-		function randomThousand() {
-			var randomNum = Math.floor((Math.random() * 1000) + 50);
-			return randomNum;
-		}
-		function randomHundred() {
-			var randomNum = Math.floor((Math.random() * 100) + 30);
-			return randomNum;
-		}
-		function randomTen() {
-			var randomNum = Math.floor((Math.random() * 10) + 1);
-			return randomNum;
-		}
-		function randomNum(numLow, numHigh) {
+	function randomData() {
+
+		function randomNum(numLow, numHigh, startValue) {
+			if(!startValue) {
+				startValue = 0;
+			}
+
 			if(numLow === 0) {
-				var randomNum = Math.floor((Math.random() * (numHigh + 1) + numLow));
+				var randomNum = Math.floor((Math.random() * (numHigh + 1) + numLow)) + startValue;
 				return randomNum;
 			}
 			else {
-			var randomNum = Math.floor((Math.random() * numHigh) + numLow);
+			var randomNum = Math.floor((Math.random() * numHigh) + numLow) + startValue;
 			return randomNum;
 			}
+
 		}
 		function randomType() {
 			var type = ["Apartment", "House"];
@@ -41,15 +26,15 @@ app.controller("home", ["$scope", "property", function($scope, property) {
 		}
 		var adresses = ["Ramels väg", "Ernst", "Tessins väg", "Sergels väg", "Romlins väg", "Regementsgatan", "Nobelvägen", "Polvägen", "Limhamnsvägen"];
 		var data = {
-			adress: adresses[randomTen()],
-			zipcode: randomLrg(),
-			price: randomMillion(),
-			rooms: randomTen(),
-			livingarea: randomHundred(),
+			adress: adresses[randomNum(0, 10)],
+			zipcode: randomNum(1, 10000, 10000),
+			price: randomNum(1, 1000000, 700000),
+			rooms: randomNum(1,10),
+			livingarea: randomNum(1, 100, 30),
 			propertyType: randomType(),
 			description: "Hej",
-			yardarea: randomThousand(),
-			floors: randomTen(),
+			yardarea: randomNum(1, 1000, 50),
+			floors: randomNum(1, 10),
 			path: "img/objects/villa" + randomNum(1,11) + ".jpg"
 		}
 		return data;
@@ -61,9 +46,5 @@ app.controller("home", ["$scope", "property", function($scope, property) {
 
 	}
 
-	//property.create(homes);
-
-	property.create(homes);*/
-
-
+	/*property.create(homes);*/
 }]);
