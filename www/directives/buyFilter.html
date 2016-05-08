@@ -1,41 +1,51 @@
 <div class="container">
-	<div class="row">
-		<div class="col-xs-6 text-left">
-			<button id="filterNow" class="btn btn-info btn-lg" ng-init="filterCollapsed = true" ng-click="filterCollapsed = !filterCollapsed">Filter</button>
-		</div>
-		<div class="col-xs-6 text-right">
-			<h4>Sortera</h4>
-			<select ng-options="sortOption as sortOption.name for sortOption in sortOptions"
-				ng-model="sortOption"
-				ng-change="sort()">
-			</select>
-			</p>
-		</div>
-	</div>
-
-	<div class="collapse boxFilter" ng-class="filterCollapsed ? '' : 'in'">
+	</form>
 		<div class="row">
-			<div class="col-xs-3 col-xs-offset-3 text-center">
-				<h4>Pris</h4>
-				Från:	&nbsp;
-				<select ng-options="filterOption as filterOption.displayPrice for filterOption in filterOptions[0]"
-					ng-model="filterOption.priceMin"
-					ng-change="filter()">
-				</select><br>
-				Till:	&nbsp;&nbsp;&nbsp;&nbsp;
-				<select ng-options="filterOption as filterOption.displayPrice for filterOption in filterOptions[1]"
-					ng-model="filterOption.priceMax"
-					ng-change="filter()">
-				</select>
+			<div class="col-xs-6 text-left">
+				<button id="filterNow" class="btn btn-info btn-lg" ng-init="filterCollapsed = true" ng-click="filterCollapsed = !filterCollapsed">Filter</button>
 			</div>
-
-			<div class="col-xs-3 text-center">
-				<h4>Typ</h4>
-				<select ng-options="filterOption as filterOption.name for filterOption in filterOptions[2]"
-					ng-model="filterOption.propertyType"
-					ng-change="filter()">
-				</select>
+			<div class="col-xs-6 text-right">
+				<div class="col-xs-4 form-group pull-right">
+					<h4>Sortera</h4>
+					<select class="form-control" ng-options="sortOption as sortOption.name for sortOption in sortOptions"
+						ng-model="sortOption"
+						ng-change="sort()">
+					</select>
+				</div></div>
 			</div>
 		</div>
-	</div>
+
+		<div class="collapse boxFilter" ng-class="filterCollapsed ? '' : 'in'">
+			<div class="row">
+				<div class="col-xs-3 col-xs-offset-3 text-center">
+	  				<div class="form-group col-xs-8 col-xs-offset-2 text-center">
+						<h4>Pris</h4>
+						<p>Från:</p>
+						<select class="form-control" ng-options="filterOption as filterOption.displayPrice for filterOption in filterOptions[0]"
+							ng-model="filterOption.priceMin"
+							ng-change="filter()">
+						</select>
+					</div>
+					<div class="form-group col-xs-8 col-xs-offset-2 text-center">
+						<p>Till:</p>
+						<select class="form-control" ng-options="filterOption as filterOption.displayPrice for filterOption in filterOptions[1]"
+							ng-model="filterOption.priceMax"
+							ng-change="filter()">
+						</select>
+					</div>
+				</div>
+
+				<div class="col-xs-3 text-center">
+					<div class="form-group col-xs-8 col-xs-offset-2 text-center">
+						<h4>Fastighet</h4>
+						<p>Typ:</p>
+						<select class="form-control" ng-options="filterOption as filterOption.name for filterOption in filterOptions[2]"
+							ng-model="filterOption.propertyType"
+							ng-change="filter()">
+						</select>
+					</div>
+				</div>
+			</div>
+		</div>
+	</form>
 </div>
