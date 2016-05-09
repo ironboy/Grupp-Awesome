@@ -45,20 +45,23 @@ app.directive('buyFilter', [function(){
       $scope.filterOption = {
         priceMin: { price: 0 },
         priceMax: { price: 100000000 },
-        propertyType: { type: /.*/ }
+        areaMin: { area: 0 },
+        areaMax: { area: 10000},
+        propertyType: { type: /.*/ },
+        sortOption: { code: 0 }
       };
 
       // Select options for angular
-      $scope.filterOptions = [
-        [ // [0] priceMin
+      $scope.filterOptions = {
+        priceMin: [
           { price: 0, displayPrice: 0 },
-          { price: 1000000, displayPrice: "1.000.000" },
-          { price: 2500000, displayPrice: "2.500.000" },
-          { price: 5000000, displayPrice: "5.000.000" },
-          { price: 7500000, displayPrice: "7.500.000" },
-          { price: 10000000, displayPrice: "10.000.000" }
+          { price: 1000000, displayPrice: "1 000 000" },
+          { price: 2500000, displayPrice: "2 500 000" },
+          { price: 5000000, displayPrice: "5 000 000" },
+          { price: 7500000, displayPrice: "7 500 000" },
+          { price: 10000000, displayPrice: "10 000 000" }
         ],
-        [ // [1] priceMax
+        priceMax: [
           { price: 2500000, displayPrice: "2.500.000" },
           { price: 5000000, displayPrice: "5.000.000" },
           { price: 7500000, displayPrice: "7.500.000" },
@@ -66,26 +69,51 @@ app.directive('buyFilter', [function(){
           { price: 15000000, displayPrice: "15.000.000" },
           { price: 50000000, displayPrice: "50.000.000" }
         ],
-        [ // [2] type
+        type: [
           { type: "House", name: "Villa" },
           { type: "Apartment", name: "Lägenhet"}
+        ],
+        areaMin: [
+          { area: 0, displayArea: "0 m2" },
+          { area: 20, displayArea: "20 m2" },
+          { area: 40, displayArea: "40 m2" },
+          { area: 60, displayArea: "60 m2" },
+          { area: 80, displayArea: "80 m2" },
+          { area: 100, displayArea: "100 m2" }
+        ],
+        areaMax: [
+          { area: 40, displayArea: "40 m2" },
+          { area: 60, displayArea: "60 m2" },
+          { area: 80, displayArea: "80 m2" },
+          { area: 100, displayArea: "100 m2" },
+          { area: 120, displayArea: "120 m2" },
+          { area: 150, displayArea: "150 m2" }
+        ],
+        sortOption: [
+          { code: 1, type: "price", name: "Pris: Lägsta först" },
+          { code: -1, type: "price", name: "Pris: Högsta först" },
+          { code: 1, type: "livingarea", name: "Bo area: Minsta först" },
+          { code: -1, type: "livingarea", name: "Bo area: Största först" }
         ]
-      ];
+      };
 
       // Filter
       $scope.filter = function(){
-
+        console.log($scope.filterOption);
         var query = {
             $and: [{
               propertyType: $scope.filterOption.propertyType.type,
-              price: { $lte : $scope.filterOption.priceMax.price, $gte : $scope.filterOption.priceMin.price } /* , add more filter here */ 
+              price: { $lte : $scope.filterOption.priceMax.price, $gte : $scope.filterOption.priceMin.price },
+              livingarea: { $lte : $scope.filterOption.areaMax.area, $gte : $scope.filterOption.areaMin.area } /* , add more filter here */ 
             }]
           };
 
-        if($scope.sortOption.code !== 0){
+        if($scope.filterOption.sortOption.code !== 0){
           query._sort = {};
-          query._sort[$scope.sortOption.type] = $scope.sortOption.code;
+          query._sort[$scope.filterOption.sortOption.type] = $scope.filterOption.sortOption.code;
         }
+
+        console.log(query);
 
         property.get( 
 
@@ -98,13 +126,7 @@ app.directive('buyFilter', [function(){
             loadProperties(data);
         });
       }
-
-      $scope.sortOption = { code: 0 };
-      $scope.sortOptions = [{ code: 1, type: "price", name: "Pris: Lägsta först" },
-                            { code: -1, type: "price", name: "Pris: Högsta först" },
-                            { code: 1, type: "livingarea", name: "Bo area: Minsta först" },
-                            { code: -1, type: "livingarea", name: "Bo area: Största först" }];
-
+      
       loadProperties();
 
     }]
