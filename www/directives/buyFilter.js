@@ -28,15 +28,12 @@ app.directive('buyFilter', [function(){
       
       function loadProperties(data) {
 
-        $scope.initValues = data;
         // if data (from filter) exist use it on scope || fetch from db
         if (data) {
-          $scope.initValues = data;
-          $scope.sort($scope.initValues);
+          setupPagination(data);
           // setupPagination(data);
         } else {
           property.get(function(data){
-            $scope.initValues = data;
             setupPagination(data);
             console.log(data)
           });
@@ -78,15 +75,22 @@ app.directive('buyFilter', [function(){
       // Filter
       $scope.filter = function(){
 
-        property.get( 
-
-          // fetch data from db with filter
-          {
+        var query = {
             $and: [{
               propertyType: $scope.filterOption.propertyType.type,
               price: { $lte : $scope.filterOption.priceMax.price, $gte : $scope.filterOption.priceMin.price } /* , add more filter here */ 
             }]
-          },
+          };
+
+        if($scope.sortOption.code !== 0){
+          query._sort = {};
+          query._sort[$scope.sortOption.type] = $scope.sortOption.code;
+        }
+
+        property.get( 
+
+          // fetch data from db with filter
+          query,
           function(data){
 
             console.log(data);
@@ -97,29 +101,9 @@ app.directive('buyFilter', [function(){
 
       $scope.sortOption = { code: 0 };
       $scope.sortOptions = [{ code: 1, type: "price", name: "Pris: Lägsta först" },
-                            { code: 2, type: "price", name: "Pris: Högsta först" },
-                            { code: 1, type: "area", name: "Bo area: Minsta först" },
-                            { code: 2, type: "area", name: "Bo area: Största först" }];
-
-      $scope.sort = function(){
-
-        var type = $scope.sortOption.type;
-
-        if($scope.sortOption.code){
-          if($scope.sortOption.code === 1){
-            $scope.initValues.sort(function(a, b){return a[type]-b[type]});
-            setupPagination($scope.initValues);
-          }
-          else{
-            $scope.initValues.sort(function(a, b){return a[type]+b[type]});
-            setupPagination($scope.initValues);
-          }
-        }
-        else{
-          setupPagination($scope.initValues);
-        }
-
-      }
+                            { code: -1, type: "price", name: "Pris: Högsta först" },
+                            { code: 1, type: "livingarea", name: "Bo area: Minsta först" },
+                            { code: -1, type: "livingarea", name: "Bo area: Största först" }];
 
       loadProperties();
 
