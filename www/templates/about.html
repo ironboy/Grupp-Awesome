@@ -1,3 +1,19 @@
-<div ng-repeat="aboutData in aboutDatas">
-    {{aboutData.path}}
+<div class="container">
+    <div ng-repeat="aboutData in aboutDatas">
+        <div class="aboutBox">
+            <div class="row">
+
+                <div class="col-xs-12 col-sm-4 col-sm-offset-2">
+                    <img class="img-responsive" ng-src="{{aboutData.path}}">
+                </div>
+
+                <div class="col-xs-12 col-sm-4">
+                    <h3>{{aboutData.title}}</h3>
+                    <p>{{aboutData.description}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
+
+
