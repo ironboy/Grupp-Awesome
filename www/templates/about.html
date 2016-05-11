@@ -2,14 +2,14 @@
     <div ng-repeat="aboutData in aboutDatas">
         <div class="aboutBox">
             <div class="row">
-
                 <div class="col-xs-12 col-sm-4 col-sm-offset-2">
                     <img class="img-responsive" ng-src="{{aboutData.path}}">
                 </div>
-
                 <div class="col-xs-12 col-sm-4">
-                    <h3>{{aboutData.title}}</h3>
-                    <p>{{aboutData.description}}</p>
+                    <h2>{{aboutData.title}}</h2>
+                    <hr class="hrWidth">
+                    <div class="clearfix"></div>
+                    <p><i>{{aboutData.description}}<i></p>
                 </div>
             </div>
         </div>
