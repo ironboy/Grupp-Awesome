@@ -1,10 +1,10 @@
 <div class="container">
 	</form>
 		<div class="row">
-			<div class="col-xs-4 col-sm-6 text-left">
+			<div class="col-xs-3 col-sm-6 text-left">
 				<button id="filterNow" class="btn btn-info btn-lg" ng-init="filterCollapsed = true" ng-click="filterCollapsed = !filterCollapsed">Filter</button>
 			</div>
-			<div class="col-xs-8 col-sm-6 text-center">
+			<div class="col-xs-9 col-sm-6 text-left">
 				<div class="col-xs-12 col-sm-6 pull-right form-group">
 					<h4>Sortera</h4>
 					<select class="form-control" ng-options="sortOption as sortOption.name for sortOption in filterOptions.sortOption"
@@ -18,8 +18,8 @@
 
 		<div class="collapse boxFilter" ng-class="filterCollapsed ? '' : 'in'">
 			<div class="row">
-				<div class="col-xs-12 col-sm-4 text-center">
-					<div class="form-group col-xs-8 col-xs-offset-2 text-center">
+				<div class="col-xs-12 col-sm-4 text-left">
+					<div class="form-group col-xs-8 col-xs-offset-2 text-left">
 						<h4>Fastighet</h4>
 						<select class="form-control" ng-options="filterOption as filterOption.name for filterOption in filterOptions.type"
 							ng-model="filterOption.propertyType"
@@ -29,8 +29,8 @@
 					</div>
 				</div>
 
-				<div class="col-xs-12 col-sm-4 text-center">
-					<div class="form-group col-xs-8 col-xs-offset-2 text-center">
+				<div class="col-xs-12 col-sm-4 text-left">
+					<div class="form-group col-xs-8 col-xs-offset-2 text-left">
 						<h4>Boarea</h4>
 						<select class="form-control" ng-options="filterOption as filterOption.displayArea for filterOption in filterOptions.areaMin"
 							ng-model="filterOption.areaMin"
@@ -39,7 +39,7 @@
 						</select>
 					</div>
 
-					<div class="form-group col-xs-8 col-xs-offset-2 text-center">
+					<div class="form-group col-xs-8 col-xs-offset-2 text-left">
 						<select class="form-control" ng-options="filterOption as filterOption.displayArea for filterOption in filterOptions.areaMax"
 							ng-model="filterOption.areaMax"
 							ng-change="filter()">
@@ -48,8 +48,8 @@
 					</div>
 				</div>
 
-				<div class="col-xs-12 col-sm-4 text-center">
-	  				<div class="form-group col-xs-8 col-xs-offset-2 text-center">
+				<div class="col-xs-12 col-sm-4 text-left">
+	  				<div class="form-group col-xs-8 col-xs-offset-2 text-left">
 						<h4>Pris</h4>
 						<select class="form-control" ng-options="filterOption as filterOption.displayPrice for filterOption in filterOptions.priceMin"
 							ng-model="filterOption.priceMin"
