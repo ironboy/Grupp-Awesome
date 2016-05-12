@@ -84,7 +84,7 @@ app.directive('buyFilter', [function(){
 
       // Filter
       $scope.filter = function(){
-        console.log($scope.filterOption);
+
         var query = {
             $and: [{
               propertyType: $scope.filterOption.propertyType.type,
