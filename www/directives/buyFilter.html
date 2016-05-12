@@ -10,6 +10,7 @@
 					<select class="form-control" ng-options="sortOption as sortOption.name for sortOption in filterOptions.sortOption"
 						ng-model="filterOption.sortOption"
 						ng-change="filter()">
+						<option value="" disabled selected>Sortera Pris/Boarea:</option>
 					</select>
 				</div></div>
 			</div>
@@ -20,29 +21,29 @@
 				<div class="col-xs-4 text-center">
 					<div class="form-group col-xs-8 col-xs-offset-2 text-center">
 						<h4>Fastighet</h4>
-						<p>Typ:</p>
 						<select class="form-control" ng-options="filterOption as filterOption.name for filterOption in filterOptions.type"
 							ng-model="filterOption.propertyType"
 							ng-change="filter()">
+							<option value="" disabled selected>Välj Fastighet:</option>
 						</select>
 					</div>
 				</div>
 
 				<div class="col-xs-4 text-center">
 					<div class="form-group col-xs-8 col-xs-offset-2 text-center">
-						<h4>Bo area</h4>
-						<p>Från:</p>
+						<h4>Boarea</h4>
 						<select class="form-control" ng-options="filterOption as filterOption.displayArea for filterOption in filterOptions.areaMin"
 							ng-model="filterOption.areaMin"
 							ng-change="filter()">
+							<option value="" disabled selected>Boarea Från:</option>
 						</select>
 					</div>
 
 					<div class="form-group col-xs-8 col-xs-offset-2 text-center">
-						<p>Till:</p>
 						<select class="form-control" ng-options="filterOption as filterOption.displayArea for filterOption in filterOptions.areaMax"
 							ng-model="filterOption.areaMax"
 							ng-change="filter()">
+							<option value="" disabled selected>Boarea Till:</option>
 						</select>
 					</div>
 				</div>
@@ -50,17 +51,17 @@
 				<div class="col-xs-4 text-center">
 	  				<div class="form-group col-xs-8 col-xs-offset-2 text-center">
 						<h4>Pris</h4>
-						<p>Från:</p>
 						<select class="form-control" ng-options="filterOption as filterOption.displayPrice for filterOption in filterOptions.priceMin"
 							ng-model="filterOption.priceMin"
 							ng-change="filter()">
+						<option value="" disabled selected>Pris Från:</option>
 						</select>
 					</div>
 					<div class="form-group col-xs-8 col-xs-offset-2 text-center">
-						<p>Till:</p>
 						<select class="form-control" ng-options="filterOption as filterOption.displayPrice for filterOption in filterOptions.priceMax"
 							ng-model="filterOption.priceMax"
 							ng-change="filter()">
+						<option value="" disabled selected>Pris Till:</option>
 						</select>
 					</div>
 				</div>
