@@ -25,7 +25,7 @@ app.directive('buyFilter', [function(){
 
         $scope.pageChanged();
       }
-      
+
       function loadProperties(data) {
 
         // if data (from filter) exist use it on scope || fetch from db
@@ -92,8 +92,8 @@ app.directive('buyFilter', [function(){
         sortOption: [
           { code: 1, type: "price", name: "Pris: Lägsta först" },
           { code: -1, type: "price", name: "Pris: Högsta först" },
-          { code: 1, type: "livingarea", name: "Bo area: Minsta först" },
-          { code: -1, type: "livingarea", name: "Bo area: Största först" }
+          { code: 1, type: "livingarea", name: "Boarea: Minsta först" },
+          { code: -1, type: "livingarea", name: "Boarea: Största först" }
         ]
       };
 
@@ -104,7 +104,7 @@ app.directive('buyFilter', [function(){
             $and: [{
               propertyType: $scope.filterOption.propertyType.type,
               price: { $lte : $scope.filterOption.priceMax.price, $gte : $scope.filterOption.priceMin.price },
-              livingarea: { $lte : $scope.filterOption.areaMax.area, $gte : $scope.filterOption.areaMin.area } /* , add more filter here */ 
+              livingarea: { $lte : $scope.filterOption.areaMax.area, $gte : $scope.filterOption.areaMin.area } /* , add more filter here */
             }]
           };
 
@@ -115,7 +115,7 @@ app.directive('buyFilter', [function(){
 
         console.log(query);
 
-        property.get( 
+        property.get(
 
           // fetch data from db with filter
           query,
@@ -126,7 +126,7 @@ app.directive('buyFilter', [function(){
             loadProperties(data);
         });
       }
-      
+
       loadProperties();
 
     }]
