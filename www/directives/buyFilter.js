@@ -25,21 +25,6 @@ app.directive('buyFilter', [function(){
 
         $scope.pageChanged();
       }
-      
-      function loadProperties(data) {
-
-        // if data (from filter) exist use it on scope || fetch from db
-        if (data) {
-          setupPagination(data);
-          // setupPagination(data);
-        } else {
-          property.get(function(data){
-            setupPagination(data);
-            console.log(data)
-          });
-        }
-
-      }
 
       // Starting values for filter
       $scope.filterOption = {
@@ -55,11 +40,11 @@ app.directive('buyFilter', [function(){
       $scope.filterOptions = {
         priceMin: [
           { price: 0, displayPrice: 0 },
-          { price: 1000000, displayPrice: "1 000 000" },
-          { price: 2500000, displayPrice: "2 500 000" },
-          { price: 5000000, displayPrice: "5 000 000" },
-          { price: 7500000, displayPrice: "7 500 000" },
-          { price: 10000000, displayPrice: "10 000 000" }
+          { price: 1000000, displayPrice: "1.000.000" },
+          { price: 2500000, displayPrice: "2 500.000" },
+          { price: 5000000, displayPrice: "5.000.000" },
+          { price: 7500000, displayPrice: "7.500.000" },
+          { price: 10000000, displayPrice: "10.000.000" }
         ],
         priceMax: [
           { price: 2500000, displayPrice: "2.500.000" },
@@ -123,11 +108,11 @@ app.directive('buyFilter', [function(){
 
             console.log(data);
 
-            loadProperties(data);
+            setupPagination(data);
         });
       }
       
-      loadProperties();
+      $scope.filter();
 
     }]
   };
