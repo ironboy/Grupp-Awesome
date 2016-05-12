@@ -6,20 +6,18 @@ app.directive('buyFilter', [function(){
 
 
       function setupPagination(data) {
-        var allValues = data,
-            itemsPerPage = 10;
+        var allValues = data;
+        $scope.itemsPerPage = 3;
         window.heyoo = $scope;
         window.banan = allValues;
         // total pages
         $scope.totalItems = allValues.length;
-        console.log(allValues.length);
-        $scope.numPages = Math.ceil((allValues.length/itemsPerPage));
 
         $scope.currentPage = 1;
 
         $scope.pageChanged = function () {
-          var startAt = ($scope.currentPage-1) * itemsPerPage;
-          $scope.values = allValues.slice().splice(startAt, itemsPerPage);
+          var startAt = ($scope.currentPage-1) * $scope.itemsPerPage;
+          $scope.values = allValues.slice().splice(startAt, $scope.itemsPerPage);
           console.log("pagination page " + $scope.currentPage + " amount of items on this page " + $scope.values.length);
         };
 
