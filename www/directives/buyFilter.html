@@ -1,7 +1,10 @@
 <div class="container">
 	</form>
 		<div class="row">
-			<div class="col-xs-12 col-sm-6 col-sm-push-6 text-center">
+			<div class="col-xs-4 col-sm-6 text-left">
+				<button id="filterNow" class="btn btn-info btn-lg" ng-init="filterCollapsed = true" ng-click="filterCollapsed = !filterCollapsed">Filter</button>
+			</div>
+			<div class="col-xs-8 col-sm-6 text-center">
 				<div class="col-xs-12 col-sm-6 pull-right form-group">
 					<h4>Sortera</h4>
 					<select class="form-control" ng-options="sortOption as sortOption.name for sortOption in filterOptions.sortOption"
@@ -10,9 +13,6 @@
 						<option value="" disabled selected>Sortera Pris/Boarea:</option>
 					</select>
 				</div>
-			</div>
-			<div class="col-xs-12 col-sm-6 col-sm-pull-6 text-left">
-				<button id="filterNow" class="btn btn-info btn-lg" ng-init="filterCollapsed = true" ng-click="filterCollapsed = !filterCollapsed">Filter</button>
 			</div>
 		</div>
 
