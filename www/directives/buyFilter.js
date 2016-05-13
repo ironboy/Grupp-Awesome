@@ -36,7 +36,7 @@ app.directive('buyFilter', [function(){
         itemsPerPage: { amount: 5 }
       };
 
-      // Select options for angular
+      // Select options for angular 
       $scope.filterOptions = {
         priceMin: [
           { price: 0, displayPrice: 0 },
