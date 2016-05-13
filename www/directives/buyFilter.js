@@ -7,7 +7,8 @@ app.directive('buyFilter', [function(){
 
       function setupPagination(data) {
         var allValues = data;
-        $scope.itemsPerPage = 3;
+        $scope.itemsPerPage = $scope.filterOption.itemsPerPage.amount;
+        console.log($scope.itemsPerPage);
         window.heyoo = $scope;
         window.banan = allValues;
         // total pages
@@ -31,7 +32,8 @@ app.directive('buyFilter', [function(){
         areaMin: { area: 0 },
         areaMax: { area: 10000},
         propertyType: { type: /.*/ },
-        sortOption: { code: 0 }
+        sortOption: { code: 0 },
+        itemsPerPage: { amount: 5 }
       };
 
       // Select options for angular
@@ -77,6 +79,12 @@ app.directive('buyFilter', [function(){
           { code: -1, type: "price", name: "Pris: Högsta först" },
           { code: 1, type: "livingarea", name: "Boarea: Minsta först" },
           { code: -1, type: "livingarea", name: "Boarea: Största först" }
+        ],
+        itemsPerPage: [
+          { amount: 5 },
+          { amount: 10 },
+          { amount: 25 },
+          { amount: 50 }
         ]
       };
 
