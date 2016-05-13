@@ -85,10 +85,10 @@ app.directive('buyFilter', [function(){
           { code: -1, type: "livingarea", name: "Boarea: Största först" }
         ],
         itemsPerPage: [
-          { amount: 5 },
-          { amount: 10 },
-          { amount: 25 },
-          { amount: 50 }
+          { amount: 5, name: "5 per sida" },
+          { amount: 10, name: "10 per sida" },
+          { amount: 25, name: "25 per sida" },
+          { amount: 50, name: "50 per sida" }
         ]
       };
 

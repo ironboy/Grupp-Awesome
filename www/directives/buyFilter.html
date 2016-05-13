@@ -21,7 +21,7 @@
 			<div class="col-xs-12">
 				<div class="col-xs-6 col-sm-2 pull-right">
 					<select class="form-control"
-						ng-options="itemsPerPage as itemsPerPage.amount for itemsPerPage in filterOptions.itemsPerPage"
+						ng-options="itemsPerPage as itemsPerPage.name for itemsPerPage in filterOptions.itemsPerPage"
 						ng-model="filterOption.itemsPerPage"
 						ng-change="filter()">
 						<option value="" disabled selected>Visa antal</option>
