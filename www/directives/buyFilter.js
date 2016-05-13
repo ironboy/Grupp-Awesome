@@ -38,14 +38,14 @@ app.directive('buyFilter', [function(){
         itemsPerPage: { amount: 5 }
       };
 
-      // Select options for angular 
+      // Select options for angular
       // This is just stored data instead of keeping it in the .html
       // It's looped into a <select> with ng-options in .html
       $scope.filterOptions = {
         priceMin: [
           { price: 0, displayPrice: "0 kr" },
           { price: 1000000, displayPrice: "1.000.000 kr" },
-          { price: 2500000, displayPrice: "2 500.000 kr" },
+          { price: 2500000, displayPrice: "2.500.000 kr" },
           { price: 5000000, displayPrice: "5.000.000 kr" },
           { price: 7500000, displayPrice: "7.500.000 kr" },
           { price: 10000000, displayPrice: "10.000.000 kr" }
@@ -121,7 +121,7 @@ app.directive('buyFilter', [function(){
         }
 
         // This is our get request to our database
-        property.get( 
+        property.get(
 
           // Get takes 2 arguments here
           // ( our query , a function which get the data )
