@@ -32,17 +32,30 @@
 	</div>
 	<div class="row">
 		<div class="col-xs-12 text-center">
-    		<uib-pagination
+    		<uib-pagination class="pagination-sm hidden-sm hidden-md hidden-lg"
     			total-items="totalItems"
-	    		ng-model="currentPage" 
-	    		items-per-page="itemsPerPage" 
+	    		ng-model="currentPage"
+	    		items-per-page="itemsPerPage"
 	    		ng-change="pageChanged()"
 	    		boundary-links="true"
 	    		boundary-link-numbers="true"
 	    		max-size="5"
-	    		previous-text="‹" 
-	    		next-text="›" 
-	    		first-text="«" 
+	    		previous-text="‹"
+	    		next-text="›"
+	    		first-text="«"
+	    		last-text="»">
+    		</uib-pagination>
+    		  <uib-pagination class="hidden-xs"
+    			total-items="totalItems"
+	    		ng-model="currentPage"
+	    		items-per-page="itemsPerPage"
+	    		ng-change="pageChanged()"
+	    		boundary-links="true"
+	    		boundary-link-numbers="true"
+	    		max-size="5"
+	    		previous-text="‹"
+	    		next-text="›"
+	    		first-text="«"
 	    		last-text="»">
     		</uib-pagination>
 		</div>
