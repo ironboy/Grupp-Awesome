@@ -7,7 +7,7 @@ app.directive('buyFilter', [function(){
 
       function setupPagination(data) {
         var allValues = data;
-        $scope.itemsPerPage = 3;
+        $scope.itemsPerPage = 10;
         window.heyoo = $scope;
         window.banan = allValues;
         // total pages
@@ -108,7 +108,7 @@ app.directive('buyFilter', [function(){
 
             setupPagination(data);
         });
-      }
+      };
 
       $scope.filter();
 
