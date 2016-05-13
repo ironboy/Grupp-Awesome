@@ -25,7 +25,9 @@ app.directive('buyFilter', [function(){
         $scope.pageChanged();
       }
 
-      // Starting values for filter
+      // This is where data is stored when an option is selected
+      // Data is changed with ng-model in .html
+      // We use this data in the the query for filtering
       $scope.filterOption = {
         priceMin: { price: 0 },
         priceMax: { price: 100000000 },
@@ -37,6 +39,8 @@ app.directive('buyFilter', [function(){
       };
 
       // Select options for angular 
+      // This is just stored data instead of keeping it in the .html
+      // It's looped into a <select> with ng-options in .html
       $scope.filterOptions = {
         priceMin: [
           { price: 0, displayPrice: 0 },
@@ -91,7 +95,11 @@ app.directive('buyFilter', [function(){
       // Filter
       $scope.filter = function(){
 
+        // Here we create our query as an object
         var query = {
+
+            // $and contains all values that are being compared
+            // $lte = less than or equal to - $gte = greater than or equal to
             $and: [{
               propertyType: $scope.filterOption.propertyType.type,
               price: { $lte : $scope.filterOption.priceMax.price, $gte : $scope.filterOption.priceMin.price },
@@ -99,25 +107,35 @@ app.directive('buyFilter', [function(){
             }]
           };
 
+        // If a sort option is selected the code will either be: 1(ascending) or -1(descending)
+        // This will be added after the $and in the query
         if($scope.filterOption.sortOption.code !== 0){
+
+          // First create an empty object
           query._sort = {};
+
+          // Second we store out sort option in the object
+          // this is taken from $scope.filterOption.sortOption
+          // query._sort.type = code
           query._sort[$scope.filterOption.sortOption.type] = $scope.filterOption.sortOption.code;
         }
 
-        console.log(query);
+        // This is our get request to our database
+        property.get( 
 
-        property.get(
-
-          // fetch data from db with filter
+          // Get takes 2 arguments here
+          // ( our query , a function which get the data )
           query,
           function(data){
 
             console.log(data);
 
+            // Send data to make pagination
             setupPagination(data);
         });
       }
 
+      // Init
       $scope.filter();
 
     }]
