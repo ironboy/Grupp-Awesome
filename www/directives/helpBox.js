@@ -1,3 +1,23 @@
+/*app.directive("helpBox", [function(){
+
+	return{
+		templateUrl:'directives/helpBox.html',
+		link: function(scope, elem, attrs) {
+			var helper = function(){
+
+				height = 5;
+				width = 5;
+				t = window.innerHeight - height;
+				l = window.innerWidth - width;
+
+				var help = window.open('', '', 'height='+height+', width='+width+', left='+l+', top='+t );
+				scope.help;
+			}
+		}
+	}
+}])
+
+*/
 app.directive("helpBox", [function(){
 
 	return{
@@ -30,21 +50,3 @@ app.directive("helpBox", [function(){
 		}]	
 	}
 }])
-		/*	elem.find(".helperBox");*/
-			/*$scope.helperbox = function(){
-			    $(".helperbox").helperbox({
-			      autoOpen: false,
-			      show: {
-			        effect: "blind",
-			        duration: 1000
-			      },
-			      hide: {
-			        effect: "explode",
-			        duration: 1000
-			      }
-			    });
-			 
-			    $(".opener").click(function() {
-			      $(".helperbox").helperbox("open");
-			    });
-			}*/
