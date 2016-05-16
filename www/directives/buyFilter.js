@@ -43,40 +43,40 @@ app.directive('buyFilter', [function(){
       // It's looped into a <select> with ng-options in .html
       $scope.filterOptions = {
         priceMin: [
-          { price: 0, displayPrice: "0 kr" },
-          { price: 1000000, displayPrice: "1.000.000 kr" },
-          { price: 2500000, displayPrice: "2.500.000 kr" },
-          { price: 5000000, displayPrice: "5.000.000 kr" },
-          { price: 7500000, displayPrice: "7.500.000 kr" },
-          { price: 10000000, displayPrice: "10.000.000 kr" }
+          { price: 0 },
+          { price: 1000000 },
+          { price: 2500000 },
+          { price: 5000000 },
+          { price: 7500000 },
+          { price: 10000000 }
         ],
         priceMax: [
-          { price: 2500000, displayPrice: "2.500.000 kr" },
-          { price: 5000000, displayPrice: "5.000.000 kr" },
-          { price: 7500000, displayPrice: "7.500.000 kr" },
-          { price: 10000000, displayPrice: "10.000.000 kr" },
-          { price: 15000000, displayPrice: "15.000.000 kr" },
-          { price: 50000000, displayPrice: "50.000.000 kr" }
+          { price: 2500000 },
+          { price: 5000000 },
+          { price: 7500000 },
+          { price: 10000000 },
+          { price: 15000000 },
+          { price: 50000000 }
         ],
         type: [
           { type: "House", name: "Villa" },
           { type: "Apartment", name: "Lägenhet"}
         ],
         areaMin: [
-          { area: 0, displayArea: "0 m²" },
-          { area: 20, displayArea: "20 m²" },
-          { area: 40, displayArea: "40 m²" },
-          { area: 60, displayArea: "60 m²" },
-          { area: 80, displayArea: "80 m²" },
-          { area: 100, displayArea: "100 m²" }
+          { area: 0 },
+          { area: 20 },
+          { area: 40 },
+          { area: 60 },
+          { area: 80 },
+          { area: 100 }
         ],
         areaMax: [
-          { area: 40, displayArea: "40 m²" },
-          { area: 60, displayArea: "60 m²" },
-          { area: 80, displayArea: "80 m²" },
-          { area: 100, displayArea: "100 m²" },
-          { area: 120, displayArea: "120 m²" },
-          { area: 150, displayArea: "150 m²" }
+          { area: 40 },
+          { area: 60 },
+          { area: 80 },
+          { area: 100 },
+          { area: 120 },
+          { area: 150 }
         ],
         sortOption: [
           { code: 1, type: "price", name: "Pris: Lägsta först" },
@@ -85,10 +85,10 @@ app.directive('buyFilter', [function(){
           { code: -1, type: "livingarea", name: "Boarea: Största först" }
         ],
         itemsPerPage: [
-          { amount: 5, name: "5 per sida" },
-          { amount: 10, name: "10 per sida" },
-          { amount: 25, name: "25 per sida" },
-          { amount: 50, name: "50 per sida" }
+          { amount: 5 },
+          { amount: 10 },
+          { amount: 25 },
+          { amount: 50 }
         ]
       };
 

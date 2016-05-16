@@ -20,7 +20,7 @@
 		<div class="col-xs-12">
 			<div class="col-xs-6 col-sm-3 pull-right">
 				<select class="form-control"
-					ng-options="itemsPerPage as itemsPerPage.name for itemsPerPage in filterOptions.itemsPerPage"
+					ng-options="itemsPerPage as itemsPerPage.amount + ' per sida' for itemsPerPage in filterOptions.itemsPerPage"
 					ng-model="filterOption.itemsPerPage"
 					ng-change="filter()">
 					<option value="" disabled selected>Visa antal</option>
@@ -47,7 +47,7 @@
 				<div class="form-group col-xs-10 col-xs-offset-1 text-left">
 					<h4>Boarea</h4>
 					<select class="form-control"
-						ng-options="filterOption as filterOption.displayArea for filterOption in filterOptions.areaMin"
+						ng-options="filterOption as filterOption.area + ' m²' for filterOption in filterOptions.areaMin"
 						ng-model="filterOption.areaMin"
 						ng-change="filter()">
 						<option value="" disabled selected>Boarea Från</option>
@@ -56,7 +56,7 @@
 
 				<div class="form-group col-xs-10 col-xs-offset-1 text-left">
 					<select class="form-control"
-						ng-options="filterOption as filterOption.displayArea for filterOption in filterOptions.areaMax"
+						ng-options="filterOption as filterOption.area + ' m²' for filterOption in filterOptions.areaMax"
 						ng-model="filterOption.areaMax"
 						ng-change="filter()">
 						<option value="" disabled selected>Boarea Till</option>
@@ -68,7 +68,7 @@
   				<div class="form-group col-xs-10 col-xs-offset-1 text-left">
 					<h4>Pris</h4>
 					<select class="form-control"
-						ng-options="filterOption as filterOption.displayPrice for filterOption in filterOptions.priceMin"
+						ng-options="filterOption as (filterOption.price | number : 0) + ' kr' for filterOption in filterOptions.priceMin"
 						ng-model="filterOption.priceMin"
 						ng-change="filter()">
 					<option value="" disabled selected>Pris Från</option>
@@ -76,7 +76,7 @@
 				</div>
 				<div class="form-group col-xs-10 col-xs-offset-1 text-center">
 					<select class="form-control"
-						ng-options="filterOption as filterOption.displayPrice for filterOption in filterOptions.priceMax"
+						ng-options="filterOption as (filterOption.price | number : 0) + ' kr' for filterOption in filterOptions.priceMax"
 						ng-model="filterOption.priceMax"
 						ng-change="filter()">
 					<option value="" disabled selected>Pris Till</option>
