@@ -28,7 +28,7 @@ app.directive("helpBox", [function(){
 			elem.find( "#helperbox" ).dialog({
 		      autoOpen: false,
 		      show: {
-		        effect: "blind",
+		        effect: "slide",
 		        duration: 1000
 		      },
 		      hide: {
