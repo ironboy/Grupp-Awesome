@@ -64,19 +64,22 @@ app.directive('buyFilter', [function(){
         ],
         areaMin: [
           { area: 0 },
-          { area: 20 },
-          { area: 40 },
-          { area: 60 },
-          { area: 80 },
-          { area: 100 }
+          { area: 25 },
+          { area: 50 },
+          { area: 75 },
+          { area: 100 },
+          { area: 125 },
+          { area: 150 }
         ],
         areaMax: [
-          { area: 40 },
-          { area: 60 },
-          { area: 80 },
+          { area: 25 },
+          { area: 50 },
+          { area: 75 },
           { area: 100 },
-          { area: 120 },
-          { area: 150 }
+          { area: 125 },
+          { area: 150 },
+          { area: 200 },
+          { area: 300 }
         ],
         sortOption: [
           { code: 1, type: "price", name: "Pris: Lägsta först" },
