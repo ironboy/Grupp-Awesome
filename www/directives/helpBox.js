@@ -24,7 +24,7 @@ app.directive("helpBox", [function(){
 		templateUrl: 'directives/helpBox.html',
 		link: function(scope, elem, attrs) {
 
-			var helperbox = elem.find("helperbox");
+			var helperbox = elem.find("#helperbox");
 			elem.find( "#helperbox" ).dialog({
 		      autoOpen: false,
 		      show: {
