@@ -137,7 +137,7 @@ app.directive('buyFilter', [function(){
 
       // Init
       $scope.filter();
-
+      
     }]
   };
 }]);
