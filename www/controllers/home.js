@@ -54,5 +54,5 @@ app.controller("home", ["$scope", "property", function($scope, property) {
 
 	}
 
-	/*property.create(homes);*/
+	// property.create(homes);
 }]);
