@@ -68,7 +68,7 @@
   				<div class="form-group col-xs-10 col-xs-offset-1 text-left">
 					<h4>Pris</h4>
 					<select class="form-control"
-						ng-options="filterOption as (filterOption.price | number : 0) + ' kr' for filterOption in filterOptions.priceMin"
+						ng-options="filterOption as filterOption.price | number for filterOption in filterOptions.priceMin"
 						ng-model="filterOption.priceMin"
 						ng-change="filter()">
 					<option value="" disabled selected>Pris Från</option>
@@ -76,7 +76,7 @@
 				</div>
 				<div class="form-group col-xs-10 col-xs-offset-1 text-center">
 					<select class="form-control"
-						ng-options="filterOption as (filterOption.price | number : 0) + ' kr' for filterOption in filterOptions.priceMax"
+						ng-options="filterOption as filterOption.price | currency for filterOption in filterOptions.priceMax"
 						ng-model="filterOption.priceMax"
 						ng-change="filter()">
 					<option value="" disabled selected>Pris Till</option>
