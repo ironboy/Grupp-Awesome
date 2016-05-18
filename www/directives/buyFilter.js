@@ -35,7 +35,8 @@ app.directive('buyFilter', [function(){
         areaMax: { area: 10000},
         propertyType: { type: /.*/ },
         sortOption: { code: 0 },
-        itemsPerPage: { amount: 5 }
+        itemsPerPage: { amount: 5 },
+        id: null
       };
 
       // Select options for angular
@@ -95,6 +96,8 @@ app.directive('buyFilter', [function(){
         ]
       };
 
+      window.lol = $location;
+
       // Filter
       $scope.filter = function(){
 
@@ -109,6 +112,8 @@ app.directive('buyFilter', [function(){
               livingarea: { $lte : $scope.filterOption.areaMax.area, $gte : $scope.filterOption.areaMin.area } /* , add more filter here */
             }]
           };
+
+        $location.search($scope.filterOption);
 
         // This is our get request to our database
         property.get(
@@ -130,7 +135,8 @@ app.directive('buyFilter', [function(){
                 $scope.openModal($scope.initValues.find(findProp));
               }
               else{
-                $location.search("");
+                $scope.filterOption.id = null;
+                $location.search($scope.filterOption);
               }
             }
 
@@ -149,9 +155,11 @@ app.directive('buyFilter', [function(){
 
       $scope.clickModal = function(prop){
 
-        $location.search({ id: prop._id });
+        $scope.filterOption.id = prop._id;
+        $location.search($scope.filterOption);
         $scope.openModal(prop);
         console.log($route.current);
+        console.log("URL",$scope.urlOptions);
       }
 
       // Init
@@ -159,6 +167,10 @@ app.directive('buyFilter', [function(){
 
       console.log($location);
       console.log($routeParams);
+
+      $scope.$watch("filterOption", function(newValue,oldValue){
+        console.log(newValue,oldValue);
+      }, true)
 
     }]
   };
