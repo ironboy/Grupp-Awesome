@@ -179,12 +179,22 @@ app.directive('buyFilter', [function(){
         console.log("URL",$scope.urlOptions);
       }
 
-      if($route.current.params.priceMin){
-        console.log($route.current.params);
+      if($route.current.params.priceMax){
+        $scope.filterOption.priceMin = parseInt($route.current.params.priceMin);
+        $scope.filterOption.priceMax = parseInt($route.current.params.priceMax);
+        $scope.filterOption.areaMin = parseInt($route.current.params.areaMin);
+        $scope.filterOption.areaMax = parseInt($route.current.params.areaMax);
+        $scope.filterOption.itemsPerPage = parseInt($route.current.params.itemsPerPage);
+        if($route.current.params.propertyType !== "/.*/"){
+          $scope.filterOption.propertyType = parseInt($route.current.params.propertyType);
+        }
+
+        console.log($scope.filterOption);
       }
 
       // Init
       $scope.filter();
+      console.log($scope.filterOption);
 
       $scope.$watch("filterOption", function(newValue,oldValue){
         $location.search($scope.filterOption);
