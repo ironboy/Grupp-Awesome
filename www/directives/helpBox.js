@@ -43,6 +43,10 @@ app.directive("helpBox", [function(){
 			   
 			   helperbox.dialog("open");
 			};
+
+			scope.$on( "$routeChangeStart", function(event, next, current) {
+				helperbox.dialog("close");
+			});
 		},
 		controller: ['$scope', function ($scope){
 
