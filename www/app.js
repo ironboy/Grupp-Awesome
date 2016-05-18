@@ -25,7 +25,12 @@ app.config(["$routeProvider", "$locationProvider", function($routeProvider, $loc
 		controller: "broker"
 	})
 	.when("/buy",{
-		templateUrl: "templates/buy.html"
+		templateUrl: "templates/buy.html",
+		reloadOnSearch: false
+	})
+	.when("/buy/:id",{
+		templateUrl: "templates/buy.html",
+		reloadOnSearch: false
 	})
 	.when("/contact",{
 		templateUrl: "templates/contact.html",

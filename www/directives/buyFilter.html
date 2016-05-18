@@ -9,7 +9,7 @@
 				<select class="form-control"
 					ng-options="sortOption as sortOption.name for sortOption in filterOptions.sortOption"
 					ng-model="filterOption.sortOption"
-					ng-change="filter()">
+					ng-change="sort()">
 					<option value="" disabled selected>Sortera Pris/Boarea</option>
 				</select>
 			</div>
@@ -68,7 +68,7 @@
   				<div class="form-group col-xs-10 col-xs-offset-1 text-left">
 					<h4>Pris</h4>
 					<select class="form-control"
-						ng-options="filterOption as filterOption.price | number for filterOption in filterOptions.priceMin"
+						ng-options="filterOption as filterOption.price | currency for filterOption in filterOptions.priceMin"
 						ng-model="filterOption.priceMin"
 						ng-change="filter()">
 					<option value="" disabled selected>Pris Från</option>

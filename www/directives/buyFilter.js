@@ -2,7 +2,7 @@ app.directive('buyFilter', [function(){
 
   return {
     templateUrl: '/directives/buyFilter.html',
-    controller: ['$scope', "property", function($scope, property) {
+    controller: ['$scope', '$filter', '$route', '$routeParams', '$location', "property", function($scope, $filter, $route, $routeParams, $location, property) {
 
 
       function setupPagination(data) {
@@ -58,10 +58,6 @@ app.directive('buyFilter', [function(){
           { price: 15000000 },
           { price: 50000000 }
         ],
-        type: [
-          { type: "House", name: "Villa" },
-          { type: "Apartment", name: "Lägenhet"}
-        ],
         areaMin: [
           { area: 0 },
           { area: 25 },
@@ -81,17 +77,21 @@ app.directive('buyFilter', [function(){
           { area: 200 },
           { area: 300 }
         ],
-        sortOption: [
-          { code: 1, type: "price", name: "Pris: Lägsta först" },
-          { code: -1, type: "price", name: "Pris: Högsta först" },
-          { code: 1, type: "livingarea", name: "Boarea: Minsta först" },
-          { code: -1, type: "livingarea", name: "Boarea: Största först" }
-        ],
         itemsPerPage: [
           { amount: 5 },
           { amount: 10 },
           { amount: 25 },
           { amount: 50 }
+        ],
+        type: [
+          { type: "House", name: "Villa" },
+          { type: "Apartment", name: "Lägenhet"}
+        ],
+        sortOption: [
+          { code: 0, type: "price", name: "Pris: Lägsta först" },
+          { code: -1, type: "price", name: "Pris: Högsta först" },
+          { code: 0, type: "livingarea", name: "Boarea: Minsta först" },
+          { code: -1, type: "livingarea", name: "Boarea: Största först" }
         ]
       };
 
@@ -110,19 +110,6 @@ app.directive('buyFilter', [function(){
             }]
           };
 
-        // If a sort option is selected the code will either be: 1(ascending) or -1(descending)
-        // This will be added after the $and in the query
-        if($scope.filterOption.sortOption.code !== 0){
-
-          // First create an empty object
-          query._sort = {};
-
-          // Second we store out sort option in the object
-          // this is taken from $scope.filterOption.sortOption
-          // query._sort.type = code
-          query._sort[$scope.filterOption.sortOption.type] = $scope.filterOption.sortOption.code;
-        }
-
         // This is our get request to our database
         property.get(
 
@@ -133,14 +120,46 @@ app.directive('buyFilter', [function(){
 
             console.log(data);
 
+            $scope.initValues = data;
+
             // Send data to make pagination
             setupPagination(data);
+
+            if($route.current.params.id){
+              if($scope.initValues.find(findProp)){
+                $scope.openModal($scope.initValues.find(findProp));
+              }
+              else{
+                $location.search("");
+              }
+            }
+
+            function findProp(prop){
+              return prop._id === $route.current.params.id;
+            }
         });
+      }
+
+      $scope.sort = function(){
+
+        var sortedData = $filter('orderBy')($scope.initValues, $scope.filterOption.sortOption.type, $scope.filterOption.sortOption.code);
+
+        setupPagination(sortedData);
+      }
+
+      $scope.clickModal = function(prop){
+
+        $location.search({ id: prop._id });
+        $scope.openModal(prop);
+        console.log($route.current);
       }
 
       // Init
       $scope.filter();
-      
+
+      console.log($location);
+      console.log($routeParams);
+
     }]
   };
 }]);
