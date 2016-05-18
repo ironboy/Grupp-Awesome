@@ -8,8 +8,8 @@
 				<h4>Sortera</h4>
 				<select class="form-control"
 					ng-options="sortOption as sortOption.name for sortOption in filterOptions.sortOption"
-					ng-model="filterOption.sortOption"
-					ng-change="sort()">
+					ng-model="sortAndTypeData"
+					ng-change="sortAndType()">
 					<option value="" disabled selected>Sortera Pris/Boarea</option>
 				</select>
 			</div>
@@ -20,7 +20,7 @@
 		<div class="col-xs-12">
 			<div class="col-xs-6 col-sm-3 pull-right">
 				<select class="form-control"
-					ng-options="itemsPerPage as itemsPerPage.amount + ' per sida' for itemsPerPage in filterOptions.itemsPerPage"
+					ng-options="itemsPerPage as itemsPerPage + ' per sida' for itemsPerPage in filterOptions.itemsPerPage"
 					ng-model="filterOption.itemsPerPage"
 					ng-change="filter()">
 					<option value="" disabled selected>Visa antal</option>
@@ -36,8 +36,8 @@
 					<h4>Fastighet</h4>
 					<select class="form-control"
 						ng-options="filterOption as filterOption.name for filterOption in filterOptions.type"
-						ng-model="filterOption.propertyType"
-						ng-change="filter()">
+						ng-model="sortAndTypeData"
+						ng-change="sortAndType()">
 						<option value="" disabled selected>Välj Fastighet</option>
 					</select>
 				</div>
@@ -47,7 +47,7 @@
 				<div class="form-group col-xs-10 col-xs-offset-1 text-left">
 					<h4>Boarea</h4>
 					<select class="form-control"
-						ng-options="filterOption as filterOption.area + ' m²' for filterOption in filterOptions.areaMin"
+						ng-options="filterOption as filterOption + ' m²' for filterOption in filterOptions.areaMin"
 						ng-model="filterOption.areaMin"
 						ng-change="filter()">
 						<option value="" disabled selected>Boarea Från</option>
@@ -56,7 +56,7 @@
 
 				<div class="form-group col-xs-10 col-xs-offset-1 text-left">
 					<select class="form-control"
-						ng-options="filterOption as filterOption.area + ' m²' for filterOption in filterOptions.areaMax"
+						ng-options="filterOption as filterOption + ' m²' for filterOption in filterOptions.areaMax"
 						ng-model="filterOption.areaMax"
 						ng-change="filter()">
 						<option value="" disabled selected>Boarea Till</option>
@@ -68,7 +68,7 @@
   				<div class="form-group col-xs-10 col-xs-offset-1 text-left">
 					<h4>Pris</h4>
 					<select class="form-control"
-						ng-options="filterOption as filterOption.price | currency for filterOption in filterOptions.priceMin"
+						ng-options="filterOption as filterOption | currency for filterOption in filterOptions.priceMin"
 						ng-model="filterOption.priceMin"
 						ng-change="filter()">
 					<option value="" disabled selected>Pris Från</option>
@@ -76,7 +76,7 @@
 				</div>
 				<div class="form-group col-xs-10 col-xs-offset-1 text-center">
 					<select class="form-control"
-						ng-options="filterOption as filterOption.price | currency for filterOption in filterOptions.priceMax"
+						ng-options="filterOption as filterOption | currency for filterOption in filterOptions.priceMax"
 						ng-model="filterOption.priceMax"
 						ng-change="filter()">
 					<option value="" disabled selected>Pris Till</option>

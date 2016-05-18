@@ -7,7 +7,7 @@ app.directive('buyFilter', [function(){
 
       function setupPagination(data) {
         var allValues = data;
-        $scope.itemsPerPage = $scope.filterOption.itemsPerPage.amount;
+        $scope.itemsPerPage = $scope.filterOption.itemsPerPage;
         console.log($scope.itemsPerPage);
         window.heyoo = $scope;
         window.banan = allValues;
@@ -29,60 +29,77 @@ app.directive('buyFilter', [function(){
       // Data is changed with ng-model in .html
       // We use this data in the the query for filtering
       $scope.filterOption = {
-        priceMin: { price: 0 },
-        priceMax: { price: 100000000 },
-        areaMin: { area: 0 },
-        areaMax: { area: 10000},
-        propertyType: { type: /.*/ },
-        sortOption: { code: 0 },
-        itemsPerPage: { amount: 5 },
+        priceMin: -10000,
+        priceMax: 100000000 ,
+        areaMin: -10000,
+        areaMax: 10000,
+        propertyType: /.*/,
+        sortOptionCode: null,
+        sortOptionType: null,
+        itemsPerPage: 5,
         id: null
       };
+
+      $scope.sortAndTypeData;
+      $scope.sortAndType = function(){
+        console.log($scope.sortAndTypeData);
+        if($scope.sortAndTypeData.code === 0 | -1){
+          console.log("Sort");
+          $scope.filterOption.sortOptionCode = $scope.sortAndTypeData.code;
+          $scope.filterOption.sortOptionType = $scope.sortAndTypeData.type;
+          console.log($scope.filterOption);
+          $scope.sort();
+        }
+        else{
+          $scope.propertyType = $scope.sortAndTypeData.type;
+          $scope.filter();
+        }
+      }
 
       // Select options for angular
       // This is just stored data instead of keeping it in the .html
       // It's looped into a <select> with ng-options in .html
       $scope.filterOptions = {
         priceMin: [
-          { price: 0 },
-          { price: 1000000 },
-          { price: 2500000 },
-          { price: 5000000 },
-          { price: 7500000 },
-          { price: 10000000 }
+          0,
+          1000000,
+          2500000,
+          5000000,
+          7500000,
+          10000000 
         ],
         priceMax: [
-          { price: 2500000 },
-          { price: 5000000 },
-          { price: 7500000 },
-          { price: 10000000 },
-          { price: 15000000 },
-          { price: 50000000 }
+          2500000,
+          5000000,
+          7500000,
+          10000000,
+          15000000,
+          50000000 
         ],
         areaMin: [
-          { area: 0 },
-          { area: 25 },
-          { area: 50 },
-          { area: 75 },
-          { area: 100 },
-          { area: 125 },
-          { area: 150 }
+          0,
+          25,
+          50,
+          75,
+          100,
+          125,
+          150 
         ],
         areaMax: [
-          { area: 25 },
-          { area: 50 },
-          { area: 75 },
-          { area: 100 },
-          { area: 125 },
-          { area: 150 },
-          { area: 200 },
-          { area: 300 }
+          25,
+          50,
+          75,
+          100,
+          125,
+          150,
+          200,
+          300 
         ],
         itemsPerPage: [
-          { amount: 5 },
-          { amount: 10 },
-          { amount: 25 },
-          { amount: 50 }
+          5,
+          10,
+          25,
+          50
         ],
         type: [
           { type: "House", name: "Villa" },
@@ -107,9 +124,9 @@ app.directive('buyFilter', [function(){
             // $and contains all values that are being compared
             // $lte = less than or equal to - $gte = greater than or equal to
             $and: [{
-              propertyType: $scope.filterOption.propertyType.type,
-              price: { $lte : $scope.filterOption.priceMax.price, $gte : $scope.filterOption.priceMin.price },
-              livingarea: { $lte : $scope.filterOption.areaMax.area, $gte : $scope.filterOption.areaMin.area } /* , add more filter here */
+              propertyType: $scope.filterOption.propertyType,
+              price: { $lte : $scope.filterOption.priceMax, $gte : $scope.filterOption.priceMin },
+              livingarea: { $lte : $scope.filterOption.areaMax, $gte : $scope.filterOption.areaMin } /* , add more filter here */
             }]
           };
 
@@ -148,7 +165,7 @@ app.directive('buyFilter', [function(){
 
       $scope.sort = function(){
 
-        var sortedData = $filter('orderBy')($scope.initValues, $scope.filterOption.sortOption.type, $scope.filterOption.sortOption.code);
+        var sortedData = $filter('orderBy')($scope.initValues, $scope.filterOption.sortOptionType, $scope.filterOption.sortOptionCode);
 
         setupPagination(sortedData);
       }
@@ -162,14 +179,25 @@ app.directive('buyFilter', [function(){
         console.log("URL",$scope.urlOptions);
       }
 
+      if($route.current.params.priceMax){
+        $scope.filterOption.priceMin = parseInt($route.current.params.priceMin);
+        $scope.filterOption.priceMax = parseInt($route.current.params.priceMax);
+        $scope.filterOption.areaMin = parseInt($route.current.params.areaMin);
+        $scope.filterOption.areaMax = parseInt($route.current.params.areaMax);
+        $scope.filterOption.itemsPerPage = parseInt($route.current.params.itemsPerPage);
+        if($route.current.params.propertyType !== "/.*/"){
+          $scope.filterOption.propertyType = parseInt($route.current.params.propertyType);
+        }
+
+        console.log($scope.filterOption);
+      }
+
       // Init
       $scope.filter();
-
-      console.log($location);
-      console.log($routeParams);
+      console.log($scope.filterOption);
 
       $scope.$watch("filterOption", function(newValue,oldValue){
-        console.log(newValue,oldValue);
+        $location.search($scope.filterOption);
       }, true)
 
     }]
