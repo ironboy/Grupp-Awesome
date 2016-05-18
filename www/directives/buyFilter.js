@@ -29,12 +29,12 @@ app.directive('buyFilter', [function(){
       // Data is changed with ng-model in .html
       // We use this data in the the query for filtering
       $scope.filterOption = {
-        priceMin: 0 ,
+        priceMin: -10000,
         priceMax: 100000000 ,
-        areaMin: 0,
+        areaMin: -10000,
         areaMax: 10000,
         propertyType: /.*/,
-        sortOptionCode: 0,
+        sortOptionCode: null,
         sortOptionType: null,
         itemsPerPage: 5,
         id: null
@@ -43,10 +43,11 @@ app.directive('buyFilter', [function(){
       $scope.sortAndTypeData;
       $scope.sortAndType = function(){
         console.log($scope.sortAndTypeData);
-        if($scope.sortAndTypeData.code){
+        if($scope.sortAndTypeData.code === 0 | -1){
           console.log("Sort");
           $scope.filterOption.sortOptionCode = $scope.sortAndTypeData.code;
           $scope.filterOption.sortOptionType = $scope.sortAndTypeData.type;
+          console.log($scope.filterOption);
           $scope.sort();
         }
         else{
