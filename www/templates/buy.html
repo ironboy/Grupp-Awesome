@@ -2,15 +2,15 @@
 	<div class="page-container">
 		<div class="container-fluid">
 			<div class="row">
-				<buy-filter></buy-filter>
+				<buy-filter modal-list></buy-filter>
 			</div>
 			<div class="row">
 				<div ng-if="values.length > 0">
-					<div ng-repeat="value in values" modal-list>
+					<div ng-repeat="value in values">
 						<div class="listAll boxBg">
 							<div class="row">
 								<div class="col-xs-12 col-sm-6">
-									<img class="img-responsive" ng-src="{{value.path}}" ng-click="openModal(value)">
+									<img class="img-responsive" ng-src="{{value.path}}" ng-click="clickModal(value)">
 								</div>
 								<div class="col-xs-12 col-sm-6">
 									<p>

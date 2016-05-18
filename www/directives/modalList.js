@@ -1,7 +1,7 @@
 app.directive("modalList", [function (){
 
 	return {
-		controller: ["$scope", "$uibModal", function($scope, $uibModal){
+		controller: ["$scope", "$location", "$uibModal", function($scope, $location, $uibModal){
 
 			$scope.openModal = function(fastighet){
 
@@ -19,9 +19,11 @@ app.directive("modalList", [function (){
 			    modalInstance.result.then(function (selectedItem) {
 			    	//done (ok)
 			      	$scope.selected = selectedItem;
+			      	$location.search("");
 			    }, function () {
 			    	//fail (cancel)
 			      	console.log('Modal dismissed at: ' + new Date());
+			      	$location.search("");
 			    });
 			}
 		}]
