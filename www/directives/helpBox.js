@@ -1,23 +1,3 @@
-/*app.directive("helpBox", [function(){
-
-	return{
-		templateUrl:'directives/helpBox.html',
-		link: function(scope, elem, attrs) {
-			var helper = function(){
-
-				height = 5;
-				width = 5;
-				t = window.innerHeight - height;
-				l = window.innerWidth - width;
-
-				var help = window.open('', '', 'height='+height+', width='+width+', left='+l+', top='+t );
-				scope.help;
-			}
-		}
-	}
-}])
-
-*/
 app.directive("helpBox", [function(){
 
 	return{
@@ -37,10 +17,6 @@ app.directive("helpBox", [function(){
 		    });
 			scope.helper = function() {
 			    
-
-			 	console.log("hej");
-
-			   
 			   helperbox.dialog("open");
 			};
 
