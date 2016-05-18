@@ -2,7 +2,7 @@ app.directive('buyFilter', [function(){
 
   return {
     templateUrl: '/directives/buyFilter.html',
-    controller: ['$scope', '$filter', "property", function($scope, $filter, property) {
+    controller: ['$scope', '$filter', '$route', '$routeParams', '$location', "property", function($scope, $filter, $route, $routeParams, $location, property) {
 
 
       function setupPagination(data) {
@@ -124,6 +124,19 @@ app.directive('buyFilter', [function(){
 
             // Send data to make pagination
             setupPagination(data);
+
+            if($route.current.params.id){
+              if($scope.initValues.find(findProp)){
+                $scope.openModal($scope.initValues.find(findProp));
+              }
+              else{
+                $location.search("");
+              }
+            }
+
+            function findProp(prop){
+              return prop._id === $route.current.params.id;
+            }
         });
       }
 
@@ -134,9 +147,19 @@ app.directive('buyFilter', [function(){
         setupPagination(sortedData);
       }
 
+      $scope.clickModal = function(prop){
+
+        $location.search({ id: prop._id });
+        $scope.openModal(prop);
+        console.log($route.current);
+      }
+
       // Init
       $scope.filter();
-      
+
+      console.log($location);
+      console.log($routeParams);
+
     }]
   };
 }]);
