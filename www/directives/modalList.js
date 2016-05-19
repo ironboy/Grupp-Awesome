@@ -1,7 +1,7 @@
 app.directive("modalList", [function (){
 
 	return {
-		controller: ["$scope", "$location", "$uibModal", function($scope, $location, $uibModal){
+		controller: ["$scope", "$uibModal", function($scope, $uibModal){
 
 			$scope.openModal = function(fastighet){
 

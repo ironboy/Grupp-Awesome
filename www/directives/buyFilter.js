@@ -2,7 +2,7 @@ app.directive('buyFilter', [function(){
 
   return {
     templateUrl: '/directives/buyFilter.html',
-    controller: ['$scope', '$filter', '$route', '$routeParams', '$location', "property", function($scope, $filter, $route, $routeParams, $location, property) {
+    controller: ['$scope', '$filter', '$route', '$location', "property", function($scope, $filter, $route, $location, property) {
 
       // Pagination function
       // Uses different elements in buy.html in our $scope
@@ -38,7 +38,7 @@ app.directive('buyFilter', [function(){
         sortOptionCode: null,
         sortOptionType: null,
 
-        // Propert id
+        // Property id
         id: null,
 
         // Pagination options
@@ -49,18 +49,18 @@ app.directive('buyFilter', [function(){
       // Function to only get needed values into $scope.filterOption
       $scope.typeData = {};
       $scope.typeCheck = function(){
-        var p = $scope.typeData;
+        var data = $scope.typeData;
 
         // If data is for sort
-        if(p.type === "price" | "livingarea"){
-          $scope.filterOption.sortOptionCode = p.code;
-          $scope.filterOption.sortOptionType = p.type;
+        if(data.type === "price" || data.type === "livingarea"){
+          $scope.filterOption.sortOptionCode = data.code;
+          $scope.filterOption.sortOptionType = data.type;
           $scope.sort();
         }
 
         // if data is for property type
         else{
-          $scope.filterOption.propertyType = p.type;
+          $scope.filterOption.propertyType = data.type;
           $scope.filter();
         }
         $scope.typeData = {};
@@ -92,15 +92,17 @@ app.directive('buyFilter', [function(){
       // Filter
       $scope.filter = function(){
 
+        var data = $scope.filterOption;
+
         // Here we create our query as an object
         var query = {
 
             // $and contains all values that are being compared
             // $lte = less than or equal to - $gte = greater than or equal to
             $and: [{
-              propertyType: $scope.filterOption.propertyType,
-              price: { $lte : $scope.filterOption.priceMax, $gte : $scope.filterOption.priceMin },
-              livingarea: { $lte : $scope.filterOption.areaMax, $gte : $scope.filterOption.areaMin } /* , add more filter here */
+              propertyType: data.propertyType,
+              price: { $lte : data.priceMax, $gte : data.priceMin },
+              livingarea: { $lte : data.areaMax, $gte : data.areaMin } /* , add more filter here */
             }]
           };
 
@@ -124,12 +126,12 @@ app.directive('buyFilter', [function(){
             setupPagination(data);
 
             // Checks if our id in URL is an existing id
-            if($scope.filterOption.id){
+            if(data.id){
               if($scope.initValues.find(findProp)){
                 $scope.openModal($scope.initValues.find(findProp));
               }
               else{
-                $scope.filterOption.id = null;
+                data.id = null;
               }
             }
 
@@ -164,15 +166,17 @@ app.directive('buyFilter', [function(){
           if ($scope.filterOption.hasOwnProperty(key)) {
 
             // Should be string && propertyType should not parse "House" or "Apartment" && should not parse sortOptionType && should not parse id
-            if(typeof $scope.filterOption[key] === 'string' && $scope.filterOption[key] !== "House" | "Apartment" && key !== "sortOptionType" && key !== "id") {
+            if(typeof $scope.filterOption[key] === 'string' && $scope.filterOption[key] !== "Apartment" && $scope.filterOption[key] !== "House" && key !== "sortOptionType" && key !== "id") {
               $scope.filterOption[key] = parseInt($scope.filterOption[key]);
             }
           }
         }
 
+        console.log($scope.filterOption);
+
         // propertyType cannot be without data
         // If there's no data or type is undefined add /.*/ to it 
-        if(!$scope.filterOption.propertyType || $scope.filterOption.propertyType == undefined) {
+        if(!$scope.filterOption.propertyType) {
           $scope.filterOption.propertyType = /.*/;
         }
       }
