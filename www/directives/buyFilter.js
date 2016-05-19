@@ -8,16 +8,13 @@ app.directive('buyFilter', [function(){
       // Uses different elements in buy.html in our $scope
       function setupPagination(data) {
 
-        // Total items shown per page
-        $scope.itemsPerPage = $scope.filterOption.itemsPerPage;
-
         // Total amount of items
         $scope.totalItems = data.length;
 
         // Function for changing page and dividing data into different pages
         $scope.pageChanged = function () {
-          var startAt = ($scope.filterOption.currentPage-1) * $scope.itemsPerPage;
-          $scope.values = data.slice().splice(startAt, $scope.itemsPerPage);
+          var startAt = ($scope.filterOption.currentPage-1) * $scope.filterOption.itemsPerPage;
+          $scope.values = data.slice().splice(startAt, $scope.filterOption.itemsPerPage);
           console.log("pagination page " + $scope.filterOption.currentPage + " amount of items on this page " + $scope.values.length);
         };
 
@@ -127,7 +124,7 @@ app.directive('buyFilter', [function(){
             setupPagination(data);
 
             // Checks if our id in URL is an existing id
-            if($route.current.params.id){
+            if($scope.filterOption.id){
               if($scope.initValues.find(findProp)){
                 $scope.openModal($scope.initValues.find(findProp));
               }
@@ -166,8 +163,8 @@ app.directive('buyFilter', [function(){
         for (var key in $scope.filterOption) {
           if ($scope.filterOption.hasOwnProperty(key)) {
 
-            // Should be string && propertyType should not parse "House" or "Apartment" && should not parse sortOptionType
-            if(typeof $scope.filterOption[key] === 'string' && $scope.filterOption[key] !== "House" | "Apartment" && key !== "sortOptionType") {
+            // Should be string && propertyType should not parse "House" or "Apartment" && should not parse sortOptionType && should not parse id
+            if(typeof $scope.filterOption[key] === 'string' && $scope.filterOption[key] !== "House" | "Apartment" && key !== "sortOptionType" && key !== "id") {
               $scope.filterOption[key] = parseInt($scope.filterOption[key]);
             }
           }
