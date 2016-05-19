@@ -14,7 +14,7 @@ app.directive('buyFilter', [function(){
         // Total amount of items
         $scope.totalItems = data.length;
 
-        // 
+        // Function for changing page and dividing data into different pages
         $scope.pageChanged = function () {
           var startAt = ($scope.filterOption.currentPage-1) * $scope.itemsPerPage;
           $scope.values = data.slice().splice(startAt, $scope.itemsPerPage);
@@ -34,6 +34,7 @@ app.directive('buyFilter', [function(){
         areaMax: 10000,
 
         // Property type House/Apartment
+        // /.*/ takes all values
         propertyType: /.*/,
 
         // Sorting options
@@ -48,16 +49,21 @@ app.directive('buyFilter', [function(){
         currentPage: 1
       };
 
-      // Function to only get needed values into$scope.filterOption
+      // Function to only get needed values into $scope.filterOption
       $scope.typeData = {};
       $scope.typeCheck = function(){
-        if($scope.typeData.type === "price" | "livingarea"){
-          $scope.filterOption.sortOptionCode = $scope.typeData.code;
-          $scope.filterOption.sortOptionType = $scope.typeData.type;
+        var p = $scope.typeData;
+
+        // If data is for sort
+        if(p.type === "price" | "livingarea"){
+          $scope.filterOption.sortOptionCode = p.code;
+          $scope.filterOption.sortOptionType = p.type;
           $scope.sort();
         }
+
+        // if data is for property type
         else{
-          $scope.filterOption.propertyType = $scope.typeData.type;
+          $scope.filterOption.propertyType = p.type;
           $scope.filter();
         }
         $scope.typeData = {};
@@ -100,6 +106,8 @@ app.directive('buyFilter', [function(){
               livingarea: { $lte : $scope.filterOption.areaMax, $gte : $scope.filterOption.areaMin } /* , add more filter here */
             }]
           };
+
+          console.log(query);
 
         // This is our get request to our database
         property.get(
@@ -150,27 +158,26 @@ app.directive('buyFilter', [function(){
         $scope.openModal(prop);
       }
 
-      // Checks if a URL exist / bugged propertyType is always NaN
+      // Checks if a URL exist
       if($route.current.params.priceMax){
-        console.log("Params",$route.current.params);
         $scope.filterOption = $route.current.params;
-        console.log("Before parseInt",$scope.filterOption);
 
+        // Loops through to remove strings on integers
         for (var key in $scope.filterOption) {
           if ($scope.filterOption.hasOwnProperty(key)) {
-            if(typeof $scope.filterOption[key] === 'string') {
+
+            // Should be string && propertyType should not parse "House" or "Apartment" && should not parse sortOptionType
+            if(typeof $scope.filterOption[key] === 'string' && $scope.filterOption[key] !== "House" | "Apartment" && key !== "sortOptionType") {
               $scope.filterOption[key] = parseInt($scope.filterOption[key]);
             }
           }
         }
 
-        console.log("After parseInt",$scope.filterOption);
-
-        if(!$scope.filterOption.propertyType) {
+        // propertyType cannot be without data
+        // If there's no data or type is undefined add /.*/ to it 
+        if(!$scope.filterOption.propertyType || $scope.filterOption.propertyType == undefined) {
           $scope.filterOption.propertyType = /.*/;
         }
-
-        console.log("After propertyType check",$scope.filterOption);
       }
 
       // Init all data
