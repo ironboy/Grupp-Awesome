@@ -25,9 +25,9 @@ app.directive('buyFilter', [function(){
       // Data is changed with ng-model in .html
       // We use this data in the the query for filtering and URL
       $scope.filterOption = {
-        priceMin: -10000,
+        priceMin: 1,
         priceMax: 100000000 ,
-        areaMin: -10000,
+        areaMin: 1,
         areaMax: 10000,
 
         // Property type House/Apartment
@@ -52,15 +52,15 @@ app.directive('buyFilter', [function(){
         var data = $scope.typeData;
 
         // If data is for sort
-        if(data.type === "price" || data.type === "livingarea"){
-          $scope.filterOption.sortOptionCode = data.code;
-          $scope.filterOption.sortOptionType = data.type;
+        if(data.sortOptionType){
+          $scope.filterOption.sortOptionCode = data.sortOptionCode;
+          $scope.filterOption.sortOptionType = data.sortOptionType;
           $scope.sort();
         }
 
         // if data is for property type
         else{
-          $scope.filterOption.propertyType = data.type;
+          $scope.filterOption.propertyType = data.propertyType;
           $scope.filter();
         }
         $scope.typeData = {};
@@ -77,15 +77,15 @@ app.directive('buyFilter', [function(){
         itemsPerPage: [5,10,25,50],
 
         type: [
-          { type: "House", name: "Villa" },
-          { type: "Apartment", name: "Lägenhet"}
+          { propertyType: "House", name: "Villa" },
+          { propertyType: "Apartment", name: "Lägenhet"}
         ],
 
         sortOption: [
-          { code: 0, type: "price", name: "Pris: Lägsta först" },
-          { code: -1, type: "price", name: "Pris: Högsta först" },
-          { code: 0, type: "livingarea", name: "Boarea: Minsta först" },
-          { code: -1, type: "livingarea", name: "Boarea: Största först" }
+          { sortOptionCode: 0, sortOptionType: "price", name: "Pris: Lägsta först" },
+          { sortOptionCode: -1, sortOptionType: "price", name: "Pris: Högsta först" },
+          { sortOptionCode: 0, sortOptionType: "livingarea", name: "Boarea: Minsta först" },
+          { sortOptionCode: -1, sortOptionType: "livingarea", name: "Boarea: Största först" }
         ]
       };
 
