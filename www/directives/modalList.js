@@ -20,12 +20,10 @@ app.directive("modalList", [function (){
 			    	//done (ok)
 			      	$scope.selected = selectedItem;
 			      	$scope.filterOption.id = null;
-			      	$location.search($scope.filterOption);
 			    }, function () {
 			    	//fail (cancel)
 			      	console.log('Modal dismissed at: ' + new Date());
 			      	$scope.filterOption.id = null;
-			      	$location.search($scope.filterOption);
 			    });
 			}
 		}]
