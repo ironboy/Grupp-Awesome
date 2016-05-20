@@ -185,7 +185,7 @@ app.directive('buyFilter', [function(){
       $scope.filter();
 
       // A $watch to find changes in $scope.filterOptions and update out URL
-      $scope.$watch("filterOption", function(newValue,oldValue){
+      $scope.$watch("filterOption", function(){
         $location.search($scope.filterOption);
       }, true)
 
