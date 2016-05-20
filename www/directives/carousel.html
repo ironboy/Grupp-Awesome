@@ -1,14 +1,19 @@
 <div>
-  <uib-carousel active="active" interval="myInterval" no-wrap="noWrapSlides">
-    <uib-slide ng-repeat="slide in slides" index="slide.id">
-      <div ng-style="slide.imageStyle" class="img-responsive carouselSlide">
-        
-      </div>
 
-        <div class="carousel-caption">
-            
-        </div>
+	<uib-carousel active="active" interval="myInterval" no-wrap="noWrapSlides">
+		<uib-slide ng-repeat="slide in slides" index="slide.id">
+		  <div ng-style="slide.imageStyle" class="img-responsive carouselSlide">
+		    
+		  </div>
 
-    </uib-slide>
-  </uib-carousel>
+		    <div class="carousel-caption">
+		        
+		    </div>
+
+		</uib-slide>
+	</uib-carousel>
+
+	<div class="preloader">
+		<div ng-repeat="slide in slides" ng-style="slide.imageStyle"></div>
+	</div>
 </div>
