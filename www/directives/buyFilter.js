@@ -15,7 +15,6 @@ app.directive('buyFilter', [function(){
         $scope.pageChanged = function () {
           var startAt = ($scope.filterOption.currentPage-1) * $scope.filterOption.itemsPerPage;
           $scope.values = data.slice().splice(startAt, $scope.filterOption.itemsPerPage);
-          console.log("pagination page " + $scope.filterOption.currentPage + " amount of items on this page " + $scope.values.length);
         };
 
         $scope.pageChanged();
@@ -58,7 +57,7 @@ app.directive('buyFilter', [function(){
           $scope.sort();
         }
 
-        // if data is for property type
+        // If data is for property type
         else{
           $scope.filterOption.propertyType = data.propertyType;
           $scope.filter();
@@ -102,11 +101,9 @@ app.directive('buyFilter', [function(){
             $and: [{
               propertyType: data.propertyType,
               price: { $lte : data.priceMax, $gte : data.priceMin },
-              livingarea: { $lte : data.areaMax, $gte : data.areaMin } /* , add more filter here */
+              livingarea: { $lte : data.areaMax, $gte : data.areaMin } // , add more filter here
             }]
           };
-
-          console.log(query);
 
         // This is our get request to our database
         property.get(
@@ -144,12 +141,12 @@ app.directive('buyFilter', [function(){
       // Our sort funtion
       // Uses angular $filter with orderBy to sort data on frontend
       $scope.sort = function(){
-        var sortedData = $filter('orderBy')($scope.initValues, $scope.filterOption.sortOptionType, $scope.filterOption.sortOptionCode);
-        setupPagination(sortedData);
+        setupPagination($filter('orderBy')($scope.initValues, $scope.filterOption.sortOptionType, $scope.filterOption.sortOptionCode));
       }
 
       // Opens a modal for property
       $scope.initModal = function(prop){
+
         // Get id from modal to input in URL
         $scope.filterOption.id = prop._id;
 
@@ -165,19 +162,16 @@ app.directive('buyFilter', [function(){
         for (var key in $scope.filterOption) {
           if ($scope.filterOption.hasOwnProperty(key)) {
 
-            // Should be string && propertyType should not parse "House" or "Apartment" && should not parse sortOptionType && should not parse id
-            if(typeof $scope.filterOption[key] === 'string' && $scope.filterOption[key] !== "Apartment" && $scope.filterOption[key] !== "House" && key !== "sortOptionType" && key !== "id") {
-              $scope.filterOption[key] = parseInt($scope.filterOption[key]);
+            // propertyType should not parse "House" or "Apartment" && should not parse sortOptionType && should not parse id
+            if(key != 'propertyType' && key != "sortOptionType" && key != "id") {
+              $scope.filterOption[key] = $scope.filterOption[key]/1;
             }
           }
         }
 
-        console.log($scope.filterOption);
-
-        // propertyType cannot be without data
-        // If there's no data or type is undefined add /.*/ to it 
-        if(!$scope.filterOption.propertyType) {
-          $scope.filterOption.propertyType = /.*/;
+        // If our RegExp is a string, make it a non string
+        if($scope.filterOption.propertyType == "/.*/") {
+          $scope.filterOption.propertyType = new RegExp(".*");
         }
       }
 
@@ -185,6 +179,7 @@ app.directive('buyFilter', [function(){
       $scope.filter();
 
       // A $watch to find changes in $scope.filterOptions and update out URL
+      // Page will not reload because of reloadOnSearch is set to false in app.js
       $scope.$watch("filterOption", function(){
         $location.search($scope.filterOption);
       }, true)
