@@ -19,9 +19,11 @@ app.directive("modalList", [function (){
 			    modalInstance.result.then(function (selectedItem) {
 			    	//done (ok)
 			      	$scope.selected = selectedItem;
+			      	$scope.filterOption.id = null;
 			    }, function () {
 			    	//fail (cancel)
 			      	console.log('Modal dismissed at: ' + new Date());
+			      	$scope.filterOption.id = null;
 			    });
 			}
 		}]

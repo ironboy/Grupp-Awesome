@@ -2,24 +2,19 @@ app.directive('buyFilter', [function(){
 
   return {
     templateUrl: '/directives/buyFilter.html',
-    controller: ['$scope', "property", function($scope, property) {
+    controller: ['$scope', '$filter', '$route', '$location', "property", function($scope, $filter, $route, $location, property) {
 
-
+      // Pagination function
+      // Uses different elements in buy.html in our $scope
       function setupPagination(data) {
-        var allValues = data;
-        $scope.itemsPerPage = $scope.filterOption.itemsPerPage.amount;
-        console.log($scope.itemsPerPage);
-        window.heyoo = $scope;
-        window.banan = allValues;
-        // total pages
-        $scope.totalItems = allValues.length;
 
-        $scope.currentPage = 1;
+        // Total amount of items
+        $scope.totalItems = data.length;
 
+        // Function for changing page and dividing data into different pages
         $scope.pageChanged = function () {
-          var startAt = ($scope.currentPage-1) * $scope.itemsPerPage;
-          $scope.values = allValues.slice().splice(startAt, $scope.itemsPerPage);
-          console.log("pagination page " + $scope.currentPage + " amount of items on this page " + $scope.values.length);
+          var startAt = ($scope.filterOption.currentPage-1) * $scope.filterOption.itemsPerPage;
+          $scope.values = data.slice().splice(startAt, $scope.filterOption.itemsPerPage);
         };
 
         $scope.pageChanged();
@@ -27,73 +22,76 @@ app.directive('buyFilter', [function(){
 
       // This is where data is stored when an option is selected
       // Data is changed with ng-model in .html
-      // We use this data in the the query for filtering
+      // We use this data in the the query for filtering and URL
       $scope.filterOption = {
-        priceMin: { price: 0 },
-        priceMax: { price: 100000000 },
-        areaMin: { area: 0 },
-        areaMax: { area: 10000},
-        propertyType: { type: /.*/ },
-        sortOption: { code: 0 },
-        itemsPerPage: { amount: 5 }
+        priceMin: 1,
+        priceMax: 100000000 ,
+        areaMin: 1,
+        areaMax: 10000,
+
+        // Property type House/Apartment
+        // /.*/ takes all values
+        propertyType: /.*/,
+
+        // Sorting options
+        sortOptionCode: null,
+        sortOptionType: null,
+
+        // Property id
+        id: null,
+
+        // Pagination options
+        itemsPerPage: 5,
+        currentPage: 1
       };
+
+      // Function to only get needed values into $scope.filterOption
+      $scope.typeData = {};
+      $scope.typeCheck = function(){
+        var data = $scope.typeData;
+
+        // If data is for sort
+        if(data.sortOptionType){
+          $scope.filterOption.sortOptionCode = data.sortOptionCode;
+          $scope.filterOption.sortOptionType = data.sortOptionType;
+          $scope.sort();
+        }
+
+        // If data is for property type
+        else{
+          $scope.filterOption.propertyType = data.propertyType;
+          $scope.filter();
+        }
+        $scope.typeData = {};
+      }
 
       // Select options for angular
       // This is just stored data instead of keeping it in the .html
       // It's looped into a <select> with ng-options in .html
       $scope.filterOptions = {
-        priceMin: [
-          { price: 0, displayPrice: "0 kr" },
-          { price: 1000000, displayPrice: "1.000.000 kr" },
-          { price: 2500000, displayPrice: "2.500.000 kr" },
-          { price: 5000000, displayPrice: "5.000.000 kr" },
-          { price: 7500000, displayPrice: "7.500.000 kr" },
-          { price: 10000000, displayPrice: "10.000.000 kr" }
-        ],
-        priceMax: [
-          { price: 2500000, displayPrice: "2.500.000 kr" },
-          { price: 5000000, displayPrice: "5.000.000 kr" },
-          { price: 7500000, displayPrice: "7.500.000 kr" },
-          { price: 10000000, displayPrice: "10.000.000 kr" },
-          { price: 15000000, displayPrice: "15.000.000 kr" },
-          { price: 50000000, displayPrice: "50.000.000 kr" }
-        ],
+        priceMin: [0,1000000,2500000,5000000,7500000,10000000],
+        priceMax: [2500000,5000000,7500000,10000000,15000000,50000000],
+        areaMin: [0,25,50,75,100,125,150],
+        areaMax: [25,50,75,100,125,150,200,300],
+        itemsPerPage: [5,10,25,50],
+
         type: [
-          { type: "House", name: "Villa" },
-          { type: "Apartment", name: "Lägenhet"}
+          { propertyType: "House", name: "Villa" },
+          { propertyType: "Apartment", name: "Lägenhet"}
         ],
-        areaMin: [
-          { area: 0, displayArea: "0 m²" },
-          { area: 20, displayArea: "20 m²" },
-          { area: 40, displayArea: "40 m²" },
-          { area: 60, displayArea: "60 m²" },
-          { area: 80, displayArea: "80 m²" },
-          { area: 100, displayArea: "100 m²" }
-        ],
-        areaMax: [
-          { area: 40, displayArea: "40 m²" },
-          { area: 60, displayArea: "60 m²" },
-          { area: 80, displayArea: "80 m²" },
-          { area: 100, displayArea: "100 m²" },
-          { area: 120, displayArea: "120 m²" },
-          { area: 150, displayArea: "150 m²" }
-        ],
+
         sortOption: [
-          { code: 1, type: "price", name: "Pris: Lägsta först" },
-          { code: -1, type: "price", name: "Pris: Högsta först" },
-          { code: 1, type: "livingarea", name: "Boarea: Minsta först" },
-          { code: -1, type: "livingarea", name: "Boarea: Största först" }
-        ],
-        itemsPerPage: [
-          { amount: 5, name: "5 per sida" },
-          { amount: 10, name: "10 per sida" },
-          { amount: 25, name: "25 per sida" },
-          { amount: 50, name: "50 per sida" }
+          { sortOptionCode: 0, sortOptionType: "price", name: "Pris: Lägsta först" },
+          { sortOptionCode: -1, sortOptionType: "price", name: "Pris: Högsta först" },
+          { sortOptionCode: 0, sortOptionType: "livingarea", name: "Boarea: Minsta först" },
+          { sortOptionCode: -1, sortOptionType: "livingarea", name: "Boarea: Största först" }
         ]
       };
 
       // Filter
       $scope.filter = function(){
+
+        var data = $scope.filterOption;
 
         // Here we create our query as an object
         var query = {
@@ -101,24 +99,11 @@ app.directive('buyFilter', [function(){
             // $and contains all values that are being compared
             // $lte = less than or equal to - $gte = greater than or equal to
             $and: [{
-              propertyType: $scope.filterOption.propertyType.type,
-              price: { $lte : $scope.filterOption.priceMax.price, $gte : $scope.filterOption.priceMin.price },
-              livingarea: { $lte : $scope.filterOption.areaMax.area, $gte : $scope.filterOption.areaMin.area } /* , add more filter here */
+              propertyType: data.propertyType,
+              price: { $lte : data.priceMax, $gte : data.priceMin },
+              livingarea: { $lte : data.areaMax, $gte : data.areaMin } // , add more filter here
             }]
           };
-
-        // If a sort option is selected the code will either be: 1(ascending) or -1(descending)
-        // This will be added after the $and in the query
-        if($scope.filterOption.sortOption.code !== 0){
-
-          // First create an empty object
-          query._sort = {};
-
-          // Second we store out sort option in the object
-          // this is taken from $scope.filterOption.sortOption
-          // query._sort.type = code
-          query._sort[$scope.filterOption.sortOption.type] = $scope.filterOption.sortOption.code;
-        }
 
         // This is our get request to our database
         property.get(
@@ -130,13 +115,74 @@ app.directive('buyFilter', [function(){
 
             console.log(data);
 
+            // Stored values for sorting on frontend
+            $scope.initValues = data;
+
             // Send data to make pagination
+            // This is also done if a modal is opened
             setupPagination(data);
+
+            // Checks if our id in URL is an existing id
+            if(data.id){
+              if($scope.initValues.find(findProp)){
+                $scope.openModal($scope.initValues.find(findProp));
+              }
+              else{
+                data.id = null;
+              }
+            }
+
+            function findProp(prop){
+              return prop._id === $route.current.params.id;
+            }
         });
       }
 
-      // Init
+      // Our sort funtion
+      // Uses angular $filter with orderBy to sort data on frontend
+      $scope.sort = function(){
+        setupPagination($filter('orderBy')($scope.initValues, $scope.filterOption.sortOptionType, $scope.filterOption.sortOptionCode));
+      }
+
+      // Opens a modal for property
+      $scope.initModal = function(prop){
+
+        // Get id from modal to input in URL
+        $scope.filterOption.id = prop._id;
+
+        // Open modal
+        $scope.openModal(prop);
+      }
+
+      // Checks if a URL exist
+      if($route.current.params.priceMax){
+        $scope.filterOption = $route.current.params;
+
+        // Loops through to remove strings on integers
+        for (var key in $scope.filterOption) {
+          if ($scope.filterOption.hasOwnProperty(key)) {
+
+            // propertyType should not parse "House" or "Apartment" && should not parse sortOptionType && should not parse id
+            if(key != 'propertyType' && key != "sortOptionType" && key != "id") {
+              $scope.filterOption[key] = $scope.filterOption[key]/1;
+            }
+          }
+        }
+
+        // If our RegExp is a string, make it a non string
+        if($scope.filterOption.propertyType == "/.*/") {
+          $scope.filterOption.propertyType = new RegExp(".*");
+        }
+      }
+
+      // Init all data
       $scope.filter();
+
+      // A $watch to find changes in $scope.filterOptions and update out URL
+      // Page will not reload because of reloadOnSearch is set to false in app.js
+      $scope.$watch("filterOption", function(){
+        $location.search($scope.filterOption);
+      }, true)
 
     }]
   };

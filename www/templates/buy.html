@@ -1,65 +1,74 @@
 <div class="container">
-	<div class="row">
-		<buy-filter></buy-filter>
-	</div>
-	<div ng-if="values.length > 0">
-		<div ng-repeat="value in values" modal-list>
-			<div class="listAll">
-				<div class="row boxBg">
-					<div class="col-xs-12 col-sm-4 col-sm-offset-2">
-						<img class="img-responsive" ng-src="{{value.path}}" ng-click="openModal(value)">
-					</div>
-					<div class="col-xs-12 col-sm-4">
-						<p>
-							Adress: {{value.adress}}<br>
-							Pris: {{value.price | number}} kr<br>
-							Typ: {{value.propertyType}}<br>
-							Antal rum: {{value.rooms}}<br>
-							Bo area: {{value.livingarea}} m²
-						</p>
+	<div class="page-container">
+		<div class="container-fluid">
+			<div class="row">
+				<buy-filter modal-list></buy-filter>
+			</div>
+			<div class="row">
+				<div ng-if="values.length > 0">
+					<div ng-repeat="value in values">
+						<div class="listAll boxBg">
+							<div class="row">
+								<div class="col-xs-12 col-sm-6">
+									<img class="img-responsive" ng-src="{{value.path}}" ng-click="initModal(value)">
+								</div>
+								<div class="col-xs-12 col-sm-6">
+									<p>
+										Adress: {{value.adress}}<br>
+										Pris: {{value.price | currency}}<br>
+										Typ: {{value.propertyType}}<br>
+										Antal rum: {{value.rooms}}<br>
+										Bo area: {{value.livingarea}} m²
+									</p>
+								</div>
+							</div>
+							<div ng-if="values.length == 0">
+								<h2>Could not find any property</h2>
+							</div>
+						</div>
 					</div>
 				</div>
-				<div ng-if="values.length == 0">
-				<h2>Could not find any property</h2>
+			</div>
+			
+			<div class="row">
+				<div class="col-xs-12 text-center antalPadding">
+					<p><span class="label label-primary">Totalt antal träffar: {{totalItems}}</span></p>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-xs-12 text-center">
+		    		<uib-pagination class="pagination-sm hidden-sm hidden-md hidden-lg"
+		    			total-items="totalItems"
+			    		ng-model="filterOption.currentPage"
+			    		items-per-page="filterOption.itemsPerPage"
+			    		ng-change="pageChanged()"
+			    		boundary-links="true"
+			    		boundary-link-numbers="true"
+			    		max-size="3"
+			    		previous-text="‹"
+			    		next-text="›"
+			    		first-text="«"
+			    		last-text="»">
+		    		</uib-pagination>
+		    		  <uib-pagination class="hidden-xs"
+		    			total-items="totalItems"
+			    		ng-model="filterOption.currentPage"
+			    		items-per-page="filterOption.itemsPerPage"
+			    		ng-change="pageChanged()"
+			    		boundary-links="true"
+			    		boundary-link-numbers="true"
+			    		max-size="5"
+			    		previous-text="‹"
+			    		next-text="›"
+			    		first-text="«"
+			    		last-text="»">
+		    		</uib-pagination>
 				</div>
 			</div>
 		</div>
 	</div>
-	<div class="row">
-		<div class="col-xs-12 text-center antalPadding">
-			<p><span class="label label-primary">Totalt antal träffar: {{totalItems}}</span></p>
-		</div>
-	</div>
-	<div class="row">
-		<div class="col-xs-12 text-center">
-    		<uib-pagination class="pagination-sm hidden-sm hidden-md hidden-lg"
-    			total-items="totalItems"
-	    		ng-model="currentPage"
-	    		items-per-page="itemsPerPage"
-	    		ng-change="pageChanged()"
-	    		boundary-links="true"
-	    		boundary-link-numbers="true"
-	    		max-size="3"
-	    		previous-text="‹"
-	    		next-text="›"
-	    		first-text="«"
-	    		last-text="»">
-    		</uib-pagination>
-    		  <uib-pagination class="hidden-xs"
-    			total-items="totalItems"
-	    		ng-model="currentPage"
-	    		items-per-page="itemsPerPage"
-	    		ng-change="pageChanged()"
-	    		boundary-links="true"
-	    		boundary-link-numbers="true"
-	    		max-size="3"
-	    		previous-text="‹"
-	    		next-text="›"
-	    		first-text="«"
-	    		last-text="»">
-    		</uib-pagination>
-		</div>
-	</div>
 </div>
+<help-box></help-box>
+
 
 

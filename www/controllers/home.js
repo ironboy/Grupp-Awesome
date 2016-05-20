@@ -1,4 +1,18 @@
-app.controller("home", ["$scope", "property", function($scope, property) {
+app.controller("home", ["$scope", "property", "homedb", function($scope, property, homedb) {
+
+
+
+    function loadhome(data) {
+        $scope.homeDatas = data || homedb.get(function(data) {
+            console.log(data);
+            }
+        );
+    }
+
+    loadhome();
+
+
+
 
 /*	function loadhome(data) {
         $scope.homeDatas = data || homecontent.get(function(data) {

@@ -1,18 +1,19 @@
 <div class="jumbotron">
 
     <div class="content">
-        <h1>Welcome!</h1>
-
-        <p>Lorem ipsum dolor sit amet, mel in amet splendide, movet menandri suscipiantur usu te. Eius homero eum et. Per laudem equidem reprehendunt in, per nibh ipsum populo no. Nonumy periculis te sed, ea tale pertinax qui. Ad omnes decore verear vim. Sea ei homero suscipit, velit homero vivendo ius et, ius verterem mediocritatem necessitatibus ex.</p>
-
-        <p>Mei quot utamur interesset eu, zril tractatos mea ne. Ei per admodum philosophia comprehensam, vis ut meis delenit mandamus. Est ei errem suscipit. Solet dignissim at eam, no suscipit perpetua deseruisse pro.</p>
-
+        <div class="container">
+            <div class="row">
+                <div class="introText">
+                    <div ng-repeat="homeData in homeDatas">
+                        <h2>{{homeData.title}}</h2>
+                        <p>{{homeData.text}}</p>
+                    </div>
+                <h1>Welcome!</h1>
         <div class="startBtn">
 
             <a ng-href="/buy"><button type="button" class="btn-lg btn-primary">Bostäder till salu</button></a>
 
         </div>
-
     </div>
 </div>
 

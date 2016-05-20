@@ -41,7 +41,7 @@ body {
 }
 
 .navbar-fixed-top {
-	background-color: #bbb;
+	background-color: rgba(187, 187, 187, 0.7);
 	font-family: Baron;
 	font-size: 1.4em;
 	border: none;
@@ -101,60 +101,6 @@ h2 {
 }
 /*End Navbar*/
 
-/*Footer*/
-.footer {
-	position: absolute;
-	bottom: 0;
-	width: 100%;
-	height: 90px;
-	background-color: #555;
-	padding-top: 8px;
-	padding-bottom: 8px;
-	color: #000;
-}
-
-footer a:link {
-	color: #000;
-	text-decoration: none;
-}
-
-footer a:visited {
-	color: #000;
-}
-
-footer a:hover {
-	color: #fff;
-}
-
-footer a:active {
-	color: #fff;
-}
-
-.black {
-	color: #000;
-}
-/*End Footer*/
-
-/*Broker*/
-.listAll {
-	margin-top: 20px;
-	margin-bottom: 20px;
-}
-
-.listAll p {
-	font-weight: bold;
-}
-/*End Broker*/
-
-.listP {
-	margin-left: 15px;
-}
-
-.big {
-	margin-left: 15px;
-	font-size: 130%;
-}
-
 /*Filter*/
 #btnFilter {
 	margin-top: 20px;
@@ -172,36 +118,66 @@ footer a:active {
 }
 
 .boxFilter {
-	background-color: #ccc;
+	background-color: rgba(204, 204, 204, 0.7);
 	border-radius: 5px;
+	padding-top: 5px;
 	padding-bottom: 10px;
 	margin-top: 15px;
 }
 
 .boxBg {
-	background-color: #ddd;
+	background-color: rgba(221, 221, 221, 0.7);
 	border-radius: 5px;
-	padding-top: 10px;
-    padding-bottom: 10px;
+	padding: 10px;
 }
 
 .antalPadding {
 	padding-top: 10px;
 }
+
+.page-container > .container-fluid:first-child {
+	margin-right: auto;
+	margin-left: auto;
+}
+@media (max-width: 767px) {
+  .page-container > .container-fluid:first-child {
+    padding-left: 20px;
+  	padding-right: 20px;
+  }
+}
+@media (min-width: 768px) {
+  .page-container > .container-fluid:first-child {
+    width: 750px;
+    padding-left: 100px;
+  	padding-right: 100px;
+  }
+}
+@media (min-width: 992px) {
+  .page-container > .container-fluid:first-child {
+    width: 970px;
+    padding-left: 150px;
+  	padding-right: 150px;
+  }
+}
+@media (min-width: 1200px) {
+  .page-container > .container-fluid:first-child {
+    width: 1170px;
+    padding-left: 200px;
+  	padding-right: 200px;
+  }
+}
 /*End Filter*/
 
-/*Contact-modal*/
-.modal > a:hover {
-	cursor: pointer;
+/*Broker*/
+.listAll {
+	margin-top: 20px;
+	margin-bottom: 20px;
 }
-my-modal:hover {
-	cursor: pointer;
-	color: white;
+
+.listAll p {
+	font-weight: bold;
 }
-.modal-content > li > a {
-	margin: 0 auto;
-}
-/*End Contact-modal*/
+/*End Broker*/
 
 /*About*/
 .aboutBox {
@@ -221,18 +197,10 @@ my-modal:hover {
 }
 
 /*End About*/
-/*.background {
-	position: relative;
-}*/
 
-/*.content {
-	z-index: 10;
-	position: relative
-	top: 0;
-	left: 0;
-	bottom: 0;
-	right: 0;
-}*/
+
+/* Carousel css start */
+
 .carousel-control {
 	display: none;
 }
@@ -263,8 +231,7 @@ carousel {
 .container {
 	margin-left: auto;
 	margin-right: auto;
-/*	padding-left: 5px;
-	padding-right: 5px;*/
+
 }
 .wrapper {
 	left: 0;
@@ -277,9 +244,83 @@ carousel {
 
 .jumbotron {
 	background:#7f7f7f;
-  background:rgba(255,255,255,0.5);
+  	background:rgba(255,255,255,0.5);
     margin-top: 15px;
 }
 .content {
 	opacity: 1.0;
 }
+
+/* Carousel end css*/
+
+/*Contact-modal*/
+.modal > a:hover {
+	cursor: pointer;
+}
+my-modal:hover {
+	cursor: pointer;
+	color: white;
+}
+.modal-content > li > a {
+	margin: 0 auto;
+}
+/*End Contact-modal*/
+
+/*Footer*/
+.footer {
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+	height: 90px;
+	background-color: rgba(85, 85, 85, 0.7);
+	padding-top: 8px;
+	padding-bottom: 8px;
+	color: #000;
+}
+
+footer a:link {
+	color: #000;
+	text-decoration: none;
+}
+
+footer a:visited {
+	color: #000;
+}
+
+footer a:hover {
+	color: #fff;
+}
+
+footer a:active {
+	color: #fff;
+}
+
+.black {
+	color: #000;
+}
+/*End Footer*/
+
+/*HelpBox*/
+.helpBtn {
+    margin-left: 20px;
+    position: fixed;
+    top: 80px;
+}
+
+.fixed-dialog{
+  position: fixed;
+  top: 50px;
+  left: 50px;
+}
+/*End HelpBox*/
+
+/* List Items */
+.listP {
+	margin-left: 15px;
+}
+
+.big {
+	margin-left: 15px;
+	font-size: 130%;
+}
+/*End List Items*/
