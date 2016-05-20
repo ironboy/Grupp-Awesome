@@ -1,21 +1,23 @@
-<div class="intro">
-    <div class="container">
-         <div class="row">
-            <div class="col-lg-24">
-                <div class="introTitle">
-                    <h1>Välkommen!</h1>
-                </div>
-            </div>
+<div class="jumbotron">
+
+    <div class="content">
+        <div class="container">
+            <div class="row">
+                <div class="introText">
+                    <div ng-repeat="homeData in homeDatas">
+                        <h2>{{homeData.title}}</h2>
+                        <p>{{homeData.text}}</p>
+                    </div>
+                <h1>Welcome!</h1>
+        <div class="startBtn">
+
+            <a ng-href="/buy"><button type="button" class="btn-lg btn-primary">Bostäder till salu</button></a>
+
         </div>
     </div>
 </div>
-<div class="container">
-    <div class="row">
-        <div class="introText">
-            <div ng-repeat="homeData in homeDatas">
-                <h2>{{homeData.title}}</h2>
-                <p>{{homeData.text}}</p>
-            </div>
-        </div>
-    </div>
-</div>
+
+
+
+<!--   <p>...</p>
+  <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a></p> -->
