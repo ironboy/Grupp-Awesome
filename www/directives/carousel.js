@@ -2,66 +2,78 @@ app.directive('carousel', [function() {
 
   return {
     templateUrl: '/directives/carousel.html',
-    controller: ['$scope', function($scope) {
+    controller: ['$scope', '$route', function($scope, $route) {
+      var $ = angular.element;
 
+      function getSlideHeight() {
+        return $(window).height() - parseInt($('body').css('marginTop'));
+      }
+
+      $scope.route = $route;
+
+
+      
+      $scope.$watch('route.current.$$route.originalPath' , function() {
+        console.log($scope.route.current.$$route.originalPath);
+        if($scope.route.current.$$route.originalPath == '/') {
+          $('carousel').css('opacity', 1);
+        }
+        else {
+          $('carousel').css('opacity', 0.5)
+          
+        }
+      })
       $scope.myInterval = 5000;
       $scope.noWrapSlides = false;
       $scope.active = 0;
-      var slides = $scope.slides = [];
+      var slides = $scope.slides = []
       var currIndex = 0;
 
       $scope.addSlide = function() {
-        var newWidth = 600 + slides.length + 1;
-        slides.push({
-          image: 'http://lorempixel.com/' + newWidth + '/300',
-          text: ['Nice image','Awesome photograph','That is so cool','I love that'][slides.length % 4],
-          id: currIndex++
+          slides.push({
+            imageStyle: {
+              'background-image': 'url(/img/backgrounds/background' + currIndex + '.jpg)',
+              height: getSlideHeight()
+            },
+            text: ['Nice image','Awesome photograph','That is so cool','I love that'][slides.length % 4],
+            id: currIndex ++
+          });         
+      };
+
+      // handles resizing of slides
+      function resizer() {
+        $scope.slides.forEach(function(s) {
+          s.imageStyle.height = getSlideHeight();
+          console.log(s.imageStyle.height)
         });
-      };
 
-      $scope.randomize = function() {
-        var indexes = generateIndexesArray();
-        assignNewIndexesToSlides(indexes);
-      };
-
-      for (var i = 0; i < 4; i++) {
-        $scope.addSlide();
-      }
-
-      // Randomize logic below
-
-      function assignNewIndexesToSlides(indexes) {
-        for (var i = 0, l = slides.length; i < l; i++) {
-          slides[i].id = indexes.pop();
-        }
-      }
-
-      function generateIndexesArray() {
-        var indexes = [];
-        for (var i = 0; i < currIndex; ++i) {
-          indexes[i] = i;
-        }
-        return shuffle(indexes);
-      }
-
-      // http://stackoverflow.com/questions/962802#962890
-      function shuffle(array) {
-        var tmp, current, top = array.length;
-
-        if (top) {
-          while (--top) {
-            current = Math.floor(Math.random() * (top + 1));
-            tmp = array[current];
-            array[current] = array[top];
-            array[top] = tmp;
+        /*
+          the non-lazy version would be
+          if (!$scope.$$phase) {
+            $scope.$apply();
           }
-        }
+          but hugo is lazy
+        */
 
-        return array;
+        !$scope.$$phase && $scope.$apply();
       }
+
+      // handling resize
+      $(window).on('resize', resizer);
+
+      $scope.$on('$destroy', function() {
+        $(window).off('resize', resizer);
+      });
+
+
+
+        for (var i = 1; i < 11; ++i) {
+          $scope.addSlide();
+
+        }
+      
     }]
   };
-
 }]);
 
 

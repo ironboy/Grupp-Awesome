@@ -50,6 +50,7 @@
 
 </head>
 <body>
+<div id="wrapper">
 
     <nav class="navbar navbar-default navbar-fixed-top" ng-controller="NavbarController">
         <div class="container">
@@ -76,8 +77,13 @@
             </div>
         </div>
     </nav>
+    <carousel>
+    </carousel>
+    <div class="container">
 
-	<ng-view></ng-view>
+    	<ng-view></ng-view>
+
+    </div>
 
     <footer class="footer">
     	<div class="container">
@@ -92,6 +98,6 @@
     		</div>
     	</div>
     </footer>
-
+</div>
 </body>
 </html>
