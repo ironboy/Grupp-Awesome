@@ -120,7 +120,7 @@ app.directive('buyFilter', [function(){
 
             // Send data to make pagination
             // This is also done if a modal is opened
-            setupPagination(data);
+            $scope.sort(data);
 
             // Checks if our id in URL is an existing id
             if(data.id){
