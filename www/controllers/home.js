@@ -15,7 +15,7 @@ app.controller("home", ["$scope", "property", "homedb", "aboutdb", "workers", fu
     property.get({},function(data){if(data.length === 0){addProperties(data);}});
     homedb.get({},function(data){if(data.length === 0){addHome(data);}});
     aboutdb.get({},function(data){if(data.length === 0){/*addAbout(data)*/}});
-    workers.get({},function(data){if(data.length === 0){/*addWorkers(data)*/}});
+    workers.get({},function(data){if(data.length === 0){addWorkers(data)}});
 
 	function addProperties(data){
 		console.log("No properties found");
@@ -74,6 +74,33 @@ app.controller("home", ["$scope", "property", "homedb", "aboutdb", "workers", fu
 	}
 
 	function addWorkers(data){
-
+		workers.create(
+			{
+			    name: "Kalle Kulla",
+			    description: "Trevlig kille med riktig kullmage",
+			    worktime: 8,
+			    age: 43,
+			    path: "img/gubbe.jpg",
+			    email: "kalle.kulla@dyhrrumson.se",
+			    phone: "071-234 56 78"
+	  		});
+	  	workers.create({
+			    name: "Lisa Bulla",
+			    description: "Trevlig tjej med riktig kullmage",
+			    worktime: 10,
+			    age: 33,
+			    path: "img/maklare2.jpg",
+			    email: "lisa.bulla@dyhrrumson.se",
+			    phone: "071-234 56 78"
+	  		});
+	  	workers.create({
+			    name: "Hans Sulla",
+			    description: "Trevlig fillur med riktig kullmage",
+			    worktime: 2,
+			    age: 19,
+			    path: "img/maklare3.jpg",
+			    email: "hans.sulla@dyhrrumson.se",
+			    phone: "071-234 56 78"
+	  		});
 	}
 }]);
