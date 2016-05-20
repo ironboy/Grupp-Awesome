@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html ng-app="myApp">
 <head>
 
@@ -35,7 +34,6 @@
 	    <script src="/directives/buyFilter.js"></script>
 	    <script src="/directives/modalList.js"></script>
 	    <script src="/directives/myModal.js"></script>
-	    <script src="/directives/myModalfirst.js"></script>
 	    <script src="/directives/helpBox.js"></script>
 
 	    <!--Modals-->
@@ -60,14 +58,12 @@
     <nav class="navbar navbar-default navbar-fixed-top" ng-controller="NavbarController">
         <div class="container">
             <div class="navbar-header">
-
                 <button type="button" class="navbar-toggle" ng-click="isCollapsed = !isCollapsed">
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
                 </button>
                 <a class="navbar-brand" ng-href="/" class="brand"><h2>DYHR &amp; RUMSON</h2></a>
-
             </div>
 
              <div class="navbar-collapse collapse" ng-class="isCollapsed ? '' : 'in'">
@@ -76,7 +72,7 @@
                     <li><a ng-href="/buy">KÖPA</a></li>
                     <li><a ng-href="/broker">MÄKLARE</a></li>
                     <li><a ng-href="/about">OM OSS</a></li>
-                    <li class="modal" ng-click="openModal()"><a><my-modal></my-modal></a></li>
+                    <li class="modal" ng-click="openModal()"><a>KONTAKT<my-modal></my-modal></a></li>
                 </ul>
 
             </div>
@@ -92,12 +88,11 @@
     				<ul class="list-inline">
                         <li><a href="tel:#"><i class="fa fa-phone fa-3x"></i></a></li>
                         <li><img src="img/awesome.png" class="img-responsive center-block"></li>
-                        <li ng-click="openModal()"><a class="black"><i class="fa fa-envelope-o fa-3x"></i><my-modalfirst></my-modalfirst></a></li>
+                        <li ng-click="openModal()"><a class="black"><i class="fa fa-envelope-o fa-3x"></i><my-modal></my-modal></a></li>
     				</ul>
     			</div>
     		</div>
     	</div>
     </footer>
-
 </body>
 </html>
