@@ -44,7 +44,7 @@ app.controller("home", ["$scope", "property", "homedb", "aboutdb", "workers", fu
 			var data = {
 				adress: adresses[randomNum(0, 10)],
 				zipcode: randomNum(1, 10000, 10000),
-				price: randomNum(1, 1000000, 700000),
+				price: randomNum(1, 20000000, 7000000),
 				rooms: randomNum(1,10),
 				livingarea: randomNum(1, 100, 30),
 				propertyType: randomType(),
