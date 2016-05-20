@@ -11,15 +11,15 @@ app.directive('carousel', [function() {
 
       $scope.route = $route;
 
-
+      // handler for changing background opacity
       
       $scope.$watch('route.current.$$route.originalPath' , function() {
-        console.log($scope.route.current.$$route.originalPath);
+
         if($scope.route.current.$$route.originalPath == '/') {
           $('carousel').css('opacity', 1);
         }
         else {
-          $('carousel').css('opacity', 0.5)
+          $('carousel').css('opacity', 0.7);
           
         }
       })
